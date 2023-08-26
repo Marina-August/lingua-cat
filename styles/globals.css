@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "primereact/resources/themes/lara-light-indigo/theme.css";
+@import 'primereact/resources/themes/saga-blue/theme.css';
+@import 'primereact/resources/primereact.min.css';
+@import 'primeicons/primeicons.css';
+
 
 
 .main {
@@ -72,12 +77,12 @@
 /* Cat Styles */
 
 .container {
-    height: 200px;
+    height: 150px;
     width: 350px;
     position: absolute;
     transform: translate(-50%, -50%);
     left: 10%;
-    top: 90%;
+    top: 80%;
 }
 .cat {
     background-color: #f19b1a;
@@ -365,15 +370,16 @@
 
 .hunger{
     display: flex;
+    flex-direction: column;
     position: absolute;
     width: 40px;
     /* height: 130px; */
     /* background-color: #7388bd; */
     left: 4%;
-    text-orientation: upright;
-    writing-mode: vertical-rl;
+    /* text-orientation: upright;
+    writing-mode: vertical-rl; */
     /* text-align: center; */
-    top: 65%;
+    top: 60%;
     border-radius:5px;
     color: #ffffff;
 }
@@ -383,25 +389,51 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     background-color: #98c8f2;
+    width: 40px;
+    height: 30px;
 }
 .u{
     background-color: #f4d491;
+    width: 40px;
+    height: 30px;
+    text-align: center;
 }
 .n{
     background-color: #789bb9;
+    width: 40px;
+    height: 30px;
+    text-align: center;
 }
 .g{
     background-color: #eec367;
+    width: 40px;
+    height: 30px;
+    text-align: center;
 }
 .e{
     background-color: #58738b;
+    border-radius:5px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    width: 40px;
+    height: 30px;
+    text-align: center;
 }
-.r{
+/* .r{
     border-radius:5px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     background-color: #eea042;
-}
+    width: 35px;
+    height: 30px;
+} */
+
+/* Overwrite  Prime React style*/
+/* .p-toast div{
+  display: flex;
+  justify-content: flex-end;
+} */
+
 
 /* Tailwind Styles */
 

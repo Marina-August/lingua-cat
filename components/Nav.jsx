@@ -23,7 +23,7 @@ const Nav =()=>{
     return(
         <nav className="flex justify-around items-center w-full mb-16 pt-3 ">
             <Link href="/" className="flex gap-2 flex-center mr-80">
-                <Image src="/assets/icons/logo-no-background.png" alt="logo" width={90} height={90}/>
+                <Image src="/assets/icons/logo-no-background.png" alt="logo" width={150} height={150}/>
             </Link>
             {!login? (<div className='flex gap-3 md:gap-5'><button type= 'button' className="black_btn" onClick ={signinHandler}>Sign in</button>
             <Image

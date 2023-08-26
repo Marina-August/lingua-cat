@@ -1,24 +1,24 @@
 "use client"
 
-import "primereact/resources/themes/lara-light-indigo/theme.css";
-
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import { Button } from 'primereact/button';
+import { Card } from 'primereact/card';
 import {useState, useEffect } from "react";
 
-const Words =({onCheckWords})=>{
-   const [allWords, setAllWords] = useState([]);
+import { useSelector, useDispatch } from 'react-redux';
+import { vocabularyCatActions } from '@/redux/store';
+
+
+const Words =({onCheckWords, onDeleteWord})=>{
+   const allWords = useSelector((state)=>state.allWords);
+   const dispatch = useDispatch();
 
    const fetchWords = async () => {
-    const response = await fetch("/api/word", { 
-      next: {
-        revalidate: 0,
-      },
-      revalidate: 0 
-    });
+    const response = await fetch("/api/word");
     const data = await response.json();
     console.log('words:', data);
-    setAllWords(data);
+    dispatch(vocabularyCatActions.setAllWords(data))
     onCheckWords(data);
   };
 
@@ -26,36 +26,49 @@ const Words =({onCheckWords})=>{
     fetchWords();
   }, []);
 
+  const editWord = (word) => {
+    
+  }
+
+  const  deletetWord =(word)=>{
+       console.log('Delete Id',word);
+       onDeleteWord(word);   
+  }
+
+  const bodyTemplate = (word)=>{
     return (
-        <>
-        {allWords.length>0 && <DataTable 
+      <div className="flex justify-center gap-3">
+      <Button icon="pi pi-pencil" rounded text raised severity="success" onClick={() => editWord(word)}/>
+      <Button icon="pi pi-trash" rounded text raised severity="danger" aria-label="Search" onClick={() => deletetWord(word)} />
+      </div>
+    )
+  }
+    return (
+        <div>
+        {allWords.length>0 && <Card style={{width:'90%', margin:'-40px auto 0px', minHeight:'85vh', backgroundColor: '#fafafa', position: 'block'}}>
+         <DataTable 
         // header = {header}
         value={allWords}
+        showGridlines
         // filters={filters}
         rowHover
         stripedRows 
-        paginator rows={10}
+        paginator rows={8}
         // globalFilterFields={['name.common']}
-        //tableStyle={{ minWidth: '50rem' }}
+        tableStyle={{ minWidth: '50rem' }}
       >
         <Column field="word" sortable header="Original"
-         style={{ width: '500px' }}></Column>
-        <Column field="translation" sortable header="Translation" style={{ width: '33%' }}></Column>
+         style={{ width: '22,5%' }}></Column>
+        <Column field="translation" sortable header="Translation" style={{ width: '22,5%' }}></Column>
         <Column field="example" sortable header="Example" 
-        style={{ width: '33%' }}
+        style={{ width: '40%' }}
         >
-
-        </Column>
-        
-      </DataTable>}
-         {/* {allWords.map(el=>(
-            <div key={el._id}>
-            <p>{el.word}</p>
-            <p>{el.translation}</p>
-            <p>{el.example}</p>
-            </div>
-         ))} */}
-        </>
+        </Column> 
+        <Column body={bodyTemplate}  header="Actions"
+         style={{ width: '15%' }}></Column>   
+      </DataTable>
+      </Card>}
+       </div>
     )
 }
 
