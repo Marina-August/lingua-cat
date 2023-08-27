@@ -1,5 +1,6 @@
 import { connectToDB } from "@/utils/database";
 import Word from "@/models/word";
+import Language from "@/models/language";
 
 export const DELETE = async (request, { params }) => {
     try {
@@ -40,11 +41,16 @@ export const PATCH = async (request, { params }) => {
         if (!existingWord) {
             return new Response("Word not found", { status: 404 });
         }
+        const sourceLanguage = await Language.findOne({ name:source })
+        const sourceId = sourceLanguage._id;
+        
+        const targetLanguage = await Language.findOne({ name:target })
+        const targetId = targetLanguage._id;
 
         // Update the word with new data
-        existingWord.source = source;
+        existingWord.source = sourceId;
         existingWord.word = word;
-        existingWord.target = target;
+        existingWord.target = targetId;
         existingWord.translation = translation;
         existingWord.example = example;
 

@@ -3,20 +3,21 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-const Form = ({type, onWordHandler, editWord, onUpdateWord})=>{
+const Form = ({type, onWordHandler, editWord, onUpdateWord, sourceL, targetL})=>{
     const [word, setWord] = useState('');
     const [sourceLanguage, setSourceLanguage] = useState('Finnish');
     const [translation, setTranslation] = useState('');
     const [targetLanguage, setTargetLanguage] = useState('English');
     const [example, setExample] = useState('');
     const [ok, setOk] = useState(false);
+
     
     useEffect(()=>{
       if (editWord){
         setWord(editWord.word);
-        setSourceLanguage(editWord.source);
+        setSourceLanguage(sourceL.name);
         setTranslation(editWord.translation);
-        setTargetLanguage(editWord.target);
+        setTargetLanguage(targetL.name);
         setExample(editWord.example);
       }
        
