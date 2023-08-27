@@ -40,7 +40,7 @@ const PersonalPage =()=>{
         <div>
             {empty && <p>You don't have any words yet!</p>}
              <Toast ref={toast} />
-             <Words onCheckWords ={checkWordsLength} onDeleteWord = {deleteWordHandler}/>
+             <Words onCheckWords ={checkWordsLength} onDeleteWord = {deleteWordHandler} />
         </div>
         
         

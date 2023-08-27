@@ -3,25 +3,34 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-const Form = ({type, onWordHandler})=>{
+const Form = ({type, onWordHandler, editWord, onUpdateWord})=>{
     const [word, setWord] = useState('');
     const [sourceLanguage, setSourceLanguage] = useState('Finnish');
     const [translation, setTranslation] = useState('');
     const [targetLanguage, setTargetLanguage] = useState('English');
     const [example, setExample] = useState('');
     const [ok, setOk] = useState(false);
+    
+    useEffect(()=>{
+      if (editWord){
+        setWord(editWord.word);
+        setSourceLanguage(editWord.source);
+        setTranslation(editWord.translation);
+        setTargetLanguage(editWord.target);
+        setExample(editWord.example);
+      }
+       
+    },[editWord]);
 
 
     const sourceLanguageHandler =(event)=>{
         if(event.target.value!==0){
             setSourceLanguage(event.target.value);
-        }
-       
+        }    
     }
 
     const wordHandler = (event)=>{
-          setWord(event.target.value)  
-         
+          setWord(event.target.value)        
     }
 
     const targetLanguageHandler = (event)=>{
@@ -54,29 +63,32 @@ const Form = ({type, onWordHandler})=>{
 
     const submitHandler =(event)=>{
         event.preventDefault();
-        const enteredWord = word;
-        const source= sourceLanguage;
-        const targetWord = translation;
-        const target = targetLanguage;
-        const usage =  example;
+          const enteredWord = word;
+          const source= sourceLanguage;
+          const targetWord = translation;
+          const target = targetLanguage;
+          const usage =  example;
 
-        setSourceLanguage('Finnish');
-        setWord('');
-        setTargetLanguage('English');
-        setTranslation('');
-        setExample('');
+          setSourceLanguage('Finnish');
+          setWord('');
+          setTargetLanguage('English');
+          setTranslation('');
+          setExample('');
 
-        const newWord ={
-            enteredWord,
-            source,
-            targetWord,
-            target,
-            usage
+          const newWord ={
+              enteredWord,
+              source,
+              targetWord,
+              target,
+              usage
+          }
+          if (type === "Add"){
+             onWordHandler(newWord);
+          } else{
+            onUpdateWord(newWord)
+          }
+
         }
-   
-        onWordHandler(newWord);
-
-    }
 
     return (
         <section className='w-full max-w-full flex-col -mt-16'>

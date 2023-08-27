@@ -5,11 +5,6 @@ const WordSchema = new Schema({
     //   type: Schema.Types.ObjectId,
     //   ref: 'User',
     // },
-    // word_language: {
-    //   type: String,
-    //   required: [true, 'Word language is required!'],
-    
-    // },
     source:{
        type: Schema.Types.ObjectId,
        ref: 'Language',
@@ -18,12 +13,6 @@ const WordSchema = new Schema({
       type: String,
       required: [true, 'Word is required!'],
     },
-
-    // translation_language: {
-    //     type: String,
-    //     required: [true, 'Translation language is required!'],
-      
-    //   },
     target:{
         type: Schema.Types.ObjectId,
         ref: 'Language',

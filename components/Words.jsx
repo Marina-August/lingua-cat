@@ -5,6 +5,7 @@ import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import {useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 import { useSelector, useDispatch } from 'react-redux';
 import { vocabularyCatActions } from '@/redux/store';
@@ -13,11 +14,11 @@ import { vocabularyCatActions } from '@/redux/store';
 const Words =({onCheckWords, onDeleteWord})=>{
    const allWords = useSelector((state)=>state.allWords);
    const dispatch = useDispatch();
+   const router = useRouter();
 
    const fetchWords = async () => {
     const response = await fetch("/api/word");
     const data = await response.json();
-    console.log('words:', data);
     dispatch(vocabularyCatActions.setAllWords(data))
     onCheckWords(data);
   };
@@ -27,11 +28,10 @@ const Words =({onCheckWords, onDeleteWord})=>{
   }, []);
 
   const editWord = (word) => {
-    
+    router.push(`/personal-page/update-word?id=${word._id}`);
   }
 
   const  deletetWord =(word)=>{
-       console.log('Delete Id',word);
        onDeleteWord(word);   
   }
 
