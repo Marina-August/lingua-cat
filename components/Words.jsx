@@ -15,16 +15,19 @@ import { vocabularyCatActions } from '@/redux/store';
 const Words =({onCheckWords, onDeleteWord})=>{
    const [visible, setVisible] = useState(false);
    const [deleteWord, setDeleteWord] = useState('');
+   const [isLoading, setIsLoading] = useState(true);
    const allWords = useSelector((state)=>state.allWords);
    const dispatch = useDispatch();
    const router = useRouter();
 
    const fetchWords = async () => {
+    setIsLoading(true);
     const response = await fetch("/api/word");
     const data = await response.json();
     dispatch(vocabularyCatActions.setAllWords(data))
-    onCheckWords(data);
+    setIsLoading(false);
   };
+
 
   useEffect(() => {
     fetchWords();
@@ -58,11 +61,20 @@ const Words =({onCheckWords, onDeleteWord})=>{
       </div>
     )
   }
+  
+    const loader = 
+    <div className="text-center">
+    <div className='lds-ellipsis'><div></div><div></div><div></div><div></div></div>
+    </div>;
+
     return (
+      <>
+       {isLoading ? loader:
         <div>
          <ConfirmDialog visible={visible} onHide={() => setVisible(false)} message="Are you sure you want to proceed?" 
                 header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept} reject={reject} />
-          {allWords.length>0 && <Card style={{width:'90%', margin:'-40px auto 0px', minHeight:'85vh', backgroundColor: '#fafafa', position: 'block'}}>
+          {allWords.length===0 && <h1>You don't have any words yet</h1>}
+          {allWords.length>0 &&  <Card style={{width:'90%', margin:'-40px auto 0px', minHeight:'85vh', backgroundColor: '#fafafa', position: 'block'}}>
           <DataTable 
           // header = {header}
           value={allWords}
@@ -85,7 +97,8 @@ const Words =({onCheckWords, onDeleteWord})=>{
           style={{ width: '15%' }}></Column>   
         </DataTable>
       </Card>}
-       </div>
+       </div>}
+    </>   
     )
 }
 

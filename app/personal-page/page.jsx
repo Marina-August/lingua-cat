@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { useState, useRef } from "react";
 import { Toast } from 'primereact/toast';
 import Words from "@/components/Words";
@@ -9,18 +8,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { vocabularyCatActions } from '@/redux/store';
 
 
-
 const PersonalPage =()=>{
-    const [empty, setEmpty] = useState(true);
     const toast = useRef(null);
     const allWords = useSelector((state)=>state.allWords);
     const dispatch = useDispatch();
-
-    const checkWordsLength=(words)=>{
-         if (words.length!==0){
-            setEmpty(false);
-         }
-    }
 
     const deleteWordHandler = async (word)=>{
         try {
@@ -38,9 +29,8 @@ const PersonalPage =()=>{
 
     return(
         <div>
-            {empty && <p>You don't have any words yet!</p>}
              <Toast ref={toast} />
-             <Words onCheckWords ={checkWordsLength} onDeleteWord = {deleteWordHandler} />
+             <Words onDeleteWord = {deleteWordHandler} />       
         </div>
         
         
