@@ -27,6 +27,7 @@ const PersonalLayout =({ children })=>{
                 src="/assets/icons/paw.png"
                 width={37}
                 height={37}
+                loading="eager" 
                 className='rounded-full mr-24'
                 alt='profile'
                />

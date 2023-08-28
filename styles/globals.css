@@ -9,7 +9,7 @@
 @import 'primereact/resources/primereact.min.css';
 @import 'primeicons/primeicons.css';
 
-
+/* @import "/node_modules/flag"; */
 
 .main {
   width: 100vw;

@@ -12,6 +12,8 @@
     "@reduxjs/toolkit": "^1.9.5",
     "autoprefixer": "10.4.15",
     "bcrypt": "^5.1.0",
+    "flag": "^5.0.1",
+    "icons": "^1.0.0",
     "mongodb": "^5.7.0",
     "mongoose": "^7.4.3",
     "next": "^13.4.19",

@@ -5,7 +5,7 @@ import Language from "@/models/language";
 const LANGUAGES = [
     {
         name:"Finnish",
-        code:"Fi"
+        code:"Fi",
     },
     {
         name:"English",

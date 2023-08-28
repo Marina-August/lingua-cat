@@ -7,9 +7,14 @@ import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import {useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 import { useSelector, useDispatch } from 'react-redux';
 import { vocabularyCatActions } from '@/redux/store';
+
+
+
+// import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 
 const Words =({onCheckWords, onDeleteWord})=>{
@@ -24,7 +29,14 @@ const Words =({onCheckWords, onDeleteWord})=>{
     setIsLoading(true);
     const response = await fetch("/api/word");
     const data = await response.json();
-    dispatch(vocabularyCatActions.setAllWords(data))
+    const _words = data.words.map(word => {
+      return {
+        ...word,
+        sourceLang: data.languages.find(l => l._id === word.source),
+        targetLang: data.languages.find(l => l._id === word.target)
+      }
+    })
+    dispatch(vocabularyCatActions.setAllWords(_words));
     setIsLoading(false);
   };
 
@@ -45,19 +57,36 @@ const Words =({onCheckWords, onDeleteWord})=>{
 
   const accept = () => {
     // toast.current.show({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
-    onDeleteWord(deleteWord); 
-    console.log(deleteWord); 
+    onDeleteWord(deleteWord);  
   }
 
   const reject =()=>{
     setVisible(false);
   }
 
-  const bodyTemplate = (word)=>{
+  const actionsBodyTemplate = (word)=>{
     return (
       <div className="flex justify-center gap-3">
       <Button icon="pi pi-pencil" rounded text raised severity="success" onClick={() => editWord(word)}/>
       <Button icon="pi pi-trash" rounded text raised severity="danger" aria-label="Search" onClick={() => deletetWord(word)} />
+      </div>
+    )
+  }
+
+  const wordBodyTemplate = (word)=>{
+    return (
+      <div className="flex justify-start gap-5">
+        <Image  width={25} height={15} src={`/assets/images/${word.sourceLang.code}.png`} alt="flag" loading="eager" />
+        <span>{word.word}</span>
+      </div>
+    )
+  }
+
+  const translationBodyTemplate = (word)=>{
+    return (
+      <div className="flex justify-start gap-5">
+        <Image width={25} height={15} src={`/assets/images/${word.targetLang.code}.png`} alt="flag" loading="eager" />
+        <span>{word.translation}</span>
       </div>
     )
   }
@@ -86,14 +115,14 @@ const Words =({onCheckWords, onDeleteWord})=>{
           // globalFilterFields={['name.common']}
           tableStyle={{ minWidth: '50rem' }}
         >
-          <Column field="word" sortable header="Original"
+          <Column body={wordBodyTemplate} sortable header="Original"
           style={{ width: '22,5%' }}></Column>
-          <Column field="translation" sortable header="Translation" style={{ width: '22,5%' }}></Column>
+          <Column body={translationBodyTemplate} sortable header="Translation" style={{ width: '22,5%' }}></Column>
           <Column field="example" sortable header="Example" 
           style={{ width: '40%' }}
           >
           </Column> 
-          <Column body={bodyTemplate}  header="Actions"
+          <Column body={actionsBodyTemplate}  header="Actions"
           style={{ width: '15%' }}></Column>   
         </DataTable>
       </Card>}
