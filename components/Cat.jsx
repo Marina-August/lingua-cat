@@ -61,20 +61,22 @@ const Cat =()=>{
             {/* {counter<6 && <div className="r">0%</div>} */}
             </div>}
         <div className="container" onClick={wakeUpHandler}>
-            <div className={!isAwake ? "hadow":''}></div>
+            {/* <div className={!isAwake ? "hadow":''}></div> */}
 
             <div className="cat">
                 <div className="ear"></div>
                 <div className={!isAwake? "eye":"eyeOpen"}></div>
                 {counter <5 &&<div className="mouth"></div>}
                 {counter >=5 && <div className="mouthNotHunger"></div>}
+                {/* <div className="whisker-1"></div>
+                <div className="whisker-2"></div> */}
                 <div className= "nose"></div>
                 <div className={!isAwake? "tailAction":"tailUpDown"}></div>
                 <div className={!isAwake? "body": "bodyAwake"}></div>
                 {!isAwake && <div className="bubble"></div>}
                 <div className="bubbleWithText">
-                   {counter <5 && <p className="text">{!isAwake? "Wake Me Up":"Feed Me"}</p>}
-                   {counter>=5 && <p className="text">Thank you!</p>}
+                   {counter <4 && <p className="text">{!isAwake? "Wake Me Up":"Feed Me"}</p>}
+                   {counter>=4 && <p className="text">Thank you!</p>}
                     </div>
             </div>
         </div>

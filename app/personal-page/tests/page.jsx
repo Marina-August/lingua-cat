@@ -1,7 +1,8 @@
+import Test1 from "@/components/Test1";
 
 const Tests =()=>{
     return(
-        <>Tests</>
+        <Test1/>
     )
 }
 

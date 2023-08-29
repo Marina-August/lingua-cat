@@ -4,11 +4,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Cat from '@/components/Cat';
 import ReduxProvider from '@/redux/provider';
-import { Suspense } from 'react';
-import Loading from './loading';
+import CatAction from '@/components/CatAction';
 
 
 const PersonalLayout =({ children })=>{
+   
     return (
       <div className="grid grid-cols-5 w-full h-screen ">
         <div className="col-span-1 flex flex-col bg-gray-800 p-4  bg-opacity-20 justify-items-end">
@@ -35,7 +35,7 @@ const PersonalLayout =({ children })=>{
         </div>
         <div>
           <ReduxProvider>
-            <Cat/>
+               <CatAction/>
                {children} 
           </ReduxProvider>
         </div> 
