@@ -14,13 +14,11 @@ import { vocabularyCatActions } from '@/redux/store';
 
 
 
-// import "/node_modules/flag-icons/css/flag-icons.min.css";
-
-
 const Words =({onCheckWords, onDeleteWord})=>{
    const [visible, setVisible] = useState(false);
    const [deleteWord, setDeleteWord] = useState('');
    const [isLoading, setIsLoading] = useState(true);
+   const [isLoadingPdf, setIsLoadingPdf] = useState(false);
    const allWords = useSelector((state)=>state.allWords);
    const dispatch = useDispatch();
    const router = useRouter();
@@ -96,6 +94,23 @@ const Words =({onCheckWords, onDeleteWord})=>{
     <div className='lds-ellipsis'><div></div><div></div><div></div><div></div></div>
     </div>;
 
+    const downloadHandler = async ()=>{
+        setIsLoadingPdf(true);
+        try {
+          const response = await fetch("/api/download");
+          console.log("client load", response)
+          const blob = await response.blob();
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'words.pdf';
+          a.click();
+        } catch (error) {
+          console.error('Error downloading PDF', error);
+        }
+        setIsLoadingPdf(false);
+    }
+
     return (
       <>
        {isLoading ? loader:
@@ -104,6 +119,10 @@ const Words =({onCheckWords, onDeleteWord})=>{
                 header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept} reject={reject} />
           {allWords.length===0 && <h1>You don't have any words yet</h1>}
           {allWords.length>0 &&  <Card style={{width:'90%', margin:'-40px auto 0px', minHeight:'85vh', backgroundColor: '#fafafa', position: 'block'}}>
+            <div className="mb-8 text-end">
+               <Button  label = {isLoadingPdf ? "Downloading pdf": "Download"} icon="pi pi-download"  severity="secondary" rounded text raised 
+               aria-label='Download' size="small" onClick={downloadHandler}/>
+            </div>
           <DataTable 
           // header = {header}
           value={allWords}

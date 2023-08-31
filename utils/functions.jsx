@@ -1,3 +1,5 @@
+import { jsPDF } from "jspdf";
+
 
 export const fetchWordsServer = async () => {
     const response = await fetch("/api/word"
@@ -9,3 +11,4 @@ export const fetchWordsServer = async () => {
     const data = await response.json();
     return data;
   };
+
