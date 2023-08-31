@@ -1,7 +1,9 @@
 import { jsPDF } from "jspdf";
 import { connectToDB } from "@/utils/database";
 import Word from "@/models/word";
+import autoTable from 'jspdf-autotable'
 import { NextResponse } from "next/server";
+import cat from "@/public/assets/icons/logo-no-background.png";
 
 export const dynamic = 'force-dynamic';
 
@@ -10,16 +12,63 @@ export const GET = async(request)=>{
         await connectToDB();
         const words = await Word.find({});
         console.log("download",words)
-        const data = JSON.stringify(words);
-       
+        
         const pdf = new jsPDF({
             format:'a4'
         });
+
+        // const img = new Image();
+        // img.src = cat;
+        // pdf.addImage(img, 'png', 10, 10, 10, 10)
+
+        autoTable(pdf,{
+            head:[['Original', 'Translation', 'Example']],
+            styles: { fillColor: [255, 128, 0] },
+            padding: {
+                left: 10,
+                top: 2,
+                bottom: 2,
+              },
+            columnStyles: {
+                0: {
+                    cellWidth: 50,
+                   
+                },
+                1: {
+                  cellWidth: 50,
+               
+                },
+                2:{
+                  cellWidth: 80,
+                   
+                },
+                cellWidth: 'wrap',
+               
+              },
+            theme: 'grid'
+        })
         
         for (let i = 0; i < words.length; i++){
-            pdf.text(20, 20+ (i*10), words[i].word);
-            // pdf.text()
+            autoTable(pdf,{
+                theme: 'grid',
+                columnStyles: {
+                    0: {
+                      cellWidth: 50
+                    },
+                    1: {
+                      cellWidth: 50
+                    },
+                    2:{
+                      cellWidth: 82
+                    },
+                    cellWidth: 'wrap'
+                  },
+                
+                body:[[words[i].word, words[i].translation, words[i].example]]
+            })
+
         }
+        pdf.save('table.pdf');
 
 
         const headers = new Headers();
