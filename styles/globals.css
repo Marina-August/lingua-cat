@@ -758,6 +758,14 @@
   color: rgb(96, 95, 95);
 }
 
+/* Countries Icons */
+
+.icon{
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 3.5px;
+}
+
 
 /* Tailwind Styles */
 

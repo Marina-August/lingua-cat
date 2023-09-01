@@ -106,6 +106,7 @@ const Form = ({type, onWordHandler, editWord, onUpdateWord, sourceL, targetL})=>
           <select className='rounded-md' onChange={sourceLanguageHandler} value={sourceLanguage}>
                 <option value='0'>Language</option>
                 <option value='Finnish'>Finnish</option>
+                <option value='English'>English</option>
             </select>
           <input className='form_input' onChange={wordHandler} value={word}></input>
          </label>
@@ -116,6 +117,7 @@ const Form = ({type, onWordHandler, editWord, onUpdateWord, sourceL, targetL})=>
           <select className='rounded-md' onChange={targetLanguageHandler} value={targetLanguage}>
                 <option value='0'>Language</option>
                 <option value='English'>English</option>
+                <option value='Finnish'>Finnish</option>
             </select>
           <input className='form_input'  onChange={translationHandler} value={translation}></input>
          </label>

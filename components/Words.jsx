@@ -19,6 +19,10 @@ const Words =({onCheckWords, onDeleteWord})=>{
    const [deleteWord, setDeleteWord] = useState('');
    const [isLoading, setIsLoading] = useState(true);
    const [isLoadingPdf, setIsLoadingPdf] = useState(false);
+   const [isfilter, setIsfilter] = useState(false);
+   const [isFinnish, setIsFinnish] = useState (false);
+   const [isEnglish, setIsEnglish] = useState(false);
+   const [isAllLanguages, setIsAllLanguages] = useState(true);
    const allWords = useSelector((state)=>state.allWords);
    const dispatch = useDispatch();
    const router = useRouter();
@@ -111,6 +115,96 @@ const Words =({onCheckWords, onDeleteWord})=>{
         setIsLoadingPdf(false);
     }
 
+    const filterHandler=()=>{
+      setIsfilter((prevIsFilter)=>{return !prevIsFilter});
+    }
+
+    const allLanguagesHandler =()=>{
+      setIsAllLanguages(true);
+      setIsFinnish(false);
+      setIsEnglish(false);
+      fetchWords();
+    }
+
+    const sourceFinnishHandler =()=>{
+        setIsFinnish(true);
+        setIsEnglish(false); 
+        setIsAllLanguages(false);
+    }
+
+    useEffect(()=>{
+      if (isFinnish === true){
+      const fetchFinnishWords = async () => {
+        setIsLoading(true);
+        const response = await fetch("/api/word");
+        const data = await response.json();
+        const _words = data.words.map(word => {
+          return {
+            ...word,
+            sourceLang: data.languages.find(l => l._id === word.source),
+            targetLang: data.languages.find(l => l._id === word.target)
+          }
+        })
+        const finnishWords = _words.filter(el=> el.sourceLang.code == "Fi");
+        dispatch(vocabularyCatActions.setAllWords(finnishWords));
+        setIsLoading(false);
+      };
+      fetchFinnishWords();
+    } else{
+      // const fetchWords = async () => {
+      //   setIsLoading(true);
+      //   const response = await fetch("/api/word");
+      //   const data = await response.json();
+      //   const _words = data.words.map(word => {
+      //     return {
+      //       ...word,
+      //       sourceLang: data.languages.find(l => l._id === word.source),
+      //       targetLang: data.languages.find(l => l._id === word.target)
+      //     }
+      //   })
+      //   dispatch(vocabularyCatActions.setAllWords(_words));
+      //   setIsLoading(false);
+      // }
+      // fetchWords();
+    }
+
+    },[isFinnish])
+
+    const sourceEnglishHandler =()=>{
+      setIsEnglish(true);
+      setIsFinnish(false);
+      setIsAllLanguages(false);
+    }
+
+    useEffect(()=>{
+      if (isEnglish === true){
+      const fetchEnglishWords = async () => {
+        setIsLoading(true);
+        const response = await fetch("/api/word");
+        const data = await response.json();
+        const _words = data.words.map(word => {
+          return {
+            ...word,
+            sourceLang: data.languages.find(l => l._id === word.source),
+            targetLang: data.languages.find(l => l._id === word.target)
+          }
+        })
+        const englishWords = _words.filter(el=> el.sourceLang.code == "En");
+        dispatch(vocabularyCatActions.setAllWords(englishWords));
+        setIsLoading(false);
+      };
+      fetchEnglishWords();
+    } else{
+   
+    }
+
+    },[isEnglish])
+
+
+
+
+
+
     return (
       <>
        {isLoading ? loader:
@@ -119,10 +213,29 @@ const Words =({onCheckWords, onDeleteWord})=>{
                 header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept} reject={reject} />
           {allWords.length===0 && <h1>You don't have any words yet</h1>}
           {allWords.length>0 &&  <Card style={{width:'90%', margin:'-40px auto 0px', minHeight:'85vh', backgroundColor: '#fafafa', position: 'block'}}>
-            <div className="mb-8 text-end">
+            <div className="flex justify-between">
+              <div className="mb-8 text-end ">
+               <Button  label = {isfilter? "Hide Filter":"Choose Language"} icon="pi pi-filter"  severity="secondary" rounded text raised 
+                size="small" onClick={filterHandler}/>
+            </div>
+            <div className="mb-8 text-end ">
                <Button  label = {isLoadingPdf ? "Downloading pdf": "Download"} icon="pi pi-download"  severity="secondary" rounded text raised 
                aria-label='Download' size="small" onClick={downloadHandler}/>
             </div>
+            </div> 
+            {isfilter && 
+              <div className="flex gap-4 border-slate-300 mb-8">
+                <p className="font-medium">Original:</p>
+                <div className={`${isAllLanguages? 'bg-orange-400': ''} w-9 rounded `}>
+                   <Image width={30} height={25} src="/assets/images/Earth.png" alt="Earth" loading="eager" className="icon" onClick={allLanguagesHandler}/>
+                </div>
+                <div className={`${isFinnish? 'bg-orange-400': ''} w-9 rounded `}>
+                   <Image width={30} height={25} src="/assets/images/Fi.png" alt="FI flag" loading="eager" className="icon" onClick={sourceFinnishHandler}/>
+                </div>
+                <div className={`${isEnglish? 'bg-orange-400': ''} w-9 rounded `}>
+                <Image width={30} height={25} src="/assets/images/En.png" alt="EN flag" loading="eager" className="icon" onClick ={sourceEnglishHandler}/>
+                </div>   
+              </div>}
           <DataTable 
           // header = {header}
           value={allWords}
@@ -135,9 +248,10 @@ const Words =({onCheckWords, onDeleteWord})=>{
           tableStyle={{ minWidth: '50rem' }}
         >
           <Column body={wordBodyTemplate} sortable header="Original"
+          field="word"
           style={{ width: '22,5%' }}></Column>
-          <Column body={translationBodyTemplate} sortable header="Translation" style={{ width: '22,5%' }}></Column>
-          <Column field="example" sortable header="Example" 
+          <Column body={translationBodyTemplate} sortable header="Translation" style={{ width: '22,5%' }} field="translation"></Column>
+          <Column field="example"  header="Example" 
           style={{ width: '40%' }}
           >
           </Column> 
