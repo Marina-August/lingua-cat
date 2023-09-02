@@ -870,3 +870,11 @@
 .flex-between {
   @apply flex justify-between items-center;
 }
+
+.test-word{
+  @apply flex items-center justify-center w-80 h-24 rounded bg-slate-100 relative left-1/2 transform -translate-x-1/2;
+}
+
+.test-option{
+  @apply flex items-center justify-center w-60 h-24 rounded bg-slate-100 relative left-1/2 transform -translate-x-1/2;
+}

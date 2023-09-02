@@ -23,6 +23,7 @@ const Words =({onCheckWords, onDeleteWord})=>{
    const [isFinnish, setIsFinnish] = useState (false);
    const [isEnglish, setIsEnglish] = useState(false);
    const [isAllLanguages, setIsAllLanguages] = useState(true);
+   const [wordsForTable, setWordsForTable] = useState([]);
    const allWords = useSelector((state)=>state.allWords);
    const dispatch = useDispatch();
    const router = useRouter();
@@ -38,52 +39,60 @@ const Words =({onCheckWords, onDeleteWord})=>{
         targetLang: data.languages.find(l => l._id === word.target)
       }
     })
+    setWordsForTable(_words);
     dispatch(vocabularyCatActions.setAllWords(_words));
     setIsLoading(false);
   };
 
-  const fetchFinnishWords = async () => {
-    setIsLoading(true);
-    const response = await fetch("/api/word");
-    const data = await response.json();
-    const _words = data.words.map(word => {
-      return {
-        ...word,
-        sourceLang: data.languages.find(l => l._id === word.source),
-        targetLang: data.languages.find(l => l._id === word.target)
-      }
-    })
-    const finnishWords = _words.filter(el=> el.sourceLang.code == "Fi");
-    dispatch(vocabularyCatActions.setAllWords(finnishWords));
-    setIsLoading(false);
-  };
+  // const fetchFinnishWords = async () => {
+  //   setIsLoading(true);
+  //   const response = await fetch("/api/word");
+  //   const data = await response.json();
+  //   const _words = data.words.map(word => {
+  //     return {
+  //       ...word,
+  //       sourceLang: data.languages.find(l => l._id === word.source),
+  //       targetLang: data.languages.find(l => l._id === word.target)
+  //     }
+  //   })
+  //   const finnishWords = _words.filter(el=> el.sourceLang.code == "Fi");
+  //   dispatch(vocabularyCatActions.setAllWords(finnishWords));
+  //   setIsLoading(false);
+  // };
 
-  const fetchEnglishWords = async () => {
-    setIsLoading(true);
-    const response = await fetch("/api/word");
-    const data = await response.json();
-    const _words = data.words.map(word => {
-      return {
-        ...word,
-        sourceLang: data.languages.find(l => l._id === word.source),
-        targetLang: data.languages.find(l => l._id === word.target)
-      }
-    })
+  const fetchFinnishWords = ()=>{
+    const _words = [...allWords];
+    const finnishWords = _words.filter(el=> el.sourceLang.code == "Fi");
+    setWordsForTable(finnishWords);
+  }
+
+  // const fetchEnglishWords = async () => {
+  //   setIsLoading(true);
+  //   const response = await fetch("/api/word");
+  //   const data = await response.json();
+  //   const _words = data.words.map(word => {
+  //     return {
+  //       ...word,
+  //       sourceLang: data.languages.find(l => l._id === word.source),
+  //       targetLang: data.languages.find(l => l._id === word.target)
+  //     }
+  //   })
+  //   const englishWords = _words.filter(el=> el.sourceLang.code == "En");
+  //   dispatch(vocabularyCatActions.setAllWords(englishWords));
+  //   setIsLoading(false);
+  // };
+
+  const fetchEnglishWords = ()=>{
+    const _words = [...allWords];
     const englishWords = _words.filter(el=> el.sourceLang.code == "En");
-    dispatch(vocabularyCatActions.setAllWords(englishWords));
-    setIsLoading(false);
-  };
+    setWordsForTable(englishWords);
+  }
 
 
   useEffect(() => {
     const all = Number(localStorage.getItem('all'));
     const finnish = Number(localStorage.getItem('finnish'));
     const english = Number (localStorage.getItem('english'));
-    console.log("all",all);
-    console.log("finnish",finnish);
-    console.log("english",english);
-    console.log(typeof all);
-
     setIsAllLanguages(all);
     setIsFinnish(finnish);
     setIsEnglish(english);
@@ -220,10 +229,6 @@ const Words =({onCheckWords, onDeleteWord})=>{
     },[isEnglish])
 
 
-
-
-
-
     return (
       <>
        {isLoading ? loader:
@@ -245,19 +250,19 @@ const Words =({onCheckWords, onDeleteWord})=>{
             {isfilter && 
               <div className="flex gap-4 border-slate-300 mb-8">
                 <p className="font-medium">Original:</p>
-                <div className={`${isAllLanguages? 'bg-orange-400': ''} w-9 rounded `}>
+                <div className={`${isAllLanguages? 'bg-orange-400': ''} w-9 rounded cursor-pointer `}>
                    <Image width={30} height={25} src="/assets/images/Earth.png" alt="Earth" loading="eager" className="icon" onClick={allLanguagesHandler}/>
                 </div>
-                <div className={`${isFinnish? 'bg-orange-400': ''} w-9 rounded `}>
+                <div className={`${isFinnish? 'bg-orange-400': ''} w-9 rounded cursor-pointer `}>
                    <Image width={30} height={25} src="/assets/images/Fi.png" alt="FI flag" loading="eager" className="icon" onClick={sourceFinnishHandler}/>
                 </div>
-                <div className={`${isEnglish? 'bg-orange-400': ''} w-9 rounded `}>
+                <div className={`${isEnglish? 'bg-orange-400': ''} w-9 rounded cursor-pointer`}>
                 <Image width={30} height={25} src="/assets/images/En.png" alt="EN flag" loading="eager" className="icon" onClick ={sourceEnglishHandler}/>
                 </div>   
               </div>}
           <DataTable 
           // header = {header}
-          value={allWords}
+          value={wordsForTable}
           showGridlines
           // filters={filters}
           rowHover

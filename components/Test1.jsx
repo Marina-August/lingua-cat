@@ -3,6 +3,7 @@
 import { useSelector} from 'react-redux';
 import { useState, useEffect } from 'react';
 import CatWithLaptop from './CatWithLaptop';
+import { Button } from 'primereact/button';
 
 
 const Test1 = ()=>{
@@ -41,21 +42,28 @@ const Test1 = ()=>{
              }
         }
         test();
-        console.log("Motan")
     },[allWords])
    
     
 
     
     return (
-        <>
-        <div>{questionWord}</div>
-        <div>{answerWord}</div>
-        <div>{option1}</div>
-        <div>{option2}</div>
-        <div>{option3}</div>
-        {/* <CatWithLaptop/> */}
-        </>
+        <div className='mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism ml-64 absolute'>
+            <div className='test-word'>
+                <p>WORD</p>
+            </div>
+            <div className='grid grid-cols-2 gap-4'>
+                <div className='test-option'>ANSWER1</div>
+                <div className='test-option'>ANSWER2</div> 
+                <div className='test-option'>ANSWER3</div>
+                <div className='test-option'>ANSWER4</div>
+            </div>
+            <div className='w-16 relative left-1/2 transform -translate-x-1/2 '>
+                <Button label='Next' icon ='pi pi-arrow-right' severity="secondary" rounded  raised size="small" className='bg-slate-100'/>
+            </div>
+            
+          
+        </div>
 
     )
 }
