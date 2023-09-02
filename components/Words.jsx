@@ -42,9 +42,63 @@ const Words =({onCheckWords, onDeleteWord})=>{
     setIsLoading(false);
   };
 
+  const fetchFinnishWords = async () => {
+    setIsLoading(true);
+    const response = await fetch("/api/word");
+    const data = await response.json();
+    const _words = data.words.map(word => {
+      return {
+        ...word,
+        sourceLang: data.languages.find(l => l._id === word.source),
+        targetLang: data.languages.find(l => l._id === word.target)
+      }
+    })
+    const finnishWords = _words.filter(el=> el.sourceLang.code == "Fi");
+    dispatch(vocabularyCatActions.setAllWords(finnishWords));
+    setIsLoading(false);
+  };
+
+  const fetchEnglishWords = async () => {
+    setIsLoading(true);
+    const response = await fetch("/api/word");
+    const data = await response.json();
+    const _words = data.words.map(word => {
+      return {
+        ...word,
+        sourceLang: data.languages.find(l => l._id === word.source),
+        targetLang: data.languages.find(l => l._id === word.target)
+      }
+    })
+    const englishWords = _words.filter(el=> el.sourceLang.code == "En");
+    dispatch(vocabularyCatActions.setAllWords(englishWords));
+    setIsLoading(false);
+  };
+
 
   useEffect(() => {
-    fetchWords();
+    const all = Number(localStorage.getItem('all'));
+    const finnish = Number(localStorage.getItem('finnish'));
+    const english = Number (localStorage.getItem('english'));
+    console.log("all",all);
+    console.log("finnish",finnish);
+    console.log("english",english);
+    console.log(typeof all);
+
+    setIsAllLanguages(all);
+    setIsFinnish(finnish);
+    setIsEnglish(english);
+    if (all == 1){
+       console.log("ALL")
+        fetchWords(); 
+    } else if(finnish == 1){
+       console.log ("FINNISH")
+        fetchFinnishWords();
+    } else if (english == 1){
+        fetchEnglishWords();
+    } else
+    {
+       fetchWords();
+    }
   }, []);
 
   const editWord = (word) => {
@@ -123,6 +177,9 @@ const Words =({onCheckWords, onDeleteWord})=>{
       setIsAllLanguages(true);
       setIsFinnish(false);
       setIsEnglish(false);
+      localStorage.setItem('finnish', 0);
+      localStorage.setItem('english', 0);
+      localStorage.setItem('all', 1);
       fetchWords();
     }
 
@@ -130,42 +187,16 @@ const Words =({onCheckWords, onDeleteWord})=>{
         setIsFinnish(true);
         setIsEnglish(false); 
         setIsAllLanguages(false);
+        localStorage.setItem('finnish', 1);
+        localStorage.setItem('english', 0);
+        localStorage.setItem('all', 0);
     }
 
     useEffect(()=>{
       if (isFinnish === true){
-      const fetchFinnishWords = async () => {
-        setIsLoading(true);
-        const response = await fetch("/api/word");
-        const data = await response.json();
-        const _words = data.words.map(word => {
-          return {
-            ...word,
-            sourceLang: data.languages.find(l => l._id === word.source),
-            targetLang: data.languages.find(l => l._id === word.target)
-          }
-        })
-        const finnishWords = _words.filter(el=> el.sourceLang.code == "Fi");
-        dispatch(vocabularyCatActions.setAllWords(finnishWords));
-        setIsLoading(false);
-      };
       fetchFinnishWords();
     } else{
-      // const fetchWords = async () => {
-      //   setIsLoading(true);
-      //   const response = await fetch("/api/word");
-      //   const data = await response.json();
-      //   const _words = data.words.map(word => {
-      //     return {
-      //       ...word,
-      //       sourceLang: data.languages.find(l => l._id === word.source),
-      //       targetLang: data.languages.find(l => l._id === word.target)
-      //     }
-      //   })
-      //   dispatch(vocabularyCatActions.setAllWords(_words));
-      //   setIsLoading(false);
-      // }
-      // fetchWords();
+      
     }
 
     },[isFinnish])
@@ -174,25 +205,13 @@ const Words =({onCheckWords, onDeleteWord})=>{
       setIsEnglish(true);
       setIsFinnish(false);
       setIsAllLanguages(false);
+      localStorage.setItem('finnish', 0);
+      localStorage.setItem('english', 1);
+      localStorage.setItem('all', 0);
     }
 
     useEffect(()=>{
       if (isEnglish === true){
-      const fetchEnglishWords = async () => {
-        setIsLoading(true);
-        const response = await fetch("/api/word");
-        const data = await response.json();
-        const _words = data.words.map(word => {
-          return {
-            ...word,
-            sourceLang: data.languages.find(l => l._id === word.source),
-            targetLang: data.languages.find(l => l._id === word.target)
-          }
-        })
-        const englishWords = _words.filter(el=> el.sourceLang.code == "En");
-        dispatch(vocabularyCatActions.setAllWords(englishWords));
-        setIsLoading(false);
-      };
       fetchEnglishWords();
     } else{
    
