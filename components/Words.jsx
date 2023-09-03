@@ -44,45 +44,15 @@ const Words =({onCheckWords, onDeleteWord})=>{
     setIsLoading(false);
   };
 
-  // const fetchFinnishWords = async () => {
-  //   setIsLoading(true);
-  //   const response = await fetch("/api/word");
-  //   const data = await response.json();
-  //   const _words = data.words.map(word => {
-  //     return {
-  //       ...word,
-  //       sourceLang: data.languages.find(l => l._id === word.source),
-  //       targetLang: data.languages.find(l => l._id === word.target)
-  //     }
-  //   })
-  //   const finnishWords = _words.filter(el=> el.sourceLang.code == "Fi");
-  //   dispatch(vocabularyCatActions.setAllWords(finnishWords));
-  //   setIsLoading(false);
-  // };
 
-  const fetchFinnishWords = ()=>{
+  const getFinnishWords = ()=>{
     const _words = [...allWords];
     const finnishWords = _words.filter(el=> el.sourceLang.code == "Fi");
     setWordsForTable(finnishWords);
   }
 
-  // const fetchEnglishWords = async () => {
-  //   setIsLoading(true);
-  //   const response = await fetch("/api/word");
-  //   const data = await response.json();
-  //   const _words = data.words.map(word => {
-  //     return {
-  //       ...word,
-  //       sourceLang: data.languages.find(l => l._id === word.source),
-  //       targetLang: data.languages.find(l => l._id === word.target)
-  //     }
-  //   })
-  //   const englishWords = _words.filter(el=> el.sourceLang.code == "En");
-  //   dispatch(vocabularyCatActions.setAllWords(englishWords));
-  //   setIsLoading(false);
-  // };
 
-  const fetchEnglishWords = ()=>{
+  const getEnglishWords = ()=>{
     const _words = [...allWords];
     const englishWords = _words.filter(el=> el.sourceLang.code == "En");
     setWordsForTable(englishWords);
@@ -101,9 +71,9 @@ const Words =({onCheckWords, onDeleteWord})=>{
         fetchWords(); 
     } else if(finnish == 1){
        console.log ("FINNISH")
-        fetchFinnishWords();
+        getFinnishWords();
     } else if (english == 1){
-        fetchEnglishWords();
+        getEnglishWords();
     } else
     {
        fetchWords();
@@ -203,7 +173,7 @@ const Words =({onCheckWords, onDeleteWord})=>{
 
     useEffect(()=>{
       if (isFinnish === true){
-      fetchFinnishWords();
+      getFinnishWords();
     } else{
       
     }
@@ -221,7 +191,7 @@ const Words =({onCheckWords, onDeleteWord})=>{
 
     useEffect(()=>{
       if (isEnglish === true){
-      fetchEnglishWords();
+      getEnglishWords();
     } else{
    
     }
@@ -264,11 +234,9 @@ const Words =({onCheckWords, onDeleteWord})=>{
           // header = {header}
           value={wordsForTable}
           showGridlines
-          // filters={filters}
           rowHover
           stripedRows 
           paginator rows={8}
-          // globalFilterFields={['name.common']}
           tableStyle={{ minWidth: '50rem' }}
         >
           <Column body={wordBodyTemplate} sortable header="Original"
