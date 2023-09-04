@@ -13,7 +13,8 @@ const PersonalLayout =({ children })=>{
       <div className="grid grid-cols-5 w-full h-screen ">
         <div className="col-span-1 flex flex-col bg-gray-800 p-4  bg-opacity-20 justify-items-end">
             <Image src="/assets/icons/logo-no-background.png" alt="logo" width={150} height={150} loading="eager" className="mb-16 ml-14 "/>
-            <Link href="/personal-page" className="text-white py-2 rounded hover:bg-slate-400 active:bg-slate-500 transition duration-300 ">
+            <Link href="/personal-page" 
+            className="text-white py-2 rounded hover:bg-slate-400 active:bg-slate-500 transition duration-300 ">
               <i className="pi pi-database" style={{marginLeft:5}}></i>
               <span className="ml-2 text-xl">My Dictionary</span>
             </Link>

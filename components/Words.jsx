@@ -28,7 +28,7 @@ const Words =({onCheckWords, onDeleteWord})=>{
    const dispatch = useDispatch();
    const router = useRouter();
 
-   const fetchWords = async () => {
+   const fetchWords = async (lang) => {
     setIsLoading(true);
     const response = await fetch("/api/word");
     const data = await response.json();
@@ -39,24 +39,16 @@ const Words =({onCheckWords, onDeleteWord})=>{
         targetLang: data.languages.find(l => l._id === word.target)
       }
     })
-    setWordsForTable(_words);
     dispatch(vocabularyCatActions.setAllWords(_words));
+    if(lang){
+      const filteredWords = _words.filter(el=> el.sourceLang.code == lang);
+      setWordsForTable(filteredWords);
+    } else{
+      setWordsForTable(_words);
+    } 
     setIsLoading(false);
+    
   };
-
-
-  const getFinnishWords = ()=>{
-    const _words = [...allWords];
-    const finnishWords = _words.filter(el=> el.sourceLang.code == "Fi");
-    setWordsForTable(finnishWords);
-  }
-
-
-  const getEnglishWords = ()=>{
-    const _words = [...allWords];
-    const englishWords = _words.filter(el=> el.sourceLang.code == "En");
-    setWordsForTable(englishWords);
-  }
 
 
   useEffect(() => {
@@ -67,13 +59,11 @@ const Words =({onCheckWords, onDeleteWord})=>{
     setIsFinnish(finnish);
     setIsEnglish(english);
     if (all == 1){
-       console.log("ALL")
         fetchWords(); 
     } else if(finnish == 1){
-       console.log ("FINNISH")
-        getFinnishWords();
+        fetchWords("Fi");
     } else if (english == 1){
-        getEnglishWords();
+        fetchWords("En");
     } else
     {
        fetchWords();
@@ -152,51 +142,53 @@ const Words =({onCheckWords, onDeleteWord})=>{
       setIsfilter((prevIsFilter)=>{return !prevIsFilter});
     }
 
-    const allLanguagesHandler =()=>{
+    const allLanguagesHandler =async()=>{
       setIsAllLanguages(true);
       setIsFinnish(false);
       setIsEnglish(false);
       localStorage.setItem('finnish', 0);
       localStorage.setItem('english', 0);
       localStorage.setItem('all', 1);
-      fetchWords();
+      await fetchWords();
     }
 
-    const sourceFinnishHandler =()=>{
+    const sourceFinnishHandler =async()=>{
         setIsFinnish(true);
         setIsEnglish(false); 
         setIsAllLanguages(false);
         localStorage.setItem('finnish', 1);
         localStorage.setItem('english', 0);
         localStorage.setItem('all', 0);
+        await fetchWords("Fi");
     }
 
-    useEffect(()=>{
-      if (isFinnish === true){
-      getFinnishWords();
-    } else{
+    // useEffect(()=>{
+    //   if (isFinnish === true){
+    //   getFinnishWords();
+    // } else{
       
-    }
+    // }
 
-    },[isFinnish])
+    // },[isFinnish])
 
-    const sourceEnglishHandler =()=>{
+    const sourceEnglishHandler =async()=>{
       setIsEnglish(true);
       setIsFinnish(false);
       setIsAllLanguages(false);
       localStorage.setItem('finnish', 0);
       localStorage.setItem('english', 1);
       localStorage.setItem('all', 0);
+      await fetchWords("En");
     }
 
-    useEffect(()=>{
-      if (isEnglish === true){
-      getEnglishWords();
-    } else{
+    // useEffect(()=>{
+    //   if (isEnglish === true){
+    //   getEnglishWords();
+    // } else{
    
-    }
+    // }
 
-    },[isEnglish])
+    // },[isEnglish])
 
 
     return (

@@ -7,7 +7,7 @@ const Home=()=>{
   return(
     <>
      <Nav/>
-    <>Home</>
+    <div>Create your own Dictionary. And don't forget to feed the Cat. </div>
     </>
    
   )

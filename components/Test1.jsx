@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
 
 
-const Test1 = ()=>{
+const Test1 = ({words})=>{
     const allWords = useSelector((state)=>state.allWords);
     const [questionWord, setQuestionWord] = useState('');
     const [answer, setAnswer] = useState('');
@@ -24,25 +24,25 @@ const Test1 = ()=>{
         setRightAnswer1(0);
         setRightAnswer2(0);
         setRightAnswer3(0);
-       const num1 = Math.floor(Math.random() * allWords.length);
+       const num1 = Math.floor(Math.random() * words.length);
        let num2 = 0;
        let num3 = 0;
        let num4 = 0;
        let num5 = 0;
        do{
-        num2 = Math.floor(Math.random() * allWords.length);
+        num2 = Math.floor(Math.random() * words.length);
        } while(num1 === num2);
 
        do{
-        num3 = Math.floor(Math.random() * allWords.length);
+        num3 = Math.floor(Math.random() * words.length);
        } while(num3 === num1 || num3 === num2 );
 
        do{
-        num4 = Math.floor(Math.random() * allWords.length);
+        num4 = Math.floor(Math.random() * words.length);
        } while(num4 === num1 || num4 === num2 || num4 === num3 );
 
        do{
-        num5 = Math.floor(Math.random() * allWords.length);
+        num5 = Math.floor(Math.random() * words.length);
        } while(num5 === num1 || num5 === num2 || num5 === num3 || num5 === num4 );
 
        const num6 = Math.floor(Math.random() * 4);
@@ -93,7 +93,7 @@ const Test1 = ()=>{
     }  
  
     return (
-        <div className='mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism ml-64 absolute'>
+        <div className='mt-14 w-full max-w-2xl flex flex-col gap-7 glassmorphism ml-64 absolute'>
             <div className='test-word'>
                 <p>{questionWord}</p>
             </div>
