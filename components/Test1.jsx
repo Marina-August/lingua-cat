@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
+import Image from 'next/image';
 
 
 const Test1 = ({words})=>{
@@ -91,6 +92,13 @@ const Test1 = ({words})=>{
             setRightAnswer3(2);
         }
     }  
+
+    const wrong = <Image src="/assets/images/wrong.png" 
+    alt="wrong" width={40} height={40} loading="eager" className="ml-2"/>
+    
+    const right = <Image src="/assets/images/right.png" 
+    alt="wrong" width={40} height={40} loading="eager" className="ml-2"/>
+
  
     return (
         <div className='mt-6 w-full max-w-2xl flex flex-col gap-7 glassmorphism ml-64 '>
@@ -100,23 +108,23 @@ const Test1 = ({words})=>{
             <div className='grid grid-cols-2 gap-4'>
                 <div className='test-option' onClick={checkAnswer0}>
                     {answerPosition===0? answer: option2}
-                    {rightAnswer0 === 1 && <div>Right</div>}
-                    {rightAnswer0 === 2 && <div>Wrong</div>}
+                    {rightAnswer0 === 2 && wrong}
+                    {rightAnswer0 === 1 && right}
                 </div>
                 <div className='test-option' onClick={checkAnswer1}>
                     {answerPosition===1? answer: option1}
-                    {rightAnswer1 === 1 && <div>Right</div>}
-                    {rightAnswer1 === 2 && <div>Wrong</div>}
+                    {rightAnswer1 === 1 && right}
+                    {rightAnswer1 === 2 && wrong}
                 </div> 
                 <div className='test-option' onClick={checkAnswer2}>
                     {answerPosition===2? answer: option3}
-                    {rightAnswer2 === 1 && <div>Right</div>}
-                    {rightAnswer2 === 2 && <div>Wrong</div>}
+                    {rightAnswer2 === 1 && right}
+                    {rightAnswer2 === 2 && wrong}
                 </div>
                 <div className='test-option' onClick={checkAnswer3}>
                     {answerPosition===3? answer: option4}
-                    {rightAnswer3 === 1 && <div>Right</div>}
-                    {rightAnswer3 === 2 && <div>Wrong</div>}
+                    {rightAnswer3 === 1 && right}
+                    {rightAnswer3 === 2 && wrong}
                 </div>
             </div>
             <div className='w-16 relative left-1/2 transform -translate-x-1/2 '>
