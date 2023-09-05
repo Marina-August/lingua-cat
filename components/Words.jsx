@@ -162,15 +162,6 @@ const Words =({onCheckWords, onDeleteWord})=>{
         await fetchWords("Fi");
     }
 
-    // useEffect(()=>{
-    //   if (isFinnish === true){
-    //   getFinnishWords();
-    // } else{
-      
-    // }
-
-    // },[isFinnish])
-
     const sourceEnglishHandler =async()=>{
       setIsEnglish(true);
       setIsFinnish(false);
@@ -180,16 +171,6 @@ const Words =({onCheckWords, onDeleteWord})=>{
       localStorage.setItem('all', 0);
       await fetchWords("En");
     }
-
-    // useEffect(()=>{
-    //   if (isEnglish === true){
-    //   getEnglishWords();
-    // } else{
-   
-    // }
-
-    // },[isEnglish])
-
 
     return (
       <>

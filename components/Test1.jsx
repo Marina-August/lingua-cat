@@ -1,12 +1,10 @@
 "use client";
 
-import { useSelector} from 'react-redux';
 import { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
 
 
 const Test1 = ({words})=>{
-    const allWords = useSelector((state)=>state.allWords);
     const [questionWord, setQuestionWord] = useState('');
     const [answer, setAnswer] = useState('');
     const [option1, setOption1] = useState('');
@@ -18,6 +16,8 @@ const Test1 = ({words})=>{
     const [rightAnswer1, setRightAnswer1] = useState(0);
     const [rightAnswer2, setRightAnswer2] = useState(0);
     const [rightAnswer3, setRightAnswer3] = useState(0);
+
+    console.log("Test", words)
 
     const questionHandler =()=>{
         setRightAnswer0(0);
@@ -48,12 +48,12 @@ const Test1 = ({words})=>{
        const num6 = Math.floor(Math.random() * 4);
        setAnswerPosition(num6);
         
-       setQuestionWord(allWords[num1].word);
-       setAnswer (allWords[num1].translation);
-       setOption1 (allWords[num2].translation);
-       setOption2 (allWords[num3].translation);
-       setOption3 (allWords[num4].translation);
-       setOption4 (allWords[num5].translation); 
+       setQuestionWord(words[num1].word);
+       setAnswer (words[num1].translation);
+       setOption1 (words[num2].translation);
+       setOption2 (words[num3].translation);
+       setOption3 (words[num4].translation);
+       setOption4 (words[num5].translation); 
     }
 
     useEffect(()=>{
@@ -93,7 +93,7 @@ const Test1 = ({words})=>{
     }  
  
     return (
-        <div className='mt-14 w-full max-w-2xl flex flex-col gap-7 glassmorphism ml-64 absolute'>
+        <div className='mt-6 w-full max-w-2xl flex flex-col gap-7 glassmorphism ml-64 '>
             <div className='test-word'>
                 <p>{questionWord}</p>
             </div>
