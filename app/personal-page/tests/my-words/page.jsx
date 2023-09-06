@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from 'next/image';
 import Test1 from "@/components/Test1";
 import { useSelector, useDispatch } from 'react-redux';
+import { Toast } from 'primereact/toast';
 
 import { vocabularyCatActions } from '@/redux/store';
 import Link from 'next/link';
@@ -17,6 +18,10 @@ const MyWords = ()=>{
 
     const dispatch = useDispatch();
     const allWords = useSelector((state)=>state.allWords);
+    const toast = useRef(null);
+
+    // const showedToast = toast.current.show({ severity:'Warn', summary: 'Warning', detail: 'You should have at least 5 words in your dictionary to do tests.' });
+
 
     const fetchWords = async (lang) => {
         setIsLoading(true);
@@ -32,16 +37,17 @@ const MyWords = ()=>{
         if (_words.length >= 5){
           if(lang){
             const filteredWords = _words.filter(el=> el.sourceLang.code == lang);
-            console.log("Filtered", filteredWords)
             if (filteredWords.length >=5) {
               setWords(filteredWords);
             }else{
               setWords([]);
+              toast.current.show({ severity:'warn', summary: 'Warning', detail: 'You should have at least 5 words in your Dictionary to do tests.' });
             }   
           }else{
             setWords(_words);
           }
         }else{
+           toast.current.show({ severity:'warn', summary: 'Warning', detail: 'You should have at least 5 words in your Dictionary to do tests.' });
           setWords([]);
         }
          
@@ -82,6 +88,8 @@ const MyWords = ()=>{
 
  
      return(
+      <>
+         <Toast ref={toast} position="center"/>
          <div className="flex flex-col">
              <div className="flex gap-4 border-slate-300 ">
                  <div className="rounded-lg bg-orange-300 w-24 text-white text-center text-xl ">
@@ -100,13 +108,14 @@ const MyWords = ()=>{
              {isLoading ? loader:
              <div>
               {words.length >= 5 && <Test1  words ={words}/>} 
-              {words.length < 5 && <h2>Sorry. You should have at least 5 words in your dictionary to do tests.</h2>}  
+              {/* {words.length < 5 && <h2>Sorry. You should have at least 5 words in your dictionary to do tests.</h2>}   */}
               </div>}
              
              <Link href="/personal-page/tests" className=" mt-96 rounded-lg bg-orange-300 w-24 text-white text-center absolute">
               <i className="pi pi-arrow-left"  style={{marginLeft:3}}></i>
               <span className="ml-3 text-xl ">Back</span></Link>          
          </div>
+         </>
      )
  
 

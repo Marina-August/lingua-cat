@@ -1,4 +1,4 @@
-//import Footer from '@/components/Footer';
+import Footer from '@/components/Footer';
 import Nav from '@/components/Nav';
 import Provider from '@/components/Provider';
 import '@/styles/globals.css'
@@ -18,7 +18,6 @@ const RootLayout =({ children })=>{
         </div>
         <main className='app'>
             {children}
-            {/* <Footer/> */}
         </main>
       </body>
     </html>

@@ -10,13 +10,30 @@
 @import 'primeicons/primeicons.css';
 
 /* @import "/node_modules/flag"; */
+body, html {
+  height: 100%;
+}
+.app {
+  height: 100%; 
+}
+.main-footer {
+  height: 40px;
+}
+
+.allButFooter{
+  min-height:100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
 
 .main {
   width: 100vw;
   min-height: 100vh;
   position: fixed;
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
   /* padding: 120px 24px 160px 24px; */
   pointer-events: none;
 }
@@ -773,7 +790,7 @@
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 } */
 .app {
-    @apply relative z-10 flex justify-center items-center flex-col;
+    @apply relative z-10  items-center ;
   }
 
 .black_btn {
@@ -837,7 +854,7 @@
   @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0;
 }
 
-/* Nav Component */
+
 .logo_text {
   @apply max-sm:hidden font-satoshi font-semibold text-lg text-black tracking-wide;
 }
@@ -850,7 +867,7 @@
   @apply text-sm font-inter text-gray-700 hover:text-gray-500 font-medium;
 }
 
-/* PromptCard Component */
+
 .prompt_card {
   @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
 }
@@ -881,171 +898,6 @@
 
 /* Paw Style */
 
-/* .ajax-loader, .ajax-loader2, .ajax-loader3, .ajax-loader4{
-	position: absolute;
-	transform-origin: 50% 50%;
-	font-size: 100px;
-	width: 1em;
-	height: 5em;
-	color: #333;
-
-	.paw{
-		width: 1.5em;
-		height: 2em;
-		animation: 2050ms pawAnimation ease-in-out infinite;
-		opacity: 0;
-  
-		
-		svg, i{
-			width: 100%;
-			height: 100%;
-		}
-
-    &:nth-child(odd){
-			transform: rotate(0deg);
-		}
-
-		&:nth-child(even){
-			transform: rotate(0deg) scaleX(-1) translate(15%, -50%);
-		}
-
-		@for $i from 1 through 10{
-      
-       @if($i % 2 == 0){
-            &:nth-child(#{$i}){
-            	animation-delay: #{ (($i * -1)+10)*0.25 }s;
-              transform: rotate(0deg) scaleX(-1) translate3d($i*5%, $i*-50%, 0);
-              //animation: ($i/2)*0.5s path1 ease-in-out;
-            }
-      }
-      @else{
-         &:nth-child(#{$i}){
-            	animation-delay: #{ (($i * -1)+10)*0.25 }s;
-              transform: rotate(0deg) translate3d($i*-4%, $i*-48%, 0);
-            }
-      }
-      
-      
-         
-     @if($i == 1){
-           &:nth-child(#{$i}){
-            	animation-delay: #{ (($i * -1)+10)*0.25 }s;
-              transform: rotate(-8deg) translate3d($i*30%, $i*-50%, 0);
-            }
-      }
-      @if($i == 2){
-           &:nth-child(#{$i}){
-            	animation-delay: #{ (($i * -1)+10)*0.25 }s;
-              transform: rotate(-8deg) scaleX(-1) translate3d($i*-15%, $i*-60%, 0);
-              //animation: ($i/2)*0.5s path1 ease-in-out;
-            }
-      }
-      
-      
-      
-      
-     @if($i == 3){
-           &:nth-child(#{$i}){
-            	animation-delay: #{ (($i * -1)+10)*0.25 }s;
-              transform: rotate(0deg) translate3d($i*15%, $i*-48%, 0);
-            }
-      }
-      @if($i == 4){
-           &:nth-child(#{$i}){
-            	animation-delay: #{ (($i * -1)+10)*0.25 }s;
-              transform: rotate(0deg) scaleX(-1) translate3d($i*-8%, $i*-50%, 0);
-              //animation: ($i/2)*0.5s path1 ease-in-out;
-            }
-      }
-      
-      
-      
-      @if($i == 5){
-           &:nth-child(#{$i}){
-            	animation-delay: #{ (($i * -1)+10)*0.25 }s;
-              transform: rotate(0deg) translate3d($i*8%, $i*-48%, 0);
-            }
-      }
-      @if($i == 6){
-           &:nth-child(#{$i}){
-            	animation-delay: #{ (($i * -1)+10)*0.25 }s;
-              transform: rotate(0deg) scaleX(-1) translate3d($i*-5%, $i*-50%, 0);
-              //animation: ($i/2)*0.5s path1 ease-in-out;
-            }
-      }
-      
-            
-      @if($i == 7){
-           &:nth-child(#{$i}){
-            	animation-delay: #{ (($i * -1)+10)*0.25 }s;
-              transform: rotate(1deg) translate3d($i*1%, $i*-48%, 0);
-            }
-      }
-      @if($i == 8){
-           &:nth-child(#{$i}){
-            	animation-delay: #{ (($i * -1)+10)*0.25 }s;
-              transform: rotate(1deg) scaleX(-1) translate3d($i*1%, $i*-50%, 0);
-              //animation: ($i/2)*0.5s path1 ease-in-out;
-            }
-      }
-      
-  }
-  
-
-        .no-cssanimations &{
-        	opacity: 1;
-        }
-	}
-}
-
-.ajax-loader{
-	top: 15%;
-	left: 10%;
-	transform: rotate(10deg) translate(-50%, 0%);
- 
-}
-.ajax-loader2{
-	top: 15%;
-	right: 20%;
-	transform: rotate(-10deg) translate(-50%, 0%);
-  
-}
-
-.ajax-loader3{
-	top: 45%;
-	left: 30%;
-	transform: rotate(150deg) translate(-50%, 0%);
-}
-
-.ajax-loader4{
-	top: 45%;
-	right: 35%;
-	transform: rotate(200deg) translate(-50%, 0%);
-}
-
-@keyframes pawAnimation {
-	0%{
-		opacity: 1;
-	}
-	50%{
-		opacity: 0;
-	}
-	100%{
-		opacity: 0;
-	}
-}
-
-@keyframes path1{
-  0%{
-    transform: rotate(0deg) scaleX(-1) translate3d(0%, -50%, 0);
-  }
-  30%{
-    transform: rotate(20deg) scaleX(-1) translate3d(-35%, -60%, 0);
-  }
-  100%{
-    transform: rotate(20deg) scaleX(-1) translate3d(-0%, -80%, 0);
-  }
-} */
 
 .pad {
   width: 20px;
