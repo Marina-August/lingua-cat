@@ -11,6 +11,7 @@ import Image from "next/image";
 
 import { useSelector, useDispatch } from 'react-redux';
 import { vocabularyCatActions } from '@/redux/store';
+// import AuthenticatedContent from './AuthenticatedContent';
 
 
 
@@ -173,6 +174,7 @@ const Words =({onCheckWords, onDeleteWord})=>{
     }
 
     return (
+      // <AuthenticatedContent>
       <>
        {isLoading ? loader:
         <div>
@@ -225,7 +227,8 @@ const Words =({onCheckWords, onDeleteWord})=>{
         </DataTable>
       </Card>}
        </div>}
-    </>   
+       </>
+      //
     )
 }
 

@@ -10,11 +10,15 @@ if(isConnected) {
     return;
   }
   try {
+
+
     await mongoose.connect( process.env.MONGODB_URI
        , {
       dbName: "personal_dictionary",
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      connectTimeoutMS: 30000, 
+      serverSelectionTimeoutMS: 30000, 
     })
     isConnected = true;
 

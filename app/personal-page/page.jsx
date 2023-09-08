@@ -9,6 +9,7 @@ import { vocabularyCatActions } from '@/redux/store';
 
 
 const PersonalPage =()=>{
+  
     const toast = useRef(null);
     const allWords = useSelector((state)=>state.allWords);
     const dispatch = useDispatch();
