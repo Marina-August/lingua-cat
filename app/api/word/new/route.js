@@ -3,7 +3,7 @@ import Word from "@/models/word";
 import Language from "@/models/language";
 
 export const POST = async (req, res) =>{
-    const {source,word, target, translation, example} = await req.json();
+    const {userId,source,word, target, translation, example} = await req.json();
 
     try{
         await connectToDB();
@@ -14,7 +14,7 @@ export const POST = async (req, res) =>{
         const targetLanguage = await Language.findOne({ name:target })
         const targetId = targetLanguage._id;
         const newWord = new Word ({
-            // user_id: '1',
+            user_id: userId,
             source: sourceId,
             word,
             target: targetId,

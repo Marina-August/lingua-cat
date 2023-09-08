@@ -1,6 +1,6 @@
 import { createSlice,configureStore } from '@reduxjs/toolkit';
 
-const initialVocabularyCatState = {counter: 0, isAwake: false, allWords:[]};
+const initialVocabularyCatState = {counter: 0, isAwake: false, allWords:[], wordsForTable:[], testAllWords:false};
 
 const vocabularyCatSlice = createSlice({
     name: "vocabulary",
@@ -23,7 +23,17 @@ const vocabularyCatSlice = createSlice({
         },
         setAllWords(state, action){
             state.allWords = action.payload
-        }
+        },
+        setWordsForTable(state, action){
+            state.wordsForTable = action.payload
+        },
+        falseTestAllWords(state){
+            state.testAllWords = false
+        },
+        trueTestAllWords(state){
+            state.testAllWords = true
+        },
+
     }
 })
 

@@ -10,7 +10,7 @@ import { vocabularyCatActions } from '@/redux/store';
 import Link from 'next/link';
 import { useSession } from "next-auth/react";
 
-const MyWords = ()=>{
+const TestWords = ()=>{
     const [isFinnish, setIsFinnish] = useState (false);
     const [isEnglish, setIsEnglish] = useState(false);
     const [isAllLanguages, setIsAllLanguages] = useState(true);
@@ -20,6 +20,7 @@ const MyWords = ()=>{
 
     const dispatch = useDispatch();
     const allWords = useSelector((state)=>state.allWords);
+    const testAllWords = useSelector((state)=> state.testAllWords)
     const toast = useRef(null);
 
     // const showedToast = toast.current.show({ severity:'Warn', summary: 'Warning', detail: 'You should have at least 5 words in your dictionary to do tests.' });
@@ -27,7 +28,7 @@ const MyWords = ()=>{
 
     const fetchWords = async (lang) => {
         setIsLoading(true);
-        const response = await fetch(`/api/users/${session?.user.id}/words`);
+        const response = await fetch(testAllWords ? "/api/word" :`/api/users/${session?.user.id}/words`);
         const data = await response.json();
         const _words = data.words.map(word => {
           return {
@@ -123,4 +124,4 @@ const MyWords = ()=>{
 
 }
 
-export default MyWords;
+export default TestWords;

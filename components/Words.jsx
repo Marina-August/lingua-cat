@@ -9,13 +9,15 @@ import {useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
+import { useSession } from 'next-auth/react';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { vocabularyCatActions } from '@/redux/store';
 // import AuthenticatedContent from './AuthenticatedContent';
 
 
 
-const Words =({onCheckWords, onDeleteWord})=>{
+const Words =({onDeleteWord})=>{
    const [visible, setVisible] = useState(false);
    const [deleteWord, setDeleteWord] = useState('');
    const [isLoading, setIsLoading] = useState(true);
@@ -24,14 +26,17 @@ const Words =({onCheckWords, onDeleteWord})=>{
    const [isFinnish, setIsFinnish] = useState (false);
    const [isEnglish, setIsEnglish] = useState(false);
    const [isAllLanguages, setIsAllLanguages] = useState(true);
-   const [wordsForTable, setWordsForTable] = useState([]);
+  //  const [wordsForTable, setWordsForTable] = useState([]);
    const allWords = useSelector((state)=>state.allWords);
+   const wordsForTable = useSelector((state)=>state.wordsForTable)
    const dispatch = useDispatch();
    const router = useRouter();
 
+   const {data: session} = useSession();
+
    const fetchWords = async (lang) => {
     setIsLoading(true);
-    const response = await fetch("/api/word");
+    const response = await fetch(`/api/users/${session?.user.id}/words`);
     const data = await response.json();
     const _words = data.words.map(word => {
       return {
@@ -43,9 +48,9 @@ const Words =({onCheckWords, onDeleteWord})=>{
     dispatch(vocabularyCatActions.setAllWords(_words));
     if(lang){
       const filteredWords = _words.filter(el=> el.sourceLang.code == lang);
-      setWordsForTable(filteredWords);
+      dispatch(vocabularyCatActions.setWordsForTable(filteredWords));
     } else{
-      setWordsForTable(_words);
+      dispatch(vocabularyCatActions.setWordsForTable(_words));
     } 
     setIsLoading(false);
     
@@ -75,7 +80,7 @@ const Words =({onCheckWords, onDeleteWord})=>{
     router.push(`/personal-page/update-word?id=${word._id}`);
   }
 
-  const  deletetWord =(word)=>{
+  const  deletedWord =(word)=>{
          setDeleteWord(word);
          setVisible(true);
         
@@ -94,7 +99,7 @@ const Words =({onCheckWords, onDeleteWord})=>{
     return (
       <div className="flex justify-center gap-3">
       <Button icon="pi pi-pencil" rounded text raised severity="success" onClick={() => editWord(word)}/>
-      <Button icon="pi pi-trash" rounded text raised severity="danger" aria-label="Search" onClick={() => deletetWord(word)} />
+      <Button icon="pi pi-trash" rounded text raised severity="danger" aria-label="Search" onClick={() => deletedWord(word)} />
       </div>
     )
   }
@@ -180,7 +185,10 @@ const Words =({onCheckWords, onDeleteWord})=>{
         <div>
          <ConfirmDialog visible={visible} onHide={() => setVisible(false)} message="Are you sure you want to proceed?" 
                 header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept} reject={reject} />
-          {allWords.length===0 && <h1>You don't have any words yet</h1>}
+          {allWords.length===0 && 
+            <h1 className='head_text text-center'>
+              <span className='orange_gradient'>You don't have any words yet</span>
+            </h1>}
           {allWords.length>0 &&  <Card style={{width:'90%', margin:'-40px auto 0px', minHeight:'85vh', backgroundColor: '#fafafa', position: 'block'}}>
             <div className="flex justify-between">
               <div className="mb-8 text-end ">

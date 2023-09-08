@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 const Form = ({type, onWordHandler, editWord, onUpdateWord, sourceL, targetL})=>{
     const [word, setWord] = useState('');
@@ -10,6 +11,10 @@ const Form = ({type, onWordHandler, editWord, onUpdateWord, sourceL, targetL})=>
     const [targetLanguage, setTargetLanguage] = useState('English');
     const [example, setExample] = useState('');
     const [ok, setOk] = useState(false);
+
+    const {data: session} = useSession();
+
+
 
     
     useEffect(()=>{
@@ -77,6 +82,7 @@ const Form = ({type, onWordHandler, editWord, onUpdateWord, sourceL, targetL})=>
           setExample('');
 
           const newWord ={
+              user:session?.user.id,
               enteredWord,
               source,
               targetWord,

@@ -12,6 +12,7 @@ const PersonalPage =()=>{
   
     const toast = useRef(null);
     const allWords = useSelector((state)=>state.allWords);
+    const wordsForTable = useSelector((state)=>state.wordsForTable);
     const dispatch = useDispatch();
 
     const deleteWordHandler = async (word)=>{
@@ -22,6 +23,7 @@ const PersonalPage =()=>{
             toast.current.show({ severity:'success', summary: 'Success', detail: 'Word is deleted'}) 
             const filteredWords = allWords.filter((item) => item._id !== word._id);
             dispatch(vocabularyCatActions.setAllWords(filteredWords));
+            dispatch(vocabularyCatActions.setWordsForTable(filteredWords));
           } catch (error) {
             console.log(error);
           }

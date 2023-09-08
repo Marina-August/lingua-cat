@@ -7,17 +7,19 @@ import Footer from '@/components/Footer';
 import AuthenticatedContent from '@/components/AuthenticatedContent';
 import { Button } from 'primereact/button';
 
-import { signOut } from 'next-auth/react';
+import { signOut,useSession } from 'next-auth/react';
+
 
 
 const PersonalLayout =({ children })=>{
+  const {data: session} = useSession();
 
    console.log('personal lay')
     return (
       <AuthenticatedContent>
       <div className=" w-full h-screen ">
 
-        <div className=" flex flex-col bg-gray-800 p-4  bg-opacity-20 justify-items-end fixed top-0 left-0 h-screen w-64 ">
+        <div className=" flex flex-col bg-gray-800 p-4  bg-opacity-20 justify-items-end fixed top-0 left-0 h-screen w-60 ">
             <Image src="/assets/icons/logo-no-background.png" alt="logo" width={150} height={150} loading="eager" className="mb-16 ml-9 "/>
             <Link href="/personal-page" 
             className="text-white py-2 rounded hover:bg-slate-400 active:bg-slate-500 transition duration-300 ">
@@ -44,15 +46,15 @@ const PersonalLayout =({ children })=>{
             <i className="pi pi-sign-out"  style={{marginLeft:5}}></i> <span className=" text-xl">Sign Out</span>
             </button>
         </div>
-      <div className=" allButFooter  ml-64">
+      <div className=" allButFooter  ml-60">
         <div className='flex flex-col gap-20'>
         <div className="flex justify-end gap-4 mt-4" >
            <p className="text-end">Welcome</p>
-           <Link href='/profile'>
+           <Link href='/personal-page/my-profile'>
                 <Image
-                src="/assets/icons/paw.png"
-                width={37}
-                height={37}
+                src={session?.user.image}
+                width={42}
+                height={42}
                 loading="eager" 
                 className='rounded-full mr-24'
                 alt='profile'
@@ -61,8 +63,10 @@ const PersonalLayout =({ children })=>{
         </div>
         <div>
           <ReduxProvider>
-               <CatAction/>        
-               {children}
+               <CatAction/>
+               <div className='ml-8'>
+                   {children}
+                </div>            
           </ReduxProvider>
         </div>
         </div>

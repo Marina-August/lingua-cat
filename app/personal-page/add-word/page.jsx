@@ -30,6 +30,7 @@ const AddWord =()=>{
             const response = await fetch("../api/word/new", {
               method: "POST",
               body: JSON.stringify({
+                userId: word.user,
                 source: word.source,
                 word:word.enteredWord ,
                 target: word.target,
