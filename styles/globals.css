@@ -157,7 +157,7 @@ body, html {
     width: 350px;
     position: fixed;
     transform: translate(-50%, -50%);
-    left: 10%;
+    left: 8.5%;
     top: 85%;
 }
 .cat {
@@ -470,7 +470,7 @@ body, html {
 .hunger{
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     width: 40px;
     /* height: 130px; */
     /* background-color: #7388bd; */
@@ -809,7 +809,7 @@ body, html {
 }
 
 .orange_gradient {
-  @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent ml--4;
 }
 
 .green_gradient {
@@ -836,14 +836,7 @@ body, html {
   @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5;
 }
 
-.prompt_layout {
-  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
-}
 
-/* Feed Component */
-.feed {
-  @apply mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2;
-}
 
 /* Form Component */
 .form_textarea {

@@ -14,6 +14,8 @@ import { signOut,useSession } from 'next-auth/react';
 const PersonalLayout =({ children })=>{
   const {data: session} = useSession();
 
+  console.log(session?.user)
+
    console.log('personal lay')
     return (
       <AuthenticatedContent>
@@ -38,21 +40,21 @@ const PersonalLayout =({ children })=>{
             <i className="pi pi-user"  style={{marginLeft:5}}></i>
              <span className="ml-1 text-xl"> My Profile</span>
               </Link>
-            <button className="text-white py-2 rounded hover:bg-slate-400 focus:bg-slate-500 transition duration-300"
+            <Link href="/" className="text-white py-2 rounded hover:bg-slate-400 focus:bg-slate-500 transition duration-300"
               onClick={() => {
               const baseURL = window.location.origin;
               signOut({ callbackUrl: baseURL });
           }}> 
             <i className="pi pi-sign-out"  style={{marginLeft:5}}></i> <span className=" text-xl">Sign Out</span>
-            </button>
+            </Link>
         </div>
       <div className=" allButFooter  ml-60">
         <div className='flex flex-col gap-20'>
         <div className="flex justify-end gap-4 mt-4" >
-           <p className="text-end">Welcome</p>
+           <p className="text-end">Welcome  <span className='font-bold'>{session?.user.name ? session?.user.name :session?.user.email}!</span></p>
            <Link href='/personal-page/my-profile'>
                 <Image
-                src={session?.user.image}
+                src={session?.user.image ? session?.user.image: "/assets/icons/paw.png"}
                 width={42}
                 height={42}
                 loading="eager" 

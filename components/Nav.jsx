@@ -3,9 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import {signIn, signOut, useSession, getProviders} from "next-auth/react";
-import { useRouter } from "next/navigation";
-
+import {signIn, useSession, getProviders} from "next-auth/react";
 
 const Nav =()=>{
     const {data: session} = useSession();
@@ -21,10 +19,6 @@ const Nav =()=>{
        fetchProviders();
 
      }, []);
-
-    const signinHandler =()=>{
-        router.push('/personal-page')
-    }
 
 
     return(
@@ -43,10 +37,6 @@ const Nav =()=>{
                     key={provider.name}
                     onClick={
                     () => {
-                    // const signInResult = await signIn(provider.id);    
-                    // if(!signInResult?.error){   
-                    //     router.push('/personal-page');
-                    // }
                     signIn(provider.id, { callbackUrl: '/personal-page' });
                     }
                     }>

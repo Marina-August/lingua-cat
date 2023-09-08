@@ -44,13 +44,13 @@ const TestWords = ()=>{
               setWords(filteredWords);
             }else{
               setWords([]);
-              toast.current.show({ severity:'warn', summary: 'Warning', detail: 'You should have at least 5 words in your Dictionary to do tests.' });
+              toast.current.show({ severity:'warn', summary: 'Warning', detail: 'In the Dictionary should be at least 5 words.' });
             }   
           }else{
             setWords(_words);
           }
         }else{
-           toast.current.show({ severity:'warn', summary: 'Warning', detail: 'You should have at least 5 words in your Dictionary to do tests.' });
+           toast.current.show({ severity:'warn', summary: 'Warning', detail: 'In the Dictionary should be at least 5 words.' });
           setWords([]);
         }
          
