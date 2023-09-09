@@ -466,23 +466,6 @@ body, html {
 }
 
 
-
-.hunger{
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    width: 40px;
-    /* height: 130px; */
-    /* background-color: #7388bd; */
-    left: 4%;
-    /* text-orientation: upright;
-    writing-mode: vertical-rl; */
-    /* text-align: center; */
-    top: 55%;
-    border-radius:5px;
-    color: #ffffff;
-}
-
 .h{
     border-radius:5px;
     border-bottom-left-radius: 0;
@@ -812,24 +795,13 @@ body, html {
   @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent ml--4;
 }
 
-.green_gradient {
-  @apply bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent;
-}
 
 .blue_gradient {
   @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
 }
 
-.desc {
-  @apply mt-5 text-lg text-gray-600 sm:text-xl max-w-2xl;
-}
-
 .search_input {
   @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-satoshi pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
-}
-
-.copy_btn {
-  @apply w-7 h-7 rounded-full bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur flex justify-center items-center cursor-pointer;
 }
 
 .glassmorphism {
@@ -1025,4 +997,52 @@ animation: walk 3s linear infinite 1.75s;
 
 .mt-96 {
   margin-top: 32rem;
+}
+
+/* Dishes Style */
+
+.hunger{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  
+  /* height: 130px; */
+  /* background-color: #7388bd; */
+  left: 4%;
+  /* text-orientation: upright;
+  writing-mode: vertical-rl; */
+  /* text-align: center; */
+  top: 55%;
+  border-radius:5px;
+  color: #ffffff;
+}
+
+.food1{
+  width: 40px;
+  position: fixed;
+}
+.food2{
+  width: 40px;
+  position: fixed;
+  margin-left: 50px;
+}
+.food3{
+  width: 40px;
+  position: fixed;
+  margin-left: 110px;
+  margin-top: 10px;
+}
+.food4{
+  width: 40px;
+  position: fixed;
+  margin-left: 10px;
+  margin-top: 70px;
+}
+.food5{
+  width: 40px;
+  position: fixed;
+  margin-top: 90px;
+  margin-left: 100px;
 }

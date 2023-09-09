@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
 import Image from 'next/image';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { vocabularyCatActions } from '@/redux/store';
+
 
 const Test1 = ({words})=>{
     const [questionWord, setQuestionWord] = useState('');
@@ -18,7 +21,9 @@ const Test1 = ({words})=>{
     const [rightAnswer2, setRightAnswer2] = useState(0);
     const [rightAnswer3, setRightAnswer3] = useState(0);
 
-    console.log("Test", words)
+    const isAwake = useSelector((state)=>state.isAwake)
+    const counter = useSelector((state)=>state.counter);
+    const dispatch = useDispatch();
 
     const questionHandler =()=>{
         setRightAnswer0(0);
@@ -64,6 +69,9 @@ const Test1 = ({words})=>{
     const checkAnswer0 =()=>{
         if (answerPosition === 0){
             setRightAnswer0(1);
+            if(isAwake){
+                dispatch(vocabularyCatActions.increment());
+            }
         }else{
             setRightAnswer0(2);
         }
@@ -72,6 +80,9 @@ const Test1 = ({words})=>{
     const checkAnswer1 =()=>{
         if (answerPosition === 1){
             setRightAnswer1(1);
+            if(isAwake){
+                dispatch(vocabularyCatActions.increment());
+            }
         }else{
             setRightAnswer1(2);
         }
@@ -80,6 +91,9 @@ const Test1 = ({words})=>{
     const checkAnswer2 =()=>{
         if (answerPosition === 2){
             setRightAnswer2(1);
+            if(isAwake){
+                dispatch(vocabularyCatActions.increment());
+            }
         }else{
             setRightAnswer2(2);
         }
@@ -88,6 +102,9 @@ const Test1 = ({words})=>{
     const checkAnswer3 =()=>{
         if (answerPosition === 3){
             setRightAnswer3(1);
+            if(isAwake){
+                dispatch(vocabularyCatActions.increment());
+            }
         }else{
             setRightAnswer3(2);
         }

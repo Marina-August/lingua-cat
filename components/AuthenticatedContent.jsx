@@ -1,16 +1,18 @@
 "use client";
 
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
 
 const AuthenticatedContent = ({ children }) => {
   const { data: session } = useSession();
+  const router = useRouter();
   
-  if (session) {
-    
+  if (session) {  
     return children;
   }
   else {
-
+    // router.push("/");
   }
 };
 
