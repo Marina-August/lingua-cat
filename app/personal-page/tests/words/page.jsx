@@ -9,6 +9,8 @@ import { Toast } from 'primereact/toast';
 import { vocabularyCatActions } from '@/redux/store';
 import Link from 'next/link';
 import { useSession } from "next-auth/react";
+import Test2 from "@/components/Test2";
+import { Button } from "primereact/button";
 
 const TestWords = ()=>{
     const [isFinnish, setIsFinnish] = useState (false);
@@ -16,7 +18,9 @@ const TestWords = ()=>{
     const [isAllLanguages, setIsAllLanguages] = useState(true);
     const [words, setWords] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [typeTest, setTypeTest] = useState(1);
     const {data: session} = useSession();
+
 
     const dispatch = useDispatch();
     const allWords = useSelector((state)=>state.allWords);
@@ -24,6 +28,17 @@ const TestWords = ()=>{
     const toast = useRef(null);
 
     // const showedToast = toast.current.show({ severity:'Warn', summary: 'Warning', detail: 'You should have at least 5 words in your dictionary to do tests.' });
+
+
+    const test1Handler = ()=>{
+      setTypeTest(1);
+    
+    }
+
+    const test2Handler =()=>{
+      setTypeTest(2);
+    
+    }
 
 
     const fetchWords = async (lang) => {
@@ -37,7 +52,7 @@ const TestWords = ()=>{
             targetLang: data.languages.find(l => l._id === word.target)
           }
         })
-        if (_words.length >= 5){
+        if (_words.length >= 5 && typeTest===1){
           if(lang){
             const filteredWords = _words.filter(el=> el.sourceLang.code == lang);
             if (filteredWords.length >=5) {
@@ -49,9 +64,24 @@ const TestWords = ()=>{
           }else{
             setWords(_words);
           }
-        }else{
+        }else if (_words.length < 5  && typeTest===1) {
            toast.current.show({ severity:'warn', summary: 'Warning', detail: 'In the Dictionary should be at least 5 words.' });
           setWords([]);
+        } else if (_words.length < 1  && typeTest===2){
+          toast.current.show({ severity:'warn', summary: 'Warning', detail: 'In the Dictionary should be at least 1 word.' });
+          setWords([]);
+        } else if (_words.length > 0  && typeTest===2){
+          if(lang){
+            const filteredWords = _words.filter(el=> el.sourceLang.code == lang);
+            if (filteredWords.length >0) {
+              setWords(filteredWords);
+            }else{
+              setWords([]);
+              toast.current.show({ severity:'warn', summary: 'Warning', detail: 'In the Dictionary should be at least 1 word.' });
+            }   
+          }else{
+            setWords(_words);
+          }
         }
          
         dispatch(vocabularyCatActions.setAllWords(_words));
@@ -89,13 +119,16 @@ const TestWords = ()=>{
     <div className='lds-ellipsis'><div></div><div></div><div></div><div></div></div>
     </div>;
 
+   console.log(words)
+
  
      return(
       <>
          <Toast ref={toast} position="center"/>
          <div className="flex flex-col">
-             <div className="flex gap-4 border-slate-300 ">
-                 <div className="rounded-lg bg-orange-300 w-24 text-white text-center text-xl ">
+            <div className="flex justify-between border-slate-300 ">
+              <div className="flex gap-4 border-slate-300 ">
+                 <div className="rounded-lg bg-orange-300 w-24 text-white text-center text-xl">
                    <h2 className="">Language:</h2>
                  </div>
                  <div className={`${isAllLanguages? 'bg-orange-400': ''} w-9 rounded cursor-pointer `}>
@@ -106,17 +139,27 @@ const TestWords = ()=>{
                  </div>
                  <div className={`${isEnglish? 'bg-orange-400': ''} w-9 rounded cursor-pointer`}>
                  <Image width={30} height={25} src="/assets/images/En.png" alt="EN flag" loading="eager" className="icon" onClick ={sourceEnglishHandler}/>
-                 </div> 
-             </div>
+                 </div>
+              </div>
+              <div className="flex gap-8 mr-20" >
+                 <Button label="Test 1" severity="secondary" rounded raised size="small" onClick={test1Handler} className="tracking-wider w-24"/>
+                 <Button label="Test 2" severity="secondary" rounded raised size="small" onClick={test2Handler} className="tracking-wider w-24"/>
+              </div>
+            </div>      
              {isLoading ? loader:
-             <div>
-              {words.length >= 5 && <Test1  words ={words}/>} 
-              {/* {words.length < 5 && <h2>Sorry. You should have at least 5 words in your dictionary to do tests.</h2>}   */}
+              <div>
+                {typeTest ===1 && <div>
+                  {words.length >= 5 && <Test1  words ={words}/>} 
+                </div>}
+                {typeTest ===2 && <div>
+                  {words.length > 0 && <Test2 words ={words}/>}
+                </div>} 
               </div>}
              
              <Link href="/personal-page/tests" className=" mt-96 rounded-lg bg-orange-300 w-24 text-white text-center absolute">
               <i className="pi pi-arrow-left"  style={{marginLeft:3}}></i>
               <span className="ml-3 text-xl ">Back</span></Link>          
+         
          </div>
          </>
      )

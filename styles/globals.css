@@ -1046,3 +1046,54 @@ animation: walk 3s linear infinite 1.75s;
   margin-top: 90px;
   margin-left: 100px;
 }
+
+/* Test 2 Styles */
+
+.flip-container {
+	perspective: 1000;
+}
+	/* flip the pane when hovered */
+	.flip-container:hover .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	width: 370px;
+	height: 290px;
+  margin: 1em auto;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+   color: cornSilk;
+   text-align: center;
+   font: 3em/240px 'Helvetica Neue', Helvetica, sans-serif;
+   box-shadow: -5px 5px 5px #aaa;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+  background: rgb(233, 181, 135);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+  background: rgb(180, 193, 197);
+}
