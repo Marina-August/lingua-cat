@@ -27,21 +27,10 @@ const TestWords = ()=>{
     const testAllWords = useSelector((state)=> state.testAllWords)
     const toast = useRef(null);
 
-    // const showedToast = toast.current.show({ severity:'Warn', summary: 'Warning', detail: 'You should have at least 5 words in your dictionary to do tests.' });
 
-
-    const test1Handler = ()=>{
-      setTypeTest(1);
-    
-    }
-
-    const test2Handler =()=>{
-      setTypeTest(2);
-    
-    }
-
-
-    const fetchWords = async (lang) => {
+    const fetchWords = async (lang, type) => {
+      console.log("lang", lang)
+      console.log("type", type)
         setIsLoading(true);
         const response = await fetch(testAllWords ? "/api/word" :`/api/users/${session?.user.id}/words`);
         const data = await response.json();
@@ -52,7 +41,7 @@ const TestWords = ()=>{
             targetLang: data.languages.find(l => l._id === word.target)
           }
         })
-        if (_words.length >= 5 && typeTest===1){
+        if (_words.length >= 5 && type===1){
           if(lang){
             const filteredWords = _words.filter(el=> el.sourceLang.code == lang);
             if (filteredWords.length >=5) {
@@ -64,13 +53,13 @@ const TestWords = ()=>{
           }else{
             setWords(_words);
           }
-        }else if (_words.length < 5  && typeTest===1) {
+        }else if (_words.length < 5  && type===1) {
            toast.current.show({ severity:'warn', summary: 'Warning', detail: 'In the Dictionary should be at least 5 words.' });
           setWords([]);
-        } else if (_words.length < 1  && typeTest===2){
+        } else if (_words.length < 1  && type===2){
           toast.current.show({ severity:'warn', summary: 'Warning', detail: 'In the Dictionary should be at least 1 word.' });
           setWords([]);
-        } else if (_words.length > 0  && typeTest===2){
+        } else if (_words.length > 0  && type===2){
           if(lang){
             const filteredWords = _words.filter(el=> el.sourceLang.code == lang);
             if (filteredWords.length >0) {
@@ -88,22 +77,56 @@ const TestWords = ()=>{
         setIsLoading(false);
       };
 
-    useEffect(()=>{
-        fetchWords();     
+    useEffect(()=>{ 
+        fetchWords(undefined, 1);     
     }, [])
+
+    
+    const test1Handler = ()=>{
+      setTypeTest(1);
+      if (isEnglish ===true){
+        fetchWords("En", 1);
+      } else if (isFinnish === true){
+        fetchWords("Fi", 1);
+      } else{
+        fetchWords(undefined, 1);
+      }
+    
+    }
+
+    const test2Handler =()=>{
+      setTypeTest(2);
+      if (isEnglish === true){
+        fetchWords("En", 2);
+      } else if (isFinnish === true){
+        fetchWords("Fi", 2);
+      } else{
+        fetchWords(undefined, 2);
+      }
+    
+    }
 
     const allLanguagesHandler =async()=>{
         setIsAllLanguages(true);
         setIsFinnish(false);
         setIsEnglish(false);
-        await fetchWords();
+        if (typeTest === 1){
+          await fetchWords(undefined, 1);
+        } else{
+          await fetchWords(undefined, 2);
+        }
+        
     }
  
     const sourceEnglishHandler = async ()=>{
       setIsEnglish(true);
       setIsFinnish(false);
       setIsAllLanguages(false);
-      await fetchWords("En");
+      if (typeTest === 1){
+        await fetchWords("En", 1);
+      } else{
+        await fetchWords("En", 2);
+      }
     }
 
  
@@ -111,15 +134,17 @@ const TestWords = ()=>{
         setIsFinnish(true);
         setIsEnglish(false); 
         setIsAllLanguages(false);
-        await fetchWords("Fi");
+        if (typeTest === 1){
+          await fetchWords("Fi", 1);
+        } else{
+          await fetchWords("Fi", 2);
+        }
     }
  
     const loader = 
     <div className="text-center">
     <div className='lds-ellipsis'><div></div><div></div><div></div><div></div></div>
     </div>;
-
-   console.log(words)
 
  
      return(
@@ -158,9 +183,9 @@ const TestWords = ()=>{
                 </div>} 
               </div>}
              
-             <Link href="/personal-page/tests" className=" mt-96 rounded-lg bg-orange-300 w-24 text-white text-center absolute">
-              <i className="pi pi-arrow-left"  style={{marginLeft:3}}></i>
-              <span className="ml-3 text-xl ">Back</span></Link>          
+             <Link href="/personal-page/tests" className=" mt-96 rounded-lg  text-gray-600 font-bold text-center absolute ">
+              <i className="pi pi-arrow-left hover: text-orange-400"  style={{marginLeft:3, fontWeight: 'bold'}}></i>
+              <span className="ml-3 text-xl hover:text-orange-400">Back</span></Link>          
          
          </div>
          </>

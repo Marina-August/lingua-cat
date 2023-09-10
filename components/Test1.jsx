@@ -40,7 +40,7 @@ const Test1 = ({words})=>{
           if((arrayNumbers.length + 1) === words.length){
             setArrayNumbers([]);
           }
-          console.log(arrayNumbers)
+          
        let num2 = 0;
        let num3 = 0;
        let num4 = 0;
