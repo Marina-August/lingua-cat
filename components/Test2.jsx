@@ -6,16 +6,30 @@ import { useEffect, useState } from 'react';
 const Test2 = ({words})=>{
     const [front, setFront] = useState('');
     const [back, setBack] = useState ('');
-    let i = 0;
-
-    console.log("words", words)
-    
+    const [arrayNumbers, setArrayNumbers] = useState([]);
+   
     const wordsHandler =()=>{
-       setFront(words[0].word);
-       setBack(words[0].translation);
-       console.log(i)
-    }
-
+        let num1 = 0;
+        if (words.length ===1){
+            setFront(words[0].word);
+            setBack(words[0].translation);
+        } else if(words.length <=3){
+            const num = Math.floor(Math.random() * words.length);
+            setFront(words[num].word);
+            setBack(words[num].translation);
+        } else {
+                 do {
+                num1 = Math.floor(Math.random() * words.length);
+            } while(arrayNumbers.includes(num1));
+              setArrayNumbers(prevArray=> [...prevArray, num1]);
+              if((arrayNumbers.length + 1) === words.length){
+                setArrayNumbers([]);
+              }
+               setFront(words[num1].word);
+               setBack(words[num1].translation);
+            }       
+        }
+      
     useEffect(()=>{
        wordsHandler();
     },[])

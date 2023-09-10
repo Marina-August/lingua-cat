@@ -20,17 +20,27 @@ const Test1 = ({words})=>{
     const [rightAnswer1, setRightAnswer1] = useState(0);
     const [rightAnswer2, setRightAnswer2] = useState(0);
     const [rightAnswer3, setRightAnswer3] = useState(0);
+    const [arrayNumbers, setArrayNumbers] = useState([]);
 
     const isAwake = useSelector((state)=>state.isAwake)
     const counter = useSelector((state)=>state.counter);
     const dispatch = useDispatch();
 
     const questionHandler =()=>{
+        let num1 = 0;
         setRightAnswer0(0);
         setRightAnswer1(0);
         setRightAnswer2(0);
         setRightAnswer3(0);
-       const num1 = Math.floor(Math.random() * words.length);
+
+        do {
+            num1 = Math.floor(Math.random() * words.length);
+        } while(arrayNumbers.includes(num1));
+          setArrayNumbers(prevArray=> [...prevArray, num1]);
+          if((arrayNumbers.length + 1) === words.length){
+            setArrayNumbers([]);
+          }
+          console.log(arrayNumbers)
        let num2 = 0;
        let num3 = 0;
        let num4 = 0;

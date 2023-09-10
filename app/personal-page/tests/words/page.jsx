@@ -142,8 +142,10 @@ const TestWords = ()=>{
                  </div>
               </div>
               <div className="flex gap-8 mr-20" >
-                 <Button label="Test 1" severity="secondary" rounded raised size="small" onClick={test1Handler} className="tracking-wider w-24"/>
-                 <Button label="Test 2" severity="secondary" rounded raised size="small" onClick={test2Handler} className="tracking-wider w-24"/>
+                 {typeTest ===2 && <Button label="Test 1"  severity="secondary" rounded raised size="small" onClick={test1Handler} className="tracking-wider w-24"/>}
+                 {typeTest === 1 && <Button label="Test 1" style= {{ backgroundColor: 'var(--highlight-bg)', color: 'var(--highlight-text-color)'}} rounded raised size="small" onClick={test1Handler} className="tracking-wider w-24"/>}
+                 {typeTest ===2 && <Button label="Test 2" style= {{ backgroundColor: 'var(--highlight-bg)', color: 'var(--highlight-text-color)'}} rounded raised size="small" onClick={test1Handler} className="tracking-wider w-24"/>}
+                 {typeTest === 1 && <Button label="Test 2" severity= "secondary"  rounded raised size="small" onClick={test2Handler} className="tracking-wider w-24"/>}
               </div>
             </div>      
              {isLoading ? loader:
