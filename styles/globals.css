@@ -1060,6 +1060,7 @@ animation: walk 3s linear infinite 1.75s;
 .flip-container, .front, .back {
 	width: 370px;
 	height: 290px;
+  align-items: center; 
   margin: 1em auto;
 }
 
@@ -1074,14 +1075,15 @@ animation: walk 3s linear infinite 1.75s;
 /* hide back of pane during swap */
 .front, .back {
 	backface-visibility: hidden;
-
 	position: absolute;
 	top: 0;
-	left: 0;
+	left: 8px;
    color: cornSilk;
    text-align: center;
    font: 3em/240px 'Helvetica Neue', Helvetica, sans-serif;
+   transform: translateY(-50%);
    box-shadow: -5px 5px 5px #aaa;
+   width: 100%;
 }
 
 /* front pane, placed above back */

@@ -22,8 +22,9 @@ const Test1 = ({words})=>{
     const [rightAnswer3, setRightAnswer3] = useState(0);
     const [arrayNumbers, setArrayNumbers] = useState([]);
 
+  
+
     const isAwake = useSelector((state)=>state.isAwake)
-    const counter = useSelector((state)=>state.counter);
     const dispatch = useDispatch();
 
     const questionHandler =()=>{
@@ -40,7 +41,7 @@ const Test1 = ({words})=>{
           if((arrayNumbers.length + 1) === words.length){
             setArrayNumbers([]);
           }
-          
+
        let num2 = 0;
        let num3 = 0;
        let num4 = 0;
@@ -70,6 +71,8 @@ const Test1 = ({words})=>{
        setOption2 (words[num3].translation);
        setOption3 (words[num4].translation);
        setOption4 (words[num5].translation); 
+
+       dispatch(vocabularyCatActions.incrementCountQuestions());
     }
 
     useEffect(()=>{
@@ -79,6 +82,7 @@ const Test1 = ({words})=>{
     const checkAnswer0 =()=>{
         if (answerPosition === 0){
             setRightAnswer0(1);
+            dispatch(vocabularyCatActions.incrementQuantityRightAnswers());
             if(isAwake){
                 dispatch(vocabularyCatActions.increment());
             }
@@ -90,6 +94,7 @@ const Test1 = ({words})=>{
     const checkAnswer1 =()=>{
         if (answerPosition === 1){
             setRightAnswer1(1);
+            dispatch(vocabularyCatActions.incrementQuantityRightAnswers());
             if(isAwake){
                 dispatch(vocabularyCatActions.increment());
             }
@@ -101,6 +106,7 @@ const Test1 = ({words})=>{
     const checkAnswer2 =()=>{
         if (answerPosition === 2){
             setRightAnswer2(1);
+            dispatch(vocabularyCatActions.incrementQuantityRightAnswers());
             if(isAwake){
                 dispatch(vocabularyCatActions.increment());
             }
@@ -112,6 +118,7 @@ const Test1 = ({words})=>{
     const checkAnswer3 =()=>{
         if (answerPosition === 3){
             setRightAnswer3(1);
+            dispatch(vocabularyCatActions.incrementQuantityRightAnswers());
             if(isAwake){
                 dispatch(vocabularyCatActions.increment());
             }

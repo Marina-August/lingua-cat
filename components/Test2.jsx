@@ -40,10 +40,14 @@ const Test2 = ({words})=>{
             <div className="flip-container">
                 <div className="flipper">
 		            <div className="front">
-                         {front}
+                        <div className='mt-4'>
+                            {front} 
+                        </div>
 		            </div>
 		            <div className="back">
+                        <div className='mt-4'>
                           {back}
+                        </div>
                     </div>
 	            </div>
             </div> 

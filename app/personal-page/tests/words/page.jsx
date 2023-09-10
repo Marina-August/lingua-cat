@@ -24,7 +24,9 @@ const TestWords = ()=>{
 
     const dispatch = useDispatch();
     const allWords = useSelector((state)=>state.allWords);
-    const testAllWords = useSelector((state)=> state.testAllWords)
+    const testAllWords = useSelector((state)=> state.testAllWords);
+    const countQuestions = useSelector((state)=> state.countQuestions);
+    const quantityRightAnswers = useSelector((state)=> state.quantityRightAnswers);
     const toast = useRef(null);
 
 
@@ -175,8 +177,9 @@ const TestWords = ()=>{
             </div>      
              {isLoading ? loader:
               <div>
-                {typeTest ===1 && <div>
-                  {words.length >= 5 && <Test1  words ={words}/>} 
+                {typeTest ===1 && <div className="flex gap-20">
+                  {words.length >= 5 && <Test1  words ={words}/>}
+                  <div className="mt-52 text-5xl  text-gray-600">{quantityRightAnswers}/{countQuestions}</div>
                 </div>}
                 {typeTest ===2 && <div>
                   {words.length > 0 && <Test2 words ={words}/>}

@@ -1,9 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useSelector} from 'react-redux';
 
 const CatWithLaptop = ()=>{
    const [isBubble, setIsBubble] = useState(true); 
+   const allWords = useSelector((state)=>state.allWords);
+
+   
 
    const bubbleHandler = ()=>{
      setIsBubble(false);
