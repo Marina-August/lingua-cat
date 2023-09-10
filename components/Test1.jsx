@@ -21,8 +21,10 @@ const Test1 = ({words})=>{
     const [rightAnswer2, setRightAnswer2] = useState(0);
     const [rightAnswer3, setRightAnswer3] = useState(0);
     const [arrayNumbers, setArrayNumbers] = useState([]);
-
-  
+    const [ok1, setOk1] = useState(true);
+    const [ok2, setOk2] = useState(true);
+    const [ok3, setOk3] = useState(true);
+    const [ok0, setOk0] = useState(true);
 
     const isAwake = useSelector((state)=>state.isAwake)
     const dispatch = useDispatch();
@@ -33,6 +35,10 @@ const Test1 = ({words})=>{
         setRightAnswer1(0);
         setRightAnswer2(0);
         setRightAnswer3(0);
+        setOk0(true);
+        setOk1(true);
+        setOk2(true);
+        setOk3(true);
 
         do {
             num1 = Math.floor(Math.random() * words.length);
@@ -86,8 +92,23 @@ const Test1 = ({words})=>{
             if(isAwake){
                 dispatch(vocabularyCatActions.increment());
             }
+            setOk0(false);
+            setOk1(false);
+            setOk2(false);
+            setOk3(false);
         }else{
             setRightAnswer0(2);
+            setOk0(false);
+            setOk1(false);
+            setOk2(false);
+            setOk3(false);
+            if (answerPosition === 1){
+                setRightAnswer1(1);
+            } else if (answerPosition === 2){
+                setRightAnswer2(1);
+            } else{
+                setRightAnswer3(1)
+            }
         }
     }
 
@@ -98,8 +119,23 @@ const Test1 = ({words})=>{
             if(isAwake){
                 dispatch(vocabularyCatActions.increment());
             }
+            setOk0(false);
+            setOk1(false);
+            setOk2(false);
+            setOk3(false);
         }else{
             setRightAnswer1(2);
+            setOk0(false);
+            setOk1(false);
+            setOk2(false);
+            setOk3(false);
+            if (answerPosition === 0){
+                setRightAnswer0(1);
+            } else if (answerPosition === 2){
+                setRightAnswer2(1);
+            } else{
+                setRightAnswer3(1)
+            }
         }
     }
 
@@ -110,8 +146,23 @@ const Test1 = ({words})=>{
             if(isAwake){
                 dispatch(vocabularyCatActions.increment());
             }
+            setOk0(false);
+            setOk1(false);
+            setOk2(false);
+            setOk3(false);
         }else{
             setRightAnswer2(2);
+            setOk0(false);
+            setOk1(false);
+            setOk2(false);
+            setOk3(false);
+            if (answerPosition === 1){
+                setRightAnswer1(1);
+            } else if (answerPosition === 0){
+                setRightAnswer0(1);
+            } else{
+                setRightAnswer3(1)
+            }
         }
     }
 
@@ -121,9 +172,24 @@ const Test1 = ({words})=>{
             dispatch(vocabularyCatActions.incrementQuantityRightAnswers());
             if(isAwake){
                 dispatch(vocabularyCatActions.increment());
+                setOk0(false);
+                setOk1(false);
+                setOk2(false);
+                setOk3(false);
             }
         }else{
             setRightAnswer3(2);
+            setOk0(false);
+            setOk1(false);
+            setOk2(false);
+            setOk3(false);
+            if (answerPosition === 0){
+                setRightAnswer0(1);
+            } else if (answerPosition === 2){
+                setRightAnswer2(1);
+            } else{
+                setRightAnswer1(1)
+            }
         }
     }  
 
@@ -140,22 +206,22 @@ const Test1 = ({words})=>{
                 <p>{questionWord}</p>
             </div>
             <div className='grid grid-cols-2 gap-4'>
-                <div className='test-option' onClick={checkAnswer0}>
+                <div className={ok0 ? 'test-option':'option-disabled'} onClick={checkAnswer0}>
                     {answerPosition===0? answer: option2}
                     {rightAnswer0 === 2 && wrong}
                     {rightAnswer0 === 1 && right}
                 </div>
-                <div className='test-option' onClick={checkAnswer1}>
+                <div className={ok1 ? 'test-option':'option-disabled'} onClick={checkAnswer1}>
                     {answerPosition===1? answer: option1}
                     {rightAnswer1 === 1 && right}
                     {rightAnswer1 === 2 && wrong}
                 </div> 
-                <div className='test-option' onClick={checkAnswer2}>
+                <div className={ok2 ? 'test-option':'option-disabled'} onClick={checkAnswer2}>
                     {answerPosition===2? answer: option3}
                     {rightAnswer2 === 1 && right}
                     {rightAnswer2 === 2 && wrong}
                 </div>
-                <div className='test-option' onClick={checkAnswer3}>
+                <div className={ok3 ? 'test-option':'option-disabled'} onClick={checkAnswer3}>
                     {answerPosition===3? answer: option4}
                     {rightAnswer3 === 1 && right}
                     {rightAnswer3 === 2 && wrong}
