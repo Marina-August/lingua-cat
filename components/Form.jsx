@@ -2,21 +2,23 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useSelector, useDispatch } from 'react-redux';
+import { vocabularyCatActions } from '@/redux/store';
 import { useSession } from "next-auth/react";
 
 const Form = ({type, onWordHandler, editWord, onUpdateWord, sourceL, targetL})=>{
     const [word, setWord] = useState('');
-    const [sourceLanguage, setSourceLanguage] = useState('Finnish');
+    // const [sourceLanguage, setSourceLanguage] = useState('Finnish');
     const [translation, setTranslation] = useState('');
-    const [targetLanguage, setTargetLanguage] = useState('English');
+    // const [targetLanguage, setTargetLanguage] = useState('English');
     const [example, setExample] = useState('');
     const [ok, setOk] = useState(false);
 
     const {data: session} = useSession();
 
+    const sourceLanguage = useSelector((state)=>state.sourceLanguage);
+    const targetLanguage = useSelector((state)=>state.targetLanguage);
 
-
-    
     useEffect(()=>{
       if (editWord){
         setWord(editWord.word);
@@ -75,9 +77,7 @@ const Form = ({type, onWordHandler, editWord, onUpdateWord, sourceL, targetL})=>
           const target = targetLanguage;
           const usage =  example;
 
-          setSourceLanguage('Finnish');
           setWord('');
-          setTargetLanguage('English');
           setTranslation('');
           setExample('');
 
