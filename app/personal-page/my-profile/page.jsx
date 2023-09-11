@@ -37,6 +37,7 @@ const MyProfile =()=>{
             await fetch(`/api/user/${session?.user.id.toString()}`, {
               method: "DELETE",
             });
+            deleteUserWords();
             const baseURL = window.location.origin;
             signOut({ callbackUrl: baseURL });
           } catch (error) {
@@ -51,6 +52,17 @@ const MyProfile =()=>{
 
     const deleteProfileHandler = ()=>{
         setVisible(true);   
+    }
+
+    const deleteUserWords= async()=>{
+        try {
+            await fetch(`/api/users/${session?.user.id}/words`, {
+              method: "DELETE",
+            });
+          } catch (error) {
+            console.log(error);
+          }
+         
     }
 
     return (
