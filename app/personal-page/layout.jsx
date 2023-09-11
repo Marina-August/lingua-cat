@@ -26,32 +26,32 @@ const PersonalLayout =({ children })=>{
             <Link href="/personal-page" 
             className="text-white py-2 rounded hover:bg-slate-400 active:bg-slate-500 transition duration-300 ">
               <i className="pi pi-database" style={{marginLeft:5}}></i>
-              <span className="ml-2 text-xl">My Dictionary</span>
+              <span className="ml-2 text-2xl tracking-wide font-merry">My Dictionary</span>
             </Link>
             <Link href="/personal-page/add-word" className="text-white py-2 rounded hover:bg-slate-400 focus:bg-slate-500 transition duration-300">
             <i className="pi pi-plus-circle"  style={{marginLeft:5}}></i>
-            <span className="ml-1 text-xl"> Add New Word</span>
+            <span className="ml-1 text-2xl tracking-wide font-merry"> Add New Word</span>
             </Link>
             <Link href="/personal-page/tests" className="text-white py-2 rounded hover:bg-slate-400 focus:bg-slate-500 transition duration-300">
             <i className="pi pi-question-circle"  style={{marginLeft:5}}></i>
-            <span className="ml-1 text-xl">Tests</span>
+            <span className="ml-2 text-2xl tracking-wider font-merry">Tests</span>
               </Link>
             <Link href="/personal-page/my-profile" className="text-white py-2 rounded hover:bg-slate-400 focus:bg-slate-500 transition duration-300">
             <i className="pi pi-user"  style={{marginLeft:5}}></i>
-             <span className="ml-1 text-xl"> My Profile</span>
+             <span className="ml-1 text-2xl tracking-wide font-merry"> My Profile</span>
               </Link>
             <Link href="/" className="text-white py-2 rounded hover:bg-slate-400 focus:bg-slate-500 transition duration-300"
               onClick={() => {
               const baseURL = window.location.origin;
               signOut({ callbackUrl: baseURL });
           }}> 
-            <i className="pi pi-sign-out"  style={{marginLeft:5}}></i> <span className=" text-xl">Sign Out</span>
+            <i className="pi pi-sign-out"  style={{marginLeft:5}}></i> <span className=" ml-1 text-2xl tracking-wide font-merry">Sign Out</span>
             </Link>
         </div>
       <div className=" allButFooter  ml-60">
         <div className='flex flex-col gap-20'>
         <div className="flex justify-end gap-4 mt-4" >
-           <p className="text-end">Welcome  <span className='font-bold'>{session?.user.name ? session?.user.name :session?.user.email}!</span></p>
+           <p className="font-bold  text-end font-merrySans text-lg text-gray-600">Welcome  <span className='font-bold font-merrySans text-xl text-gray-600'>{session?.user.name ? session?.user.name :session?.user.email}!</span></p>
            <Link href='/personal-page/my-profile'>
                 <Image
                 src={session?.user.image ? session?.user.image: "/assets/icons/paw.png"}

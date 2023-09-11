@@ -33,7 +33,7 @@ const CatWithLaptop = ()=>{
           <div className="tail-kitty"></div>
         </div>
         {isBubble && <div className="bubbleWithWords" onClick={bubbleHandler}>
-            <p className="textKissa">Kissa - Cat</p>
+            <p className="textKissa font-dog">Kissa - Cat</p>
         </div>}
         <div className="laptop">
           <div className="logo"></div>

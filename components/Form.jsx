@@ -98,15 +98,15 @@ const Form = ({type, onWordHandler, editWord, onUpdateWord, sourceL, targetL})=>
         }
 
     return (
-        <section className='w-full max-w-full flex-col -mt-16'>
+        <section className='w-full max-w-full flex-col -mt-20'>
         <h1 className='head_text text-center'>
-          <span className='orange_gradient -ml-20'>{type} a word</span>
+          <span className='orange_gradient -ml-20 font-merry text-7xl '>{type} a word</span>
         </h1>
         <form onSubmit ={submitHandler}
         className='mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism ml-64 '
       >
         <label>
-          <span className='font-satoshi font-semibold text-base text-gray-700 mr-6'>
+          <span className='font-semibold text-base text-lg text-gray-700 mr-6 font-merrySans'>
             Your Word 
           </span>
           <select className='rounded-md' onChange={sourceLanguageHandler} value={sourceLanguage}>
@@ -114,10 +114,10 @@ const Form = ({type, onWordHandler, editWord, onUpdateWord, sourceL, targetL})=>
                 <option value='Finnish'>Finnish</option>
                 <option value='English'>English</option>
             </select>
-          <input className='form_input' onChange={wordHandler} value={word}></input>
+          <input className='form_input font-merrySans ' onChange={wordHandler} value={word}></input>
          </label>
          <label>
-          <span className='font-satoshi font-semibold text-base text-gray-700 mr-4'>
+          <span className='font-semibold text-base text-gray-700 mr-4 font-merrySans text-lg'>
             Translation 
           </span>
           <select className='rounded-md' onChange={targetLanguageHandler} value={targetLanguage}>
@@ -125,24 +125,24 @@ const Form = ({type, onWordHandler, editWord, onUpdateWord, sourceL, targetL})=>
                 <option value='English'>English</option>
                 <option value='Finnish'>Finnish</option>
             </select>
-          <input className='form_input'  onChange={translationHandler} value={translation}></input>
+          <input className='form_input font-merrySans'  onChange={translationHandler} value={translation}></input>
          </label>
          <label>
-          <span className='font-satoshi font-semibold text-base text-gray-700'>
+          <span className='font-semibold text-base text-gray-700 font-merrySans text-lg'>
             Usage Examples
           </span>
-          <textarea className='form_textarea' onChange={exampleHandler} value={example} maxLength="150" 
+          <textarea className='form_textarea font-merrySans ' onChange={exampleHandler} value={example} maxLength="150" 
           placeholder=" Enter your Example (max 150 symbols)"></textarea>
          </label>
          <div className='flex-end mx-3 mb-5 gap-4'>
-          <Link href='/personal-page' className='text-gray-500 text-lg hover:text-gray-800'>
+          <Link href='/personal-page' className='text-gray-500 text-lg hover:text-gray-800 font-merry'>
             Cancel
           </Link>
 
           <button
             type='submit'
             disabled={!ok}
-            className={`${!ok? 'cursor-not-allowed': ''} px-5 py-1.5 text-lg bg-primary-orange rounded-full text-white hover:bg-white hover:text-primary-orange`}
+            className={`${!ok? 'cursor-not-allowed': ''} px-5 py-1.5 text-lg bg-primary-orange rounded-full text-white hover:bg-white hover:text-primary-orange font-merry`}
           > Add
           </button>
         </div>

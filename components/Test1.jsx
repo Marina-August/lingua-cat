@@ -172,11 +172,12 @@ const Test1 = ({words})=>{
             dispatch(vocabularyCatActions.incrementQuantityRightAnswers());
             if(isAwake){
                 dispatch(vocabularyCatActions.increment());
-                setOk0(false);
-                setOk1(false);
-                setOk2(false);
-                setOk3(false);
             }
+            setOk0(false);
+            setOk1(false);
+            setOk2(false);
+            setOk3(false);
+
         }else{
             setRightAnswer3(2);
             setOk0(false);
@@ -227,7 +228,7 @@ const Test1 = ({words})=>{
                     {rightAnswer3 === 2 && wrong}
                 </div>
             </div>
-            <div className='w-16 relative left-1/2 transform -translate-x-1/2 '>
+            <div className='w-16 relative left-1/2 transform -translate-x-1/2'>
                 <Button label='Next' icon ='pi pi-arrow-right' 
                 severity="secondary" rounded  raised size="small" 
                 className='bg-slate-100'

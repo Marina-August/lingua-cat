@@ -10,6 +10,10 @@ module.exports = {
       fontFamily: {
         satoshi: ['Satoshi', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
+        merry:['Merriweather', 'serif'],
+        philosopher:['Philosopher', 'sans-serif'],
+        merrySans:['Merriweather Sans', 'sans-serif' ],
+        dog:['Underdog', 'cursive'],
       },
       colors: {
         'primary-orange': '#FF5722',
@@ -17,5 +21,6 @@ module.exports = {
     },
   },
   plugins: [],
+
 }
 

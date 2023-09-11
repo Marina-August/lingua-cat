@@ -785,7 +785,7 @@ body, html {
 }
 
 .head_text {
-  @apply  text-4xl font-extrabold leading-[1.15] text-black sm:text-6xl;
+  @apply  text-7xl font-extrabold leading-[1.15] text-black sm:text-6xl;
 }
 .text_succes {
   @apply  text-3xl font-extrabold leading-[1.15] text-black sm:text-3xl mt-8;
@@ -812,11 +812,11 @@ body, html {
 
 /* Form Component */
 .form_textarea {
-  @apply w-full flex rounded-lg h-[100px] mt-2 p-3 text-sm text-gray-500 outline-0 resize-none;
+  @apply w-full flex rounded-lg h-[100px] mt-2 p-3 text-xl text-gray-500 outline-0 resize-none;
 }
 
 .form_input {
-  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0;
+  @apply w-full flex rounded-lg mt-2 p-3 text-xl text-gray-500 outline-0;
 }
 
 
@@ -854,14 +854,14 @@ body, html {
 }
 
 .test-word{
-  @apply flex items-center justify-center w-80 h-24 rounded bg-slate-100 relative left-1/2 transform -translate-x-1/2 break-all p-2;
+  @apply flex font-merrySans text-2xl items-center justify-center w-80 h-24 rounded bg-slate-100 relative left-1/2 transform -translate-x-1/2 break-all p-2;
 }
 
 .test-option{
-  @apply flex items-center justify-center w-60 h-24 rounded bg-slate-100 relative left-1/2 transform -translate-x-1/2 break-all p-2;
+  @apply flex text-2xl  font-merrySans  items-center justify-center w-60 h-24 rounded bg-slate-100 relative left-1/2 transform -translate-x-1/2 break-all p-2;
 }
 .option-disabled{
-  @apply flex pointer-events-none items-center justify-center w-60 h-24 rounded bg-slate-100 relative left-1/2 transform -translate-x-1/2 break-all p-2;
+  @apply flex text-2xl font-merrySans pointer-events-none items-center justify-center w-60 h-24 rounded bg-slate-100 relative left-1/2 transform -translate-x-1/2 break-all p-2;
 }
 
 

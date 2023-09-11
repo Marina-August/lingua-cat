@@ -179,7 +179,7 @@ const TestWords = ()=>{
               <div>
                 {typeTest ===1 && <div className="flex gap-20">
                   {words.length >= 5 && <Test1  words ={words}/>}
-                  <div className="mt-52 text-5xl  text-gray-600">{quantityRightAnswers}/{countQuestions}</div>
+                  {words.length >= 5 && <div className="mt-52 text-5xl  text-gray-600">{quantityRightAnswers}/{countQuestions}</div>}
                 </div>}
                 {typeTest ===2 && <div>
                   {words.length > 0 && <Test2 words ={words}/>}

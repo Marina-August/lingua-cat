@@ -119,8 +119,8 @@ const Cat =()=>{
                 <div className={!isAwake? "body": "bodyAwake"}></div>
                 {!isAwake && <div className="bubble"></div>}
                 <div className="bubbleWithText">
-                   {counter <4 && <p className="text">{!isAwake? "Wake Me Up":"Feed Me"}</p>}
-                   {counter>=4 && <p className="text">Thank you!</p>}
+                   {counter <4 && <p className="text font-dog">{!isAwake? "Wake Me Up":"Feed Me"}</p>}
+                   {counter>=4 && <p className="text font-dog">Thank you!</p>}
                     </div>
             </div>
         </div>
