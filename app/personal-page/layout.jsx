@@ -8,19 +8,14 @@ import AuthenticatedContent from '@/components/AuthenticatedContent';
 import { Button } from 'primereact/button';
 
 import { signOut,useSession } from 'next-auth/react';
-
-
+import PersonalNav from '@/components/PersonalNav';
 
 const PersonalLayout =({ children })=>{
   const {data: session} = useSession();
 
-  console.log(session?.user)
-
-   console.log('personal lay')
     return (
       <AuthenticatedContent>
       <div className=" w-full h-screen ">
-
         <div className=" flex flex-col bg-gray-800 p-4  bg-opacity-20 justify-items-end fixed top-0 left-0 h-screen w-60 ">
             <Image src="/assets/icons/logo-no-background.png" alt="logo" width={150} height={150} loading="eager" className="mb-16 ml-7 "/>
             <Link href="/personal-page" 
@@ -49,29 +44,17 @@ const PersonalLayout =({ children })=>{
             </Link>
         </div>
       <div className=" allButFooter  ml-60">
+      <ReduxProvider>
         <div className='flex flex-col gap-20'>
-        <div className="flex justify-end gap-4 mt-4" >
-           <p className="font-bold  text-end font-merrySans text-lg text-gray-600">Welcome  <span className='font-bold font-merrySans text-xl text-gray-600'>{session?.user.name ? session?.user.name :session?.user.email}!</span></p>
-           <Link href='/personal-page/my-profile'>
-                <Image
-                src={session?.user.image ? session?.user.image: "/assets/icons/paw.png"}
-                width={42}
-                height={42}
-                loading="eager" 
-                className='rounded-full mr-24'
-                alt='profile'
-               />
-           </Link>
-        </div>
+        <PersonalNav/>
         <div>
-          <ReduxProvider>
                <CatAction/>
                <div className='ml-8'>
                    {children}
-                </div>            
-          </ReduxProvider>
+                </div>               
         </div>
         </div>
+        </ReduxProvider>
         <Footer/>
       </div>
 
