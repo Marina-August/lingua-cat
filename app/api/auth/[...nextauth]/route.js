@@ -11,6 +11,7 @@ const handler = NextAuth ({
         })
     ],
     callbacks:{
+
         async session ({session}){
             // store the user id from MongoDB to session
             await connectToDB();
@@ -25,6 +26,8 @@ const handler = NextAuth ({
                 await connectToDB();
                 // check if user already exists
                 const userExists = await User.findOne({ email: profile.email });
+
+                console.log(profile);
     
                 // if not, create a new document and save user in MongoDB
                 if (!userExists) {

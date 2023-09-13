@@ -15,7 +15,7 @@ const CatWithLaptop = ()=>{
 
     return(
         <div className="container-kitty">
-      <div className="kitty">
+         <div className="kitty">
         <div className="face">
           <div className="ear-kitty"></div>
           <div className="eye-kitty"></div>

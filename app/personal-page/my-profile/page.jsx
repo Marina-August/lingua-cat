@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { CldUploadButton } from 'next-cloudinary';
 import { CldImage } from 'next-cloudinary';
  
-import {useState, useRef} from "react";
+import {useState, useRef, useEffect} from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { vocabularyCatActions } from '@/redux/store';
 import { useSession, signOut } from 'next-auth/react';
@@ -19,6 +19,7 @@ const MyProfile =()=>{
     const sourceLanguage = useSelector((state)=>state.sourceLanguage);
     const targetLanguage = useSelector((state)=>state.targetLanguage);
     const imageId = useSelector((state)=>state.imageId);
+    const imageUrl = useSelector((state=> state.imageURL))
 
     const sourceEnglishHandler = ()=>{
         dispatch(vocabularyCatActions.setSourceLanguage('English'));
@@ -69,16 +70,55 @@ const MyProfile =()=>{
          
     }
 
+    const updateImage = async(url)=>{
+        console.log(url)
+        try {
+            const response = await fetch(`/api/user/${session?.user.id.toString()}`, {
+              method: "PATCH",
+              body: JSON.stringify({
+                  image: url,
+              }),
+            });
+          } catch (error) {
+            console.log(error);
+          }
+    }
+
+   const fetchImage =async()=>{
+        const response = await fetch(`/api/user/${session?.user.id}`);
+        const data = await response.json();
+        console.log(data.image)
+        dispatch(vocabularyCatActions.setImageURL(data.image))
+   }
+
+   useEffect(()=>{
+    fetchImage();
+   },[])
+
+    // const updateSession = async(url)=>{
+    //     await update ( {
+    //         ...session,
+    //         user: {
+    //             ...session?.user,
+    //             image: url,
+    //         }
+    //     });
+    // }
+
+ 
+
     return (
         <div className="flex justify-items-start align-center gap-20 ml-40 mt-20">
              <ConfirmDialog visible={visible} onHide={() => setVisible(false)} message="Are you sure you want to proceed?" 
                 header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept} reject={reject} />
             <div>
-                   {!imageId && <Image src= {session?.user.image ? session?.user.image: "/assets/images/user-image.png"} 
+                   {!imageId && !imageUrl && <Image src= {session?.user.image ? session?.user.image: "/assets/images/user-image.png"} 
                    width={110} height={55}  loading="eager" className='rounded-full' alt='profile'/>}
-                  {imageId && <CldImage
+                   {imageUrl && !imageId && <img src= {imageUrl} 
+                   width='110' height='55'  className='rounded-full' alt='profile'/>}
+                   {imageId && <CldImage
                     className='rounded-full'
-                    width="110"
+                    width="110" 
                     height="55"
                     src={imageId}
                     sizes="100vw"
@@ -87,7 +127,10 @@ const MyProfile =()=>{
                    <CldUploadButton uploadPreset="naj864dv"  
                     onUpload={(result) => {
                         dispatch(vocabularyCatActions.setImageId(result.info.public_id));
+                        updateImage(result.info.url);
+                        // fetchImage()
                         console.log(result.info)
+                        
                    }}/>
             </div>
             <div className='flex flex-col gap-4'>
