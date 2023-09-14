@@ -202,7 +202,7 @@ const Test1 = ({words})=>{
 
  
     return (
-        <div className='mt-6 w-full max-w-2xl flex flex-col gap-7 glassmorphism ml-64 '>
+        <div className=' appearing mt-6 w-full max-w-2xl flex flex-col gap-7 glassmorphism ml-64 '>
             <div className='test-word'>
                 <p>{questionWord}</p>
             </div>

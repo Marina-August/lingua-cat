@@ -1086,7 +1086,7 @@ animation: walk 3s linear infinite 1.75s;
 	left: 8px;
    color: cornSilk;
    text-align: center;
-   font: 3em/240px 'Helvetica Neue', Helvetica, sans-serif;
+   font: 3em/100px 'Helvetica Neue', Helvetica, sans-serif;
    transform: translateY(-50%);
    box-shadow: -5px 5px 5px #aaa;
    width: 100%;
@@ -1098,10 +1098,37 @@ animation: walk 3s linear infinite 1.75s;
 	/* for firefox 31 */
 	transform: rotateY(0deg);
   background: rgb(233, 181, 135);
+  word-wrap: break-word;
 }
 
 /* back, initially hidden pane */
 .back {
 	transform: rotateY(180deg);
   background: rgb(180, 193, 197);
+  word-wrap: break-word;
+}
+
+
+/* Form Style */
+.appearing{
+  animation: form-appear 1s ease-out forwards;
+}
+
+@keyframes form-appear {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* BreadCrimb Style */
+.p-breadcrumb {
+  background-color: inherit !important;
+  border:none !important;
+
 }

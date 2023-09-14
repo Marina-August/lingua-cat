@@ -7,6 +7,9 @@ const Test2 = ({words})=>{
     const [front, setFront] = useState('');
     const [back, setBack] = useState ('');
     const [arrayNumbers, setArrayNumbers] = useState([]);
+    const [fontFrontSize, setFontFrontSize] = useState(3);
+    const [fontBackSize, setFontBackSize] = useState(3);
+
    
     const wordsHandler =()=>{
         let num1 = 0;
@@ -26,7 +29,17 @@ const Test2 = ({words})=>{
                 setArrayNumbers([]);
               }
                setFront(words[num1].word);
+               if (words[num1].word.length > 34){
+                   setFontFrontSize(1.5);
+               } else{
+                 setFontFrontSize(3)
+               }
                setBack(words[num1].translation);
+               if (words[num1].word.length > 34){
+                setFontBackSize(1.5);
+            } else{
+              setFontBackSize(3)
+            }
             }       
         }
       
@@ -36,16 +49,16 @@ const Test2 = ({words})=>{
 
     return(
         
-        <div>
+        <div className='appearing'>
             <div className="flip-container">
                 <div className="flipper">
-		            <div className="front">
-                        <div className='mt-4'>
+		            <div className="front" style={{fontSize:fontFrontSize+"em"}} >
+                        <div className=' mt-20 px-2' >
                             {front} 
                         </div>
 		            </div>
-		            <div className="back">
-                        <div className='mt-4'>
+		            <div className="back" style={{fontSize:fontBackSize+"em"}}>
+                        <div className='mt-20 px-2'>
                           {back}
                         </div>
                     </div>

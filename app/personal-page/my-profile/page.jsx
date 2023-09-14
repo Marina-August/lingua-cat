@@ -92,45 +92,31 @@ const MyProfile =()=>{
    }
 
    useEffect(()=>{
-    fetchImage();
+     document.getElementsByTagName('button')[0].innerHTML = "Change Photo"
+     fetchImage();
    },[])
 
-    // const updateSession = async(url)=>{
-    //     await update ( {
-    //         ...session,
-    //         user: {
-    //             ...session?.user,
-    //             image: url,
-    //         }
-    //     });
-    // }
-
- 
 
     return (
         <div className="flex justify-items-start align-center gap-20 ml-40 mt-20">
              <ConfirmDialog visible={visible} onHide={() => setVisible(false)} message="Are you sure you want to proceed?" 
                 header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept} reject={reject} />
-            <div>
+            <div className='flex flex-col content-center gap-2'>
                    {!imageId && !imageUrl && <Image src= {session?.user.image ? session?.user.image: "/assets/images/user-image.png"} 
-                   width={110} height={55}  loading="eager" className='rounded-full' alt='profile'/>}
+                   width={110} height={55}  loading="eager" className='rounded-full mt-6' alt='profile'/>}
                    {imageUrl && !imageId && <img src= {imageUrl} 
-                   width='110' height='55'  className='rounded-full' alt='profile'/>}
+                   width='110' height='55'  className='rounded-full mt-6' alt='profile'/>}
                    {imageId && <CldImage
-                    className='rounded-full'
+                    className='rounded-full mt-6'
                     width="110" 
                     height="55"
                     src={imageId}
                     sizes="100vw"
                     alt="profile image"/>}
-                   {/* <h3 className='font-merrySans text-lg text-gray-600 font-bold -ml-2 mt-2 cursor-pointer '>Change Photo</h3> */}
                    <CldUploadButton uploadPreset="naj864dv"  
                     onUpload={(result) => {
                         dispatch(vocabularyCatActions.setImageId(result.info.public_id));
-                        updateImage(result.info.url);
-                        // fetchImage()
-                        console.log(result.info)
-                        
+                        updateImage(result.info.url);  
                    }}/>
             </div>
             <div className='flex flex-col gap-4'>

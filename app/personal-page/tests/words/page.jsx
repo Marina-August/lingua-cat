@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Test1 from "@/components/Test1";
 import { useSelector, useDispatch } from 'react-redux';
 import { Toast } from 'primereact/toast';
+import { BreadCrumb } from 'primereact/breadcrumb';;
 
 import { vocabularyCatActions } from '@/redux/store';
 import Link from 'next/link';
@@ -148,6 +149,11 @@ const TestWords = ()=>{
     <div className='lds-ellipsis'><div></div><div></div><div></div><div></div></div>
     </div>;
 
+    const items = [
+      { label: 'Choose Words', url: '/personal-page/tests' },
+      { label: 'Tests' },
+    ];
+
  
      return(
       <>
@@ -185,10 +191,14 @@ const TestWords = ()=>{
                   {words.length > 0 && <Test2 words ={words}/>}
                 </div>} 
               </div>}
+              <div className=" mt-96 rounded-lg bg-inherit text-gray-600 font-bold text-center absolute ">
+                 <BreadCrumb model={items} className="bg-inherit" />
+              </div>
+
              
-             <Link href="/personal-page/tests" className=" mt-96 rounded-lg  text-gray-600 font-bold text-center absolute ">
+             {/* <Link href="/personal-page/tests" className=" mt-96 rounded-lg  text-gray-600 font-bold text-center absolute ">
               <i className="pi pi-arrow-left hover: text-orange-400"  style={{marginLeft:3, fontWeight: 'bold'}}></i>
-              <span className="ml-3 text-xl hover:text-orange-400">Back</span></Link>          
+              <span className="ml-3 text-xl hover:text-orange-400">Back</span></Link>           */}
          
          </div>
          </>

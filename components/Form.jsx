@@ -103,7 +103,7 @@ const Form = ({type, onWordHandler, editWord, onUpdateWord, sourceL, targetL})=>
           <span className='orange_gradient -ml-20 font-merry text-7xl '>{type} a word</span>
         </h1>
         <form onSubmit ={submitHandler}
-        className='mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism ml-64 '
+        className=' appearing mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism ml-64'
       >
         <label>
           <span className='font-semibold text-base text-lg text-gray-700 mr-6 font-merrySans'>
