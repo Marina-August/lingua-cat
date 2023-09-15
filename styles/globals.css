@@ -20,12 +20,15 @@ body, html {
   height: 40px;
 }
 
-.allButFooter{
-  min-height:100vh;
+.allButFooter {
+  min-height:94.5vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
+}
+.w-full .allButFooter {
+  min-height:100vh;
 }
 
 .main {
@@ -796,8 +799,8 @@ body, html {
 }
 
 
-.blue_gradient {
-  @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
+.gray_gradient {
+  @apply bg-gradient-to-r from-gray-600 via-orange-600 to-gray-600 bg-clip-text text-transparent;
 }
 
 .search_input {
@@ -1130,5 +1133,5 @@ animation: walk 3s linear infinite 1.75s;
 .p-breadcrumb {
   background-color: inherit !important;
   border:none !important;
-
+  background-color: #575759;
 }

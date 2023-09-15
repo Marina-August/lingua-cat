@@ -29,7 +29,7 @@ const PersonalLayout =({ children })=>{
             </Link>
             <Link href="/personal-page/tests" className="text-white py-2 rounded hover:bg-slate-400 focus:bg-slate-500 transition duration-300">
             <i className="pi pi-question-circle"  style={{marginLeft:5}}></i>
-            <span className="ml-2 text-2xl tracking-wider font-merry">Tests</span>
+            <span className="ml-2 text-2xl tracking-wide font-merry">Tests</span>
               </Link>
             <Link href="/personal-page/my-profile" className="text-white py-2 rounded hover:bg-slate-400 focus:bg-slate-500 transition duration-300">
             <i className="pi pi-user"  style={{marginLeft:5}}></i>

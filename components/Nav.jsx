@@ -29,18 +29,21 @@ const Nav =()=>{
                 <Image src="/assets/icons/logo-no-background.png" alt="logo" width={150} height={150} loading="eager" />
             </Link>
             <div className='flex gap-3 md:gap-5'>
+                <p className="flex items-center font-merrySans text-xl 
+                text-gray-600 hover:text-slate-800"><span className="text-orange-500">&nbsp;Sign in&nbsp;  </span>  with Google.</p>
             {providers &&
                 Object.values(providers).map((provider) => 
                 (<button 
                     type= 'button' 
-                    className="black_btn" 
+                    className="flex gap-2 justify-center items-center border-solid border-black-600 bg-white rounded-full w-32 h-10 hover:bg-slate-100" 
                     key={provider.name}
                     onClick={
                     () => {
                     signIn(provider.id, { callbackUrl: '/personal-page' });
                     }
                     }>
-                        Sign in
+                        <img src="/assets/images/google.png" height='30' width='30'/>
+                        <span>Google</span>
                 </button>))}
             <Image
             src="/assets/icons/paw.png"
@@ -52,14 +55,6 @@ const Nav =()=>{
              /></div>
             
         </nav> }
-        {/* {session?.user &&
-        <button onClick={() => {
-            const baseURL = window.location.origin;
-            console.log('log out')
-            signOut({ callbackUrl: baseURL });
-        }}>
-            motan
-        </button>} */}
         </>   
     )
 }

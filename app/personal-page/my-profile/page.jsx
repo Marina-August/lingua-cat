@@ -92,13 +92,22 @@ const MyProfile =()=>{
    }
 
    useEffect(()=>{
-     document.getElementsByTagName('button')[0].innerHTML = "Change Photo"
+     const button = document.getElementsByTagName('button')[0];
+     button.innerHTML = "Change Photo";
+     button.style.color = "#575759";
+     button.style.fontWeight = "bold"
+     button.addEventListener('mouseover', function() {
+        button.style.color = "Black";
+     })
+     button.addEventListener('mouseout', function() {
+        button.style.color = "#575759";
+     })
      fetchImage();
    },[])
 
 
     return (
-        <div className="flex justify-items-start align-center gap-20 ml-40 mt-20">
+        <div className="flex justify-items-start align-center gap-20 ml-40 mt-20 appearing">
              <ConfirmDialog visible={visible} onHide={() => setVisible(false)} message="Are you sure you want to proceed?" 
                 header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept} reject={reject} />
             <div className='flex flex-col content-center gap-2'>
@@ -141,9 +150,10 @@ const MyProfile =()=>{
                         <Image width={30} height={25} src="/assets/images/En.png" alt="FI flag" loading="eager" className="icon"/>
                     </div>
                 </div>
-                <div className='font-merrySans text-2xl text-gray-600 font-bold hover:text-slate-800 cursor-pointer' onClick={deleteProfileHandler}>
-                   <i className="pi pi-trash mr-2"  style={{marginLeft:5}}></i>
-                    Delete Profile
+                <div className='flex font-merrySans text-2xl text-gray-600 font-bold hover:text-slate-800 cursor-pointer' onClick={deleteProfileHandler}>
+                   {/* <i className="pi pi-trash mr-2"  style={{marginLeft:5}}></i> */}
+                   <img src="/assets/images/delete (1).png"  className='-ml-1'/>
+                   <p className='ml-2'> Delete Profile</p>
                 </div>      
             </div>
         </div>

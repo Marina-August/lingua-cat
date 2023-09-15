@@ -190,7 +190,7 @@ const Words =({onDeleteWord})=>{
               <span className='orange_gradient'>You don't have any words yet</span>
             </h1>}
           {allWords.length>0 &&  <Card style={{width:'90%', margin:'-40px auto 0px', minHeight:'85vh', backgroundColor: '#fafafa', position: 'block'}}>
-            <div className="flex justify-between">
+            <div className="flex justify-between appearing">
               <div className="mb-8 text-end ">
                <Button  label = {isfilter? "Hide Filter":"Choose Language"} icon="pi pi-filter"  severity="secondary" rounded text raised 
                 size="small" onClick={filterHandler}/>
@@ -221,6 +221,7 @@ const Words =({onDeleteWord})=>{
           stripedRows 
           paginator rows={8}
           tableStyle={{ minWidth: '50rem' }}
+          className='appearing'
         >
           <Column body={wordBodyTemplate} sortable header="Original"
           field="word"

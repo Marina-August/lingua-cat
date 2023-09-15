@@ -8,7 +8,6 @@ import { Toast } from 'primereact/toast';
 import { BreadCrumb } from 'primereact/breadcrumb';;
 
 import { vocabularyCatActions } from '@/redux/store';
-import Link from 'next/link';
 import { useSession } from "next-auth/react";
 import Test2 from "@/components/Test2";
 import { Button } from "primereact/button";
@@ -194,11 +193,6 @@ const TestWords = ()=>{
               <div className=" mt-96 rounded-lg bg-inherit text-gray-600 font-bold text-center absolute ">
                  <BreadCrumb model={items} className="bg-inherit" />
               </div>
-
-             
-             {/* <Link href="/personal-page/tests" className=" mt-96 rounded-lg  text-gray-600 font-bold text-center absolute ">
-              <i className="pi pi-arrow-left hover: text-orange-400"  style={{marginLeft:3, fontWeight: 'bold'}}></i>
-              <span className="ml-3 text-xl hover:text-orange-400">Back</span></Link>           */}
          
          </div>
          </>
