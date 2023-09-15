@@ -21,7 +21,6 @@ export const PATCH = async (request, { params }) => {
 
     try {
         await connectToDB();
-
         // Find the existing User by ID
         const existingUser = await User.findById(params.id);
 
@@ -31,8 +30,6 @@ export const PATCH = async (request, { params }) => {
 
         // Update the user with new data
         existingUser.image = image;
-      
-
         await existingUser.save();
 
         return new Response("Successfully updated the User", { status: 200 });

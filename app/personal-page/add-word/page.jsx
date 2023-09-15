@@ -15,15 +15,6 @@ const AddWord =()=>{
 
   const dispatch = useDispatch();
 
-  // useEffect(()=>{
-  //   const count = localStorage.getItem('counter');
-  //   if(count){
-  //      dispatch(vocabularyCatActions.setCounter(count))
-  //   }else{
-
-  //   }
-  //  },[])
-
     const addWord = async (word)=>{
         console.log("page", word)
         try {
@@ -40,7 +31,6 @@ const AddWord =()=>{
             });
       
             if (response.ok) {
-            //   router.push("/personal-page");
               console.log("ok");
               toast.current.show({ severity:'success', summary: 'Success', detail: 'Word is added' , 
               // sticky: true
@@ -48,7 +38,6 @@ const AddWord =()=>{
 
               if(isAwake){
                  dispatch(vocabularyCatActions.increment());
-                 localStorage.setItem('counter', counter+1); // set localstorage to remember after reloading how much hunger is
               } else{
 
               }

@@ -233,9 +233,7 @@ const Test1 = ({words})=>{
                 severity="secondary" rounded  raised size="small" 
                 className='bg-slate-100'
                 onClick={questionHandler}/>
-            </div>
-            
-          
+            </div>  
         </div>
 
     )

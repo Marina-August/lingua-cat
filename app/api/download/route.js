@@ -11,15 +11,10 @@ export const GET = async(request)=>{
       try{
         await connectToDB();
         const words = await Word.find({});
-        console.log("download",words)
         
         const pdf = new jsPDF({
             format:'a4'
         });
-
-        // const img = new Image();
-        // img.src = cat;
-        // pdf.addImage(img, 'png', 10, 10, 10, 10)
 
         autoTable(pdf,{
             head:[['Original', 'Translation', 'Example']],

@@ -97,22 +97,6 @@ const PawMain = ()=>{
         <div className="padM small-3M"></div>
         <div className="padM small-4M"></div>
     </div> 
-
-    {/* <div className="paw-print-13M">
-        <div className="padM largeM"></div>
-        <div className="padM small-1M"></div>
-        <div className="padM small-2M"></div>
-        <div className="padM small-3M"></div>
-        <div className="padM small-4M"></div>
-    </div> 
-
-    <div className="paw-print-14M">
-        <div className="padM largeM"></div>
-        <div className="padM small-1M"></div>
-        <div className="padM small-2M"></div>
-        <div className="padM small-3M"></div>
-        <div className="padM small-4M"></div>
-    </div>  */}
 </div>
      
     )

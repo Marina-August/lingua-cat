@@ -179,7 +179,6 @@ const Words =({onDeleteWord})=>{
     }
 
     return (
-      // <AuthenticatedContent>
       <>
        {isLoading ? loader:
         <div>
@@ -214,7 +213,6 @@ const Words =({onDeleteWord})=>{
                 </div>   
               </div>}
           <DataTable 
-          // header = {header}
           value={wordsForTable}
           showGridlines
           rowHover

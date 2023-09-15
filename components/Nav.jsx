@@ -30,7 +30,7 @@ const Nav =()=>{
             </Link>
             <div className='flex gap-3 md:gap-5'>
                 <p className="flex items-center font-merrySans text-xl 
-                text-gray-600 hover:text-slate-800"><span className="text-orange-500">&nbsp;Sign in&nbsp;  </span>  with Google.</p>
+                text-gray-600 hover:text-slate-800"><span className="text-orange-500">&nbsp;Sign in&nbsp;  </span>  with Google</p>
             {providers &&
                 Object.values(providers).map((provider) => 
                 (<button 

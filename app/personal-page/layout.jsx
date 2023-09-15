@@ -5,7 +5,6 @@ import ReduxProvider from '@/redux/provider';
 import CatAction from '@/components/CatAction';
 import Footer from '@/components/Footer';
 import AuthenticatedContent from '@/components/AuthenticatedContent';
-import { Button } from 'primereact/button';
 
 import { signOut,useSession } from 'next-auth/react';
 import PersonalNav from '@/components/PersonalNav';

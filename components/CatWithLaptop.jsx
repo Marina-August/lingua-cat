@@ -15,7 +15,7 @@ const CatWithLaptop = ()=>{
 
     return(
         <div className="container-kitty">
-           <div className="kitty">
+          <div className="kitty">
               <div className="face">
                 <div className="ear-kitty"></div>
                 <div className="eye-kitty"></div>
@@ -32,14 +32,14 @@ const CatWithLaptop = ()=>{
                </div>
                <div className="tail-kitty"></div>
               </div>
-        {isBubble && <div className="bubbleWithWords" onClick={bubbleHandler}>
-            <p className="textKissa font-dog">Kissa - Cat</p>
-        </div>}
-        <div className="laptop">
-          <div className="logo"></div>
-        </div>
+             {isBubble && <div className="bubbleWithWords" onClick={bubbleHandler}>
+              <p className="textKissa font-dog">Kissa - Cat</p>
+            </div>}
+            <div className="laptop">
+              <div className="logo"></div>
+            </div>
           </div>
-    </div>
+       </div>
     )
 }
 

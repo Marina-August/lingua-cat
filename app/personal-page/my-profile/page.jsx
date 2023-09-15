@@ -151,7 +151,6 @@ const MyProfile =()=>{
                     </div>
                 </div>
                 <div className='flex font-merrySans text-2xl text-gray-600 font-bold hover:text-slate-800 cursor-pointer' onClick={deleteProfileHandler}>
-                   {/* <i className="pi pi-trash mr-2"  style={{marginLeft:5}}></i> */}
                    <img src="/assets/images/delete (1).png"  className='-ml-1'/>
                    <p className='ml-2'> Delete Profile</p>
                 </div>      
