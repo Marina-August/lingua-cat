@@ -18,10 +18,10 @@ const Footer =()=>{
                 </p>
             </div> 
             <div className="flex gap-8">  
-                <Link href= "https://github.com/Marina-August" className="opacity-75"><img src="/assets/images/github.png"  height="25" width="25"/></Link>
-                <Link href= "https://www.linkedin.com/in/marina-batina-208a13282/"  className="opacity-75"><img src="/assets/images/linkedin.png" height="25" width="25"/></Link>
-                <Link href= "https://www.codewars.com/users/Marina_August"  className="opacity-75"><img src="https://www.codewars.com/packs/assets/logo.f607a0fb.svg" hight= "25" width = "25"/></Link>  
-                <a href="mailto:mbatina.oat@gmail.com" className="mr-16 opacity-75">
+                <Link href= "https://github.com/Marina-August" className="opacity-50"><img src="/assets/images/github.png"  height="25" width="25"/></Link>
+                <Link href= "https://www.linkedin.com/in/marina-batina-208a13282/"  className="opacity-50"><img src="/assets/images/linkedin.png" height="25" width="25"/></Link>
+                <Link href= "https://www.codewars.com/users/Marina_August"  className="opacity-50"><img src="https://www.codewars.com/packs/assets/logo.f607a0fb.svg" hight= "25" width = "25"/></Link>  
+                <a href="mailto:mbatina.oat@gmail.com" className="mr-16 opacity-50">
                     <img src="/assets/images/gmail.png" alt="Send an email" height="25" width="25"/>
                 </a> 
             </div>     

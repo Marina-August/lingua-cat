@@ -35,9 +35,6 @@ body, html {
   width: 100vw;
   min-height: 100vh;
   position: fixed;
-  /* display: flex;
-  justify-content: center; */
-  /* padding: 120px 24px 160px 24px; */
   pointer-events: none;
 }
 
@@ -392,23 +389,6 @@ body, html {
     }
   }
 
-/* .eyeOpen,
-.eyeOpen:before {
-    height: 8px;
-    width: 10px;
-    border: 3.5px solid #2c2c2c;
-    position: absolute;
-    border-radius: 0 0 30px 30px;
-}
-.eyeOpen {
-    top: 18px;
-    left: 15px;
-}
-.eyeOpen:before {
-    content: "";
-    left: 30px;
-} */
-
 .bodyAwake {
     background-color: #f19b1a;
     height: 90px;
@@ -439,25 +419,8 @@ body, html {
   border-radius: 2px 2px 13px 13px;
   top: 38px;
   left: 22.85px;
-  /* animation: mouthNotHunger-move 2s infinite alternate; */
-  /* transform-origin: top; */
   animation: mouthNotHunger-scale 4s infinite alternate;
 }
-
-/* @keyframes mouthNotHunger-move {
-  0% {
-    left: 21px;
-    right: initial;
-  }
-  /* 50% {
-    left: 50px; 
-    /* right: initial;
-  } */ 
-  /* 100% {
-    left: initial;
-    right: 28px;
-  }
-} */ 
 
 @keyframes mouthNotHunger-scale {
   0%, 100% {
@@ -772,16 +735,9 @@ body, html {
 
 /* Tailwind Styles */
 
-/* .app {
-  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
-} */
 .app {
     @apply relative z-10  items-center ;
   }
-
-.black_btn {
-  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
-}
 
 .outline_btn {
   @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
@@ -803,9 +759,6 @@ body, html {
   @apply bg-gradient-to-r from-gray-600 via-orange-600 to-gray-600 bg-clip-text text-transparent;
 }
 
-.search_input {
-  @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-satoshi pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
-}
 
 .glassmorphism {
   @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5;
@@ -827,18 +780,6 @@ body, html {
   @apply max-sm:hidden font-satoshi font-semibold text-lg text-black tracking-wide;
 }
 
-.dropdown {
-  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
-}
-
-.dropdown_link {
-  @apply text-sm font-inter text-gray-700 hover:text-gray-500 font-medium;
-}
-
-
-.prompt_card {
-  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
-}
 
 .flex-center {
   @apply flex justify-center items-center;
@@ -874,8 +815,8 @@ body, html {
 
 
 .pad {
-  width: 20px;
-  height: 25px;
+  width: 22px;
+  height: 27px;
   background-color: #6a6a6d;
   -webkit-border-radius: 63px 63px 63px 63px / 108px     108px 72px 72px;
   border-radius: 50%  50%  50%  50%  / 60%   60%         40%  40%;
@@ -884,8 +825,8 @@ body, html {
   /* z-index: 10; */
 }       
 .large {
- width: 60px;
- height: 67px;
+ width: 55px;
+ height: 62px;
  transform: rotate(80deg);
  left: 100px;
  top: 50px;
@@ -897,20 +838,20 @@ body, html {
 }
 .small-2 {
  transform: rotate(65deg);
- left: 170px;
- top: 50px;
+ left: 167px;
+ top: 52px;
 }  
 .small-3 {
  transform: rotate(98deg);
  position: absolute;
- left: 173px;
+ left: 168px;
  top: 81px;
 }
 .small-4 {
- transform: rotate(131deg);
+ transform: rotate(115deg);
  position: absolute;
- left: 155px;
- top: 106px;
+ left: 149px;
+ top: 100px;
 }
   
 /* position and animate */
@@ -918,10 +859,6 @@ body, html {
 .paw-print-1 {
 opacity: 0;
 position: absolute;
-/* left: 150px;
-top: 700px; */
-/* margin-left: -50px;
-margin-bottom: -170px; */
 transform: rotate(-20deg);
 -webkit-animation: walk 3s linear infinite;
 animation: /*keyframe*/walk /*duration*/3s /*transition*/linear /*repeat*/infinite;
@@ -1016,13 +953,7 @@ animation: walk 3s linear infinite 1.75s;
   position: fixed;
   width: 200px;
   height: 200px;
-  
-  /* height: 130px; */
-  /* background-color: #7388bd; */
   left: 4%;
-  /* text-orientation: upright;
-  writing-mode: vertical-rl; */
-  /* text-align: center; */
   top: 55%;
   border-radius:5px;
   color: #ffffff;
@@ -1098,7 +1029,6 @@ animation: walk 3s linear infinite 1.75s;
 /* front pane, placed above back */
 .front {
 	z-index: 2;
-	/* for firefox 31 */
 	transform: rotateY(0deg);
   background: rgb(233, 181, 135);
   word-wrap: break-word;
@@ -1129,9 +1059,200 @@ animation: walk 3s linear infinite 1.75s;
   }
 }
 
-/* BreadCrimb Style */
+/* BreadCrumb Style */
 .p-breadcrumb {
   background-color: inherit !important;
   border:none !important;
   background-color: #575759;
+}
+
+/* PawMain Style */
+
+.padM {
+  width: 15px;
+  height: 18px;
+  background-color: #7f7f81;
+  -webkit-border-radius: 63px 63px 63px 63px / 108px     108px 72px 72px;
+  border-radius: 50%  50%  50%  50%  / 60%   60%         40%  40%;
+  display: block;
+  position: absolute;
+  /* z-index: 10; */
+}       
+.largeM {
+ width: 35px;
+ height: 40px;
+ transform: rotate(80deg);
+ left: 100px;
+ top: 50px;
+} 
+.small-1M {
+ transform: rotate(50deg);
+ left: 123px;
+ top: 30px;
+}
+.small-2M {
+ transform: rotate(65deg);
+ left: 140px;
+ top: 43px;
+}  
+.small-3M {
+ transform: rotate(102deg);
+ position: absolute;
+ left: 145px;
+ top: 66px;
+}
+.small-4M {
+ transform: rotate(111deg);
+ position: absolute;
+ left: 133px;
+ top: 87px;
+}
+  
+/* position and animate */
+  
+.paw-print-1M {
+opacity: 0;
+position: absolute;
+left: 187px;
+top: 570px;
+transform: rotate(0deg);
+-webkit-animation: walkM 3s linear infinite;
+animation: /*keyframe*/walkM /*duration*/3s /*transition*/linear /*repeat*/infinite;
+}
+.paw-print-2M {
+opacity: 0;
+position: absolute;
+left: 297px;
+top: 496px;
+transform: rotate(-5deg); 
+-webkit-animation: walkM 3s linear infinite 0.25s;
+animation: walkM 3s linear infinite /*delay*/0.25s;
+}
+.paw-print-3M {
+opacity: 0;
+position: absolute;
+left: 336px;
+top: 606px;
+transform: rotate(-10deg); 
+-webkit-animation: walkM 3s linear infinite 0.5s;
+animation: walkM 3s linear infinite 0.5s;
+}     
+.paw-print-4M {
+opacity: 0;
+position: absolute;
+left: 513px;
+top: 565px;
+transform: rotate(-7deg); 
+-webkit-animation: walkM 3s linear infinite 0.75s;
+animation: walkM 3s linear infinite 0.75s;
+}    
+.paw-print-5M {
+opacity: 0;
+position: absolute;
+left: 486px;
+top: 436px;
+transform: rotate(-7deg); 
+-webkit-animation: walkM 3s linear infinite 1s;
+animation: walkM 3s linear infinite 1s;
+}   
+.paw-print-6M {
+opacity: 0;
+position: absolute;
+left: 705px;
+top: 501px;
+transform: rotate(-6deg); 
+-webkit-animation: walkM 3s linear infinite 1.25s;
+animation: walkM 3s linear infinite 1.25s;
+}   
+.paw-print-7M {
+opacity: 0;
+position: absolute;
+left: 908px;
+top: 430px;
+transform: rotate(-14deg); 
+-webkit-animation: walkM 3s linear infinite 1.75s;
+animation: walkM 3s linear infinite 1.75s;
+}   
+.paw-print-8M {
+opacity: 0;
+position: absolute;
+left: 710px;
+top: 350px;
+transform: rotate(-7deg); 
+-webkit-animation: walkM 3s linear infinite 1.5s;
+animation: walkM 3s linear infinite 1.5s;
+}
+
+.paw-print-9M {
+  opacity: 0;
+  position: absolute;
+  left: 896px;
+  top: 296px;
+  transform: rotate(-24deg); 
+  -webkit-animation: walkM 3s linear infinite 2.00s;
+  animation: walkM 3s linear infinite 2.00s;
+  }
+
+.paw-print-10M {
+    opacity: 0;
+    position: absolute;
+    left: 1080px;
+    top: 330px;
+    transform: rotate(-25deg); 
+    -webkit-animation: walkM 3s linear infinite 2.25s;
+    animation: walkM 3s linear infinite 2.25s;
+    }
+
+.paw-print-11M {
+      opacity: 0;
+      position: absolute;
+      left: 1030px;
+      top: 200px;
+      transform: rotate(-30deg); 
+      -webkit-animation: walkM 3s linear infinite 2.5s;
+      animation: walkM 3s linear infinite 2.5s;
+      }
+
+.paw-print-12M {
+        opacity: 0;
+        position: absolute;
+        left: 1200px;
+        top: 230px;
+        transform: rotate(-60deg); 
+        -webkit-animation: walkM 3s linear infinite 2.75s;
+        animation: walkM 3s linear infinite 2.75s;
+}
+
+.paw-print-13M {
+  opacity: 0;
+  position: absolute;
+  left: 750px;
+  top: 350px;
+  transform: rotate(-7deg); 
+  -webkit-animation: walkM 3s linear infinite 1.75s;
+  animation: walkM 3s linear infinite 1.75s;
+  }
+
+.paw-print-14M {
+    opacity: 0;
+    position: absolute;
+    left: 750px;
+    top: 350px;
+    transform: rotate(-7deg); 
+    -webkit-animation: walkM 3s linear infinite 1.75s;
+    animation: walkM 3s linear infinite 1.75s;
+ } 
+  
+/* walking effect animation keyframes */
+  
+@-webkit-keyframes walkM {
+25%  {opacity: 1;}
+100% {opacity: 0;}
+}
+  
+@keyframes walkM {
+/* appear */
+25%  {opacity: 1;}
+/* disappear */
+100% {opacity: 0;}
 }

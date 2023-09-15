@@ -54,7 +54,6 @@ const Cat =()=>{
     }, [])
 
    useEffect(()=>{
-    // const awake = localStorage.getItem('info');
     if(isAwake===true){
        dispatch(vocabularyCatActions.trueAwakeHandler())
     }else{
@@ -64,37 +63,11 @@ const Cat =()=>{
 
 
 
-   //----- Set Interval for the cat to fall asleep in 30 seconds------
-
-//    useEffect(()=>{
-//     const intervalId = setInterval(() => {
-//         dispatch(vocabularyCatActions.falseAwakeHandler()) ; 
-//       }, 60000); 
-  
-//       return () => {
-//         clearInterval(intervalId);
-//       };
-//    },[])
-
-
-   //-----------Set reset counter to show hunger------------------
-//    useEffect(()=>{
-//     const intervalId = setInterval(() => {
-//         dispatch(vocabularyCatActions.reset()) ; 
-//       }, 3600000); 
-  
-//       return () => {
-//         clearInterval(intervalId);
-//       };
-//    },[])
-
-    
-   // set localstorage to be cat awake after page reloading
     const wakeUpHandler =()=>{
         dispatch(vocabularyCatActions.trueAwakeHandler());
-        // localStorage.setItem('awake', true);
+        
     }
-    //----------------------------------------------------
+    
 
     return (
         <>
@@ -108,7 +81,6 @@ const Cat =()=>{
             </div>
             }
         <div className="container" onClick={wakeUpHandler}>
-
             <div className="cat">
                 <div className="ear"></div>
                 <div className={!isAwake? "eye":"eyeOpen"}></div>

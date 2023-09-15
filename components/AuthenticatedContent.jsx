@@ -12,7 +12,7 @@ const AuthenticatedContent = ({ children }) => {
     return children;
   }
   else {
-    // router.push("/");
+  
   }
 };
 

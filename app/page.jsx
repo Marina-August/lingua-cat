@@ -1,9 +1,9 @@
 "use client"
 
 import CatMainPage from '@/components/CatMainPage';
-import CatWithLaptop from '@/components/CatWithLaptop';
 import Footer from '@/components/Footer';
 import Nav from "@/components/Nav";
+import PawMain from '@/components/PawMain';
 
 import { useSession } from 'next-auth/react';
 
@@ -23,6 +23,7 @@ const Home=()=>{
           </div>
      </div>
      <CatMainPage/>
+     <PawMain/>
      </div>
     <Footer/>
     </>}

@@ -10,8 +10,8 @@ const CatAction =()=>{
 
     return(
         <>
-        {counter <5 && <Cat/>}
-        {counter >= 5 && <CatWithLaptop/>}
+            {counter <5 && <Cat/>}
+            {counter >= 5 && <CatWithLaptop/>}
         </>
 
     )
