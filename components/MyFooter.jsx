@@ -1,10 +1,6 @@
-
-
-import Image from "next/image";
 import Link from "next/link";
 
-
-const Footer =()=>{
+const MyFooter = ()=>{
     const year = new Date().getFullYear();
 
     return(
@@ -29,4 +25,4 @@ const Footer =()=>{
     )
 }
 
-export default Footer;
+export default MyFooter;

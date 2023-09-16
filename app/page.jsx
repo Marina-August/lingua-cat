@@ -1,12 +1,12 @@
 "use client"
 
 import CatMainPage from '@/components/CatMainPage';
-import Footer from '@/components/Footer';
 import Nav from "@/components/Nav";
 import PawMain from '@/components/PawMain';
 
 import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
+import MyFooter from '@/components/MyFooter';
 
 const Home=()=>{
  const {data: session} = useSession();
@@ -37,7 +37,7 @@ const Home=()=>{
      <CatMainPage/>
      {isVisible && <PawMain visible={isVisible}/>}
      </div>
-    <Footer/>
+    <MyFooter/>
     </>}
     </>
    

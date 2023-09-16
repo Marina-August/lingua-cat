@@ -3,11 +3,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import ReduxProvider from '@/redux/provider';
 import CatAction from '@/components/CatAction';
-import Footer from '@/components/Footer';
 import AuthenticatedContent from '@/components/AuthenticatedContent';
 
 import { signOut,useSession } from 'next-auth/react';
 import PersonalNav from '@/components/PersonalNav';
+import MyFooter from '@/components/MyFooter';
 
 const PersonalLayout =({ children })=>{
   const {data: session} = useSession();
@@ -54,7 +54,7 @@ const PersonalLayout =({ children })=>{
         </div>
         </div>
         </ReduxProvider>
-        <Footer/>
+        <MyFooter/>
       </div>
 
     </div>
