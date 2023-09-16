@@ -7,10 +7,12 @@ import PawMain from '@/components/PawMain';
 import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import MyFooter from '@/components/MyFooter';
+import { useRouter } from 'next/navigation';
 
 const Home=()=>{
  const {data: session} = useSession();
  const[isVisible, setIsVisible] = useState(true);
+ const router = useRouter();
 
  useEffect (()=>{
   const interval = setInterval(() => {
@@ -21,10 +23,21 @@ const Home=()=>{
 
  },[isVisible])
 
+ useEffect(()=>{
+  console.log("Ku Ku")
+  console.log(session)
+  if (session?.user){
+    console.log("Inside")
+    router.push('/personal-page');
+  }{
+
+  }
+ }, [session?.user])
+
 
   return(
     <>
-    {!session?.user && 
+    {!session?.user &&
     <>
      <div className="allButFooter">
         <div>
