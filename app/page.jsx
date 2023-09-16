@@ -6,9 +6,21 @@ import Nav from "@/components/Nav";
 import PawMain from '@/components/PawMain';
 
 import { useSession } from 'next-auth/react';
+import { useState, useEffect } from 'react';
 
 const Home=()=>{
  const {data: session} = useSession();
+ const[isVisible, setIsVisible] = useState(true);
+
+ useEffect (()=>{
+  const interval = setInterval(() => {
+    setIsVisible(prev => !prev);
+  }, isVisible? 7400 : 20000);
+
+  return () => clearInterval(interval);
+
+ },[isVisible])
+
 
   return(
     <>
@@ -23,7 +35,7 @@ const Home=()=>{
           </div>
      </div>
      <CatMainPage/>
-     <PawMain/>
+     {isVisible && <PawMain visible={isVisible}/>}
      </div>
     <Footer/>
     </>}
