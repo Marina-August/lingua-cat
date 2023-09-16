@@ -65,7 +65,6 @@ export const GET = async(request)=>{
         }
         pdf.save('table.pdf');
 
-
         const headers = new Headers();
         headers.set('Content-Disposition', 'attachment; filename="words.pdf"');
         headers.set('Content-Type', 'application/pdf');
@@ -77,6 +76,6 @@ export const GET = async(request)=>{
     
     } catch (error) {
         console.error(error);
-        return new Response('Failed to catch all words', {status:500})
+        return new Response('Failed to catch all words', {error, status:500})
     }
 }
