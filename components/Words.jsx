@@ -136,7 +136,7 @@ const Words =({onDeleteWord})=>{
           if (response.status !== 200) {
             console.log('not 200')
             console.log(response)
-            const data = await response.json();
+            const data = await response.text();
             console.log(data);
           }
           const blob = await response.blob();
