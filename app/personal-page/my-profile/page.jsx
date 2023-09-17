@@ -87,8 +87,13 @@ const MyProfile =()=>{
    const fetchImage =async()=>{
         const response = await fetch(`/api/user/${session?.user.id}`);
         const data = await response.json();
-        console.log(data.image)
-        dispatch(vocabularyCatActions.setImageURL(data.image))
+        console.log(data.image);
+        if(data.image){
+          dispatch(vocabularyCatActions.setImageURL(data.image))
+        }{
+          
+        }
+        
    }
 
    useEffect(()=>{
@@ -104,6 +109,9 @@ const MyProfile =()=>{
      })
      fetchImage();
    },[])
+
+   console.log("ID",imageId)
+   console.log("URL",imageUrl)
 
 
     return (

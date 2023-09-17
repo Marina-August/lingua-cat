@@ -2,7 +2,7 @@ import { createSlice,configureStore } from '@reduxjs/toolkit';
 
 const initialVocabularyCatState = {counter: 0, isAwake: false, allWords:[], wordsForTable:[], 
     testAllWords:false, countQuestions:0, quantityRightAnswers:0, sourceLanguage: 'Finnish', 
-    targetLanguage:'English', imageId: '', imageURL:''};
+    targetLanguage:'English', imageId: '', imageURL:'', isSignOut:true};
 
 const vocabularyCatSlice = createSlice({
     name: "vocabulary",
@@ -51,7 +51,10 @@ const vocabularyCatSlice = createSlice({
             state.imageId = action.payload
         },
         setImageURL (state, action){
-            state.imageId = action.payload
+            state.imageURL = action.payload
+        },
+        setIsSignOut (state, action){
+            state.isSignOut = action.payload;
         }
 
     }

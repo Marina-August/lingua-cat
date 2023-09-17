@@ -1,4 +1,5 @@
 import Provider from '@/components/Provider';
+import ReduxProvider from '@/redux/provider';
 import '@/styles/globals.css'
 
 
@@ -15,12 +16,14 @@ const RootLayout =({ children })=>{
     <html lang="en">
       <body >
         <Provider>
-        <div className='main'>
-          <div className='gradient'/>
-        </div>
-        <main className='app'>
-            {children}
-        </main>
+          <ReduxProvider>
+            <div className='main'>
+              <div className='gradient'/>
+            </div>
+            <main className='app'>
+              {children}
+            </main>
+          </ReduxProvider>
         </Provider>
       </body>
     </html>

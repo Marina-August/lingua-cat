@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import ReduxProvider from '@/redux/provider';
 import CatAction from '@/components/CatAction';
+import { useDispatch } from 'react-redux';
+import { vocabularyCatActions } from '@/redux/store';
 import AuthenticatedContent from '@/components/AuthenticatedContent';
 
 import { signOut,useSession } from 'next-auth/react';
@@ -11,6 +13,7 @@ import MyFooter from '@/components/MyFooter';
 
 const PersonalLayout =({ children })=>{
   const {data: session} = useSession();
+  const dispatch = useDispatch();
 
     return (
       <AuthenticatedContent>
@@ -37,13 +40,14 @@ const PersonalLayout =({ children })=>{
             <Link href="/" className="text-white py-2 rounded hover:bg-slate-400 focus:bg-slate-500 transition duration-300"
               onClick={() => {
               const baseURL = window.location.origin;
+              dispatch(vocabularyCatActions.setIsSignOut(true));
               signOut({ callbackUrl: baseURL });
           }}> 
             <i className="pi pi-sign-out"  style={{marginLeft:5}}></i> <span className=" ml-1 text-2xl tracking-wide font-merry">Sign Out</span>
             </Link>
         </div>
       <div className=" allButFooter  ml-60">
-      <ReduxProvider>
+      {/* <ReduxProvider> */}
         <div className='flex flex-col gap-20'>
         <PersonalNav/>
         <div>
@@ -53,7 +57,7 @@ const PersonalLayout =({ children })=>{
                 </div>               
         </div>
         </div>
-        </ReduxProvider>
+        {/* </ReduxProvider> */}
         <MyFooter/>
       </div>
 

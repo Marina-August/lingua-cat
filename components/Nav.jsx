@@ -4,10 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import {signIn, useSession, getProviders} from "next-auth/react";
+import { useDispatch } from "react-redux";
+import { vocabularyCatActions } from "@/redux/store";
 
 const Nav =()=>{
     const {data: session} = useSession();
     const [providers, setProviders] = useState(null);
+    const dispatch = useDispatch();
     
 
     useEffect(() => {
@@ -39,7 +42,8 @@ const Nav =()=>{
                     key={provider.name}
                     onClick={
                     () => {
-                    signIn(provider.id, { callbackUrl: '/personal-page' });
+                        dispatch(vocabularyCatActions.setIsSignOut(false));   
+                        signIn(provider.id, { callbackUrl: '/personal-page' });
                     }
                     }>
                         <img src="/assets/images/google.png" height='30' width='30'/>

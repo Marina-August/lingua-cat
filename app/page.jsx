@@ -8,11 +8,13 @@ import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import MyFooter from '@/components/MyFooter';
 import { useRouter } from 'next/navigation';
+import { useSelector } from 'react-redux';
 
 const Home=()=>{
  const {data: session} = useSession();
  const[isVisible, setIsVisible] = useState(true);
  const router = useRouter();
+ const isSignOut = useSelector((state)=>state.isSignOut);
 
  useEffect (()=>{
   const interval = setInterval(() => {
@@ -24,13 +26,12 @@ const Home=()=>{
  },[isVisible])
 
  useEffect(()=>{
-  console.log("Ku Ku")
-  console.log(session)
-  if (session?.user){
-    console.log("Inside")
-    router.push('/personal-page');
-  }{
+  if(!isSignOut){
+    if (session?.user){
+      router.push('/personal-page');
+    }{
 
+    }
   }
  }, [session?.user])
 
