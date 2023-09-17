@@ -75,7 +75,7 @@ export const GET = async(request)=>{
         });
     
     } catch (error) {
-        console.error(error);
-        return new Response('Failed to catch all words', {error, status:500})
+        console.error(error.message);
+        return new Response(error.message, {status:500})
     }
 }

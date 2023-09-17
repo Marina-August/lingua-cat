@@ -132,6 +132,13 @@ const Words =({onDeleteWord})=>{
         try {
           const response = await fetch("/api/download");
           console.log("client load", response)
+          console.log(response.status)
+          if (response.status !== 200) {
+            console.log('not 200')
+            console.log(response)
+            const data = await response.json();
+            console.log(data);
+          }
           const blob = await response.blob();
           const url = URL.createObjectURL(blob);
           const a = document.createElement('a');
