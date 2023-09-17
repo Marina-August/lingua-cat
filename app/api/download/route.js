@@ -63,7 +63,7 @@ export const GET = async(request)=>{
             })
 
         }
-        pdf.save('table.pdf');
+        //pdf.save('table.pdf');
 
         const headers = new Headers();
         headers.set('Content-Disposition', 'attachment; filename="words.pdf"');
