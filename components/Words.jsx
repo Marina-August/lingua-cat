@@ -130,14 +130,13 @@ const Words =({onDeleteWord})=>{
     const downloadHandler = async ()=>{
         setIsLoadingPdf(true);
         try {
-          const response = await fetch("/api/download");
+          const response = await fetch(`/api/download-user/${session?.user.id}/words`);
           console.log("client load", response)
-          console.log(response.status)
+          // an error occured during PDF download
           if (response.status !== 200) {
-            console.log('not 200')
-            console.log(response)
-            const data = await response.text();
-            console.log(data);
+            const errMessage = await response.text();
+            console.log('ERROR:', errMessage);
+            return;
           }
           const blob = await response.blob();
           const url = URL.createObjectURL(blob);

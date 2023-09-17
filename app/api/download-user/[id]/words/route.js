@@ -3,15 +3,13 @@ import { connectToDB } from "@/utils/database";
 import Word from "@/models/word";
 import autoTable from 'jspdf-autotable'
 import { NextResponse } from "next/server";
-import cat from "@/public/assets/icons/logo-no-background.png";
 
 export const dynamic = 'force-dynamic';
 
-export const GET = async(request)=>{
+export const GET = async(request,{params})=>{
       try{
         await connectToDB();
-        const words = await Word.find({});
-        
+        const words = await Word.find({user_id:params.id}).populate('user_id');
         const pdf = new jsPDF({
             format:'a4'
         });
