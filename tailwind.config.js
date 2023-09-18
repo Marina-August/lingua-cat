@@ -14,6 +14,7 @@ module.exports = {
         philosopher:['Philosopher', 'sans-serif'],
         merrySans:['Merriweather Sans', 'sans-serif' ],
         dog:['Underdog', 'cursive'],
+        baby:['Oooh Baby', 'cursive']
       },
       colors: {
         'primary-orange': '#FF5722',

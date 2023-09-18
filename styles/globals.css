@@ -432,41 +432,7 @@ body, html {
 }
 
 
-.h{
-    border-radius:5px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    background-color: #98c8f2;
-    width: 40px;
-    height: 30px;
-}
-.u{
-    background-color: #f4d491;
-    width: 40px;
-    height: 30px;
-    text-align: center;
-}
-.n{
-    background-color: #789bb9;
-    width: 40px;
-    height: 30px;
-    text-align: center;
-}
-.g{
-    background-color: #eec367;
-    width: 40px;
-    height: 30px;
-    text-align: center;
-}
-.e{
-    background-color: #58738b;
-    border-radius:5px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    width: 40px;
-    height: 30px;
-    text-align: center;
-}
+
 
 /* Kitty Style */
 
@@ -744,7 +710,7 @@ body, html {
 }
 
 .head_text {
-  @apply  text-7xl font-extrabold leading-[1.15] text-black sm:text-6xl;
+  @apply  lg:text-7xl md:text-4xl font-extrabold leading-[1.15] text-black sm:text-2xl;
 }
 .text_succes {
   @apply  text-3xl font-extrabold leading-[1.15] text-black sm:text-3xl mt-8;
@@ -757,6 +723,10 @@ body, html {
 
 .gray_gradient {
   @apply bg-gradient-to-r from-gray-600 via-orange-600 to-gray-600 bg-clip-text text-transparent;
+}
+
+.orangegray_gradient {
+  @apply bg-gradient-to-r from-orange-600 via-gray-600 to-orange-600 bg-clip-text text-transparent;
 }
 
 
@@ -808,7 +778,7 @@ body, html {
   @apply flex text-2xl font-merrySans pointer-events-none items-center justify-center w-60 h-24 rounded bg-slate-100 relative left-1/2 transform -translate-x-1/2 break-all p-2;
 }
 .profile{
-  @apply font-merrySans text-2xl text-gray-600 font-bold hover:text-slate-800 cursor-default;
+  @apply font-merrySans xl:text-2xl lg:text-xl md:text-sm sm:text-xs text-gray-600 font-bold hover:text-slate-800 cursor-default;
 }
 
 /* Paw Style */

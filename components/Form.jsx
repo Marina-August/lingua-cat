@@ -100,10 +100,11 @@ const Form = ({type, onWordHandler, editWord, onUpdateWord, sourceL, targetL})=>
     return (
         <section className='w-full max-w-full flex-col -mt-20'>
         <h1 className='head_text text-center'>
-          <span className='orange_gradient -ml-20 font-merry text-7xl '>{type} a word</span>
+          <span className='orange_gradient xl:-ml-20 md:-ml-36 font-merry'>{type} a word</span>
         </h1>
         <form onSubmit ={submitHandler}
-        className=' appearing mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism ml-64'
+        className=' appearing mt-10 flex flex-col gap-7
+         glassmorphism xl:w-full max-w-2xl xl:ml-64 lg:ml-32 lg:w-3/4 md:ml-8 md:w-3/4 sm:ml-4 sm:w-3/4'
       >
         <label>
           <span className='font-semibold text-base text-lg text-gray-700 mr-6 font-merrySans'>

@@ -110,8 +110,14 @@ const MyProfile =()=>{
      fetchImage();
    },[])
 
-   console.log("ID",imageId)
-   console.log("URL",imageUrl)
+  //  const screenWidth = window.innerWidth;
+  //  const [imageWidth, setImageWidth] = useState(30);
+  //  const [imageHeight, setImageHeight] = useState(25);
+
+  //  if (screenWidth <=1024) {
+  //   setImageWidth(20);
+  //   setImageHeight(15);
+  // }
 
 
     return (
@@ -138,12 +144,12 @@ const MyProfile =()=>{
             </div>
             <div className='flex flex-col gap-4'>
                 <div className='profile'>
-                     My Email:<span className='text-3xl text-orange-500 ml-4'>{session?.user.email} </span>
+                     My Email:<span className='xl:text-3xl lg:text-xl md:text-sm text-orange-500 ml-4'>{session?.user.email} </span>
                 </div>
                 <div className = 'flex profile'>
                     <h2> My Source Language:</h2>
-                     <div onClick = {sourceFinnishHandler} className={`${sourceLanguage === 'Finnish'? 'bg-orange-400': ''} ml-4 w-9 rounded cursor-pointer `}> 
-                        <Image width={30} height={25} src="/assets/images/Fi.png" alt="FI flag" loading="eager" className="icon"/>
+                     <div onClick = {sourceFinnishHandler} className={`${sourceLanguage === 'Finnish'? 'bg-orange-400': ''} ml-4 xl:w-9 rounded cursor-pointer `}> 
+                        <Image  width ={30} height={7} sizes="(max-width: 768px) 20vw, (max-width: 1200px) 50vw, 33vw" src="/assets/images/Fi.png" alt="FI flag" loading="eager" className="icon"/>
                     </div>
                     <div onClick = {sourceEnglishHandler} className={`${sourceLanguage === 'English'? 'bg-orange-400': ''} ml-4 w-9 rounded cursor-pointer `}> 
                         <Image width={30} height={25} src="/assets/images/En.png" alt="FI flag" loading="eager" className="icon"/>
@@ -158,8 +164,8 @@ const MyProfile =()=>{
                         <Image width={30} height={25} src="/assets/images/En.png" alt="FI flag" loading="eager" className="icon"/>
                     </div>
                 </div>
-                <div className='flex font-merrySans text-2xl text-gray-600 font-bold hover:text-slate-800 cursor-pointer' onClick={deleteProfileHandler}>
-                   <img src="/assets/images/delete (1).png"  className='-ml-1'/>
+                <div className='flex font-merrySans xl:text-2xl lg:text-xl md:text-sm sm:text-xs text-gray-600 font-bold hover:text-slate-800 cursor-pointer' onClick={deleteProfileHandler}>
+                   <img src="/assets/images/delete (1).png"  className='-ml-1 md:hidden'/>
                    <p className='ml-2'> Delete Profile</p>
                 </div>      
             </div>
