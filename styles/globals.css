@@ -1272,6 +1272,10 @@ animation: walkM 3s linear infinite 1.5s;
   }
   .gray_gradient{
     font-size: xx-large;
+    hyphens: auto;
+  }
+  .orangegray_gradient{
+    hyphens: auto;
   }
 
 }
@@ -1287,6 +1291,22 @@ animation: walkM 3s linear infinite 1.5s;
     display: none;
   }
   .nav-container{
-    padding-right: 8%;
+    display: none;
+  }
+  .mainpage-container{
+    margin-top: 30%;
+    margin-left: 2%;
+    margin-right: 2%;
+    text-align: center;
+  }
+  .signin-mobile{
+    margin-bottom: 55%;
+    margin-left: 35%;
+  }
+}
+
+@media(min-width:530px){
+  .signin-mobile{
+    display: none;
   }
 }
