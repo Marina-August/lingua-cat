@@ -15,7 +15,7 @@ const MyFooter = ()=>{
             </div> 
             <div className="shrink icons-footer flex lg:gap-8 md:gap-2 items-center">  
                 <Link href= "https://github.com/Marina-August" className="opacity-50 hover:opacity-75"><img src="/assets/images/github.png"  height="20" width="20"/></Link>
-                <Link href= "https://www.linkedin.com/in/marina-batina-208a13282/"  className="opacity-50 hover:opacity-75"><img src="/assets/images/linkedin.png" height="20" width="20"/></Link>
+                <Link href= "https://www.linkedin.com/in/marina-batina/"  className="opacity-50 hover:opacity-75"><img src="/assets/images/linkedin.png" height="20" width="20"/></Link>
                 <Link href= "https://www.codewars.com/users/Marina_August"  className="opacity-50 hover:opacity-75"><img src="https://www.codewars.com/packs/assets/logo.f607a0fb.svg" hight= "25" width = "25"/></Link>  
                 <a href="mailto:mbatina.oat@gmail.com" className="lg:mr-16 md:mr-2 opacity-50 hover:opacity-75">
                     <img src="/assets/images/gmail.png" alt="Send an email" height="25" width="25"/>

@@ -58,7 +58,8 @@ const Home=()=>{
      <div className="allButFooter">
       <div>
         <Nav/>
-        <div className='mainpage-container flex  gap-10 flex-col justify-center items-center h-3/4'>
+        <div className='logo-main sm:hidden w-full h-32 flex justify-center items-center'><img src="/assets/icons/logo-no-background.png" alt="logo" height="100px" width="100px"/></div>
+        <div className='mainpage-container flex  sm: gap-10 flex-col justify-center items-center h-3/4'>
           <h1 className='gray_gradient xl:text-9xl lg:text-7xl md:text-5xl sm:text-3xl  font-merrySans'>LINGUA CAT</h1>
           <h2 className='orangegray_gradient  xl:text-xl md:text-base sm:text-xs font-semibold font-baby break-all'>Create your own Dictionary. <span className='cat-word'>And don't forget to feed the Cat.</span></h2> 
           </div>
