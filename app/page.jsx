@@ -44,8 +44,8 @@ const Home=()=>{
         <div>
         <Nav/>
         <div className='flex  gap-10 flex-col justify-center items-center h-3/4'>
-          <h1 className='gray_gradient text-9xl font-merrySans'>LINGUA CAT</h1>
-          <h2 className='orangegray_gradient  text-xl font-semibold font-baby'>Create your own Dictionary. And don't forget to feed the Cat.</h2> 
+          <h1 className='gray_gradient xl:text-9xl lg:text-7xl md:text-5xl sm:text-3xl  font-merrySans'>LINGUA CAT</h1>
+          <h2 className='orangegray_gradient  xl:text-xl md:text-base sm:text-xs font-semibold font-baby break-all'>Create your own Dictionary. And don't forget to feed the Cat.</h2> 
           </div>
      </div>
      <CatMainPage/>

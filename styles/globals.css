@@ -20,6 +20,7 @@ body, html {
   height: 40px;
 }
 
+
 .allButFooter {
   min-height:94.5vh;
   display: flex;
@@ -160,6 +161,16 @@ body, html {
     left: 8.5%;
     top: 85%;
 }
+
+.container-maincat {
+  height: 150px;
+  width: 350px;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  left: 8.5%;
+  top: 85%;
+}
+
 .cat {
     background-color: #f19b1a;
     height: 65px;
@@ -1212,6 +1223,18 @@ animation: walkM 3s linear infinite 1.5s;
     -webkit-animation: walkM 3s linear infinite 1.75s;
     animation: walkM 3s linear infinite 1.75s;
  } 
+
+ @media(max-width:1390px){
+   .paw-print-1M{
+    display: none;
+   }
+   .paw-print-2M{
+    display: none;
+   }
+   .paw-print-12M{
+    display: none;
+   }
+ }
   
 /* walking effect animation keyframes */
   
@@ -1225,4 +1248,30 @@ animation: walkM 3s linear infinite 1.5s;
 25%  {opacity: 1;}
 /* disappear */
 100% {opacity: 0;}
+}
+
+
+@media(max-width:640px){
+  .v-footer{
+    display: none;
+  }
+  .icons-footer{
+    display: none;
+  }
+  .signin-nav{
+    display: none;
+  }
+  .pawmain{
+    display: none;
+  }
+  .main-footer{
+    justify-content: center;
+  }
+  .container-maincat{
+    left: 47.5%;
+  }
+  .gray_gradient{
+    font-size: xx-large;
+  }
+
 }

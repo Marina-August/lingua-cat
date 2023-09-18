@@ -2,8 +2,7 @@
 const CatMainPage = ()=>{
   
     return(
-      <div className="container">
-
+      <div className="container-maincat">
       <div className="cat">
           <div className="ear"></div>
           <div className="eye"></div>

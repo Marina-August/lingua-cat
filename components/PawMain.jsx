@@ -59,7 +59,7 @@ const PawMain = ({visible})=>{
     },[visible])
 
     return(
-<div>    
+<div className=" pawmain sm:hidden xl:contents">    
    { isVisible1 && <div className="paw-print-1M">
         <div className="padM largeM"></div>
         <div className="padM small-1M"></div>

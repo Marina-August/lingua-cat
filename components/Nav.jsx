@@ -32,8 +32,8 @@ const Nav =()=>{
                 <Image src="/assets/icons/logo-no-background.png" alt="logo" width={150} height={150} loading="eager" />
             </Link>
             <div className='flex gap-3 md:gap-5'>
-                <p className="flex items-center font-merrySans text-xl 
-                text-gray-600 hover:text-slate-800"><span className="text-orange-500">&nbsp;Sign in&nbsp;  </span>  with Google</p>
+                <p className=" signin-nav flex items-center font-merrySans text-xl 
+                text-gray-600 hover:text-slate-800 sm:hidden lg:flex"><span className="text-orange-500 sm:hidden lg:inline">&nbsp;Sign in&nbsp;  </span>  with Google</p>
             {providers &&
                 Object.values(providers).map((provider) => 
                 (<button 
