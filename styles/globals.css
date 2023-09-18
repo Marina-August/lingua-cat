@@ -1264,9 +1264,7 @@ animation: walkM 3s linear infinite 1.5s;
   .pawmain{
     display: none;
   }
-  .main-footer{
-    justify-content: center;
-  }
+ 
   .container-maincat{
     left: 47.5%;
   }
@@ -1306,10 +1304,20 @@ animation: walkM 3s linear infinite 1.5s;
   .cat-word{
     display: block;
   }
+  .rights-footer{
+    display: none;
+  }
+  .main-footer{
+    gap:10%;
+  }
+  
 }
 
 @media(min-width:530px){
   .signin-mobile{
     display: none;
+  }
+  .main-footer{
+    justify-content: center;
   }
 }
