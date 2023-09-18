@@ -1303,6 +1303,9 @@ animation: walkM 3s linear infinite 1.5s;
     margin-bottom: 55%;
     margin-left: 35%;
   }
+  .cat-word{
+    display: block;
+  }
 }
 
 @media(min-width:530px){
