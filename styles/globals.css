@@ -1314,7 +1314,6 @@ animation: walkM 3s linear infinite 1.5s;
   }
   .main-footer{
     gap:10%;
-    height: 30px;
   }
   
 }
