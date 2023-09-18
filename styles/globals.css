@@ -1255,7 +1255,7 @@ animation: walkM 3s linear infinite 1.5s;
   .v-footer{
     display: none;
   }
-  .icons-footer{
+  .flaticon-footer{
     display: none;
   }
   .signin-nav{
@@ -1274,4 +1274,19 @@ animation: walkM 3s linear infinite 1.5s;
     font-size: xx-large;
   }
 
+}
+
+@media(max-width:530px){
+  .copyright-footer{
+    font-size: x-small;
+  }
+  .icons-footer{
+     gap: 5%;
+  }
+  .paw-nav{
+    display: none;
+  }
+  .nav-container{
+    padding-right: 8%;
+  }
 }

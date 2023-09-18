@@ -27,7 +27,7 @@ const Nav =()=>{
     return(
         <>
         {!session?.user &&
-        <nav className="flex justify-around items-center w-full mb-16 pt-3 ">
+        <nav className="nav-container flex sm:justify-around items-center w-full mb-16 pt-3 ">
             <Link href="/" className="flex gap-2 flex-center mr-80">
                 <Image src="/assets/icons/logo-no-background.png" alt="logo" width={150} height={150} loading="eager" />
             </Link>
@@ -54,7 +54,7 @@ const Nav =()=>{
             width={37}
             height={37}
             loading="eager" 
-            className='rounded-full'
+            className='paw-nav rounded-full'
             alt='paw'
              /></div>
             
