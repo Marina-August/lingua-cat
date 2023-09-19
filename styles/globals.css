@@ -1426,6 +1426,12 @@ animation: walkM 3s linear infinite 1.5s;
   .column-word{
     width: 22.5%;
   }
+  .button-container{
+    flex-direction: row;
+  }
+  .container{
+    z-index: 15;
+  }
 }
 
 @media(max-width:1024px){
