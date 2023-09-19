@@ -1,8 +1,9 @@
 import { createSlice,configureStore } from '@reduxjs/toolkit';
+import { signOut } from 'next-auth/react';
 
 const initialVocabularyCatState = {counter: 0, isAwake: false, allWords:[], wordsForTable:[], 
     testAllWords:false, countQuestions:0, quantityRightAnswers:0, sourceLanguage: 'Finnish', 
-    targetLanguage:'English', imageId: '', imageURL:'', isSignOut:true};
+    targetLanguage:'English', imageId: '', imageURL:''};
 
 const vocabularyCatSlice = createSlice({
     name: "vocabulary",
@@ -53,9 +54,6 @@ const vocabularyCatSlice = createSlice({
         setImageURL (state, action){
             state.imageURL = action.payload
         },
-        setIsSignOut (state, action){
-            state.isSignOut = action.payload;
-        }
 
     }
 })

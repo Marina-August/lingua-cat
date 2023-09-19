@@ -1224,7 +1224,7 @@ animation: walkM 3s linear infinite 1.5s;
     animation: walkM 3s linear infinite 1.75s;
  } 
 
- @media(max-width:1390px){
+ @media(max-width:1510px){
    .paw-print-1M{
     display: none;
    }
@@ -1233,6 +1233,13 @@ animation: walkM 3s linear infinite 1.5s;
    }
    .paw-print-12M{
     display: none;
+   }
+   .paw-print-3M{
+    display: none;
+   }
+   .paw-print-4M{
+    left: 370px;
+    top: 510px;
    }
  }
   

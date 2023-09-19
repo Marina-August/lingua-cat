@@ -42,7 +42,6 @@ const Nav =()=>{
                     key={provider.name}
                     onClick={
                     () => {
-                        dispatch(vocabularyCatActions.setIsSignOut(false));   
                         signIn(provider.id, { callbackUrl: '/personal-page' });
                     }
                     }>
