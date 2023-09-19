@@ -1257,6 +1257,16 @@ animation: walkM 3s linear infinite 1.5s;
 100% {opacity: 0;}
 }
 
+/* Card Table CSS */
+
+.card{
+  width: 90%;
+  margin:-40px auto 0px;
+  min-height: 75vh; 
+  background-color: #fafafa;
+  position: block;
+}
+
 
 @media(max-width:640px){
   .v-footer{
@@ -1286,6 +1296,17 @@ animation: walkM 3s linear infinite 1.5s;
   }
   .mainpage-container{
     gap: 10%;
+  }
+  .sidebar{
+    display: none;;
+  }
+  .personal-nav{
+    display: none;
+  }
+  .card{
+    margin-top: 20%;
+    width: 98%;
+    margin-left: -3%;
   }
 
 }
@@ -1339,4 +1360,22 @@ animation: walkM 3s linear infinite 1.5s;
     padding-left: 2%;
     padding-right: 2%;
   }
+}
+
+@media (min-width:640px) and (max-width:1500px){
+    .container{
+      left: 17%;
+    }
+}
+
+@media(min-width:640px){
+  .personal-nav-mobile{
+    display: none;
+  }
+}
+
+@media(max-width:1024px){
+    .main-footer{
+      height: 30px;
+    }
 }

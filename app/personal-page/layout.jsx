@@ -18,8 +18,8 @@ const PersonalLayout =({ children })=>{
     return (
       <AuthenticatedContent>
       <div className=" w-full h-screen ">
-        <div className=" flex flex-col bg-gray-800 p-4  bg-opacity-20 justify-items-end fixed top-0 left-0 h-screen lg:w-60 md:w-48 sm:w-36 ">
-            <Image src="/assets/icons/logo-no-background.png" alt="logo" width={150} height={150} loading="eager" className="mb-16 ml-7 "/>
+        <div className=" sidebar flex flex-col bg-gray-800 p-4  bg-opacity-20 justify-items-end fixed top-0 left-0 h-screen lg:w-60 md:w-48 sm:w-36 ">
+            <Image src="/assets/icons/logo-no-background.png" alt="logo" width={150} height={150} loading="eager" className="mb-16 xl:ml-7 sm:ml-1 "/>
             <Link href="/personal-page" 
             className="text-white py-2 rounded hover:bg-slate-400 focus:bg-slate-500 transition duration-300 ">
               <i className="pi pi-database" style={{marginLeft:5}}></i>

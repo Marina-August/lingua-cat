@@ -194,7 +194,7 @@ const Words =({onDeleteWord})=>{
             <h1 className='head_text text-center'>
               <span className='orange_gradient'>You don't have any words yet</span>
             </h1>}
-          {allWords.length>0 &&  <Card style={{width:'90%', margin:'-40px auto 0px', minHeight:'75vh', backgroundColor: '#fafafa', position: 'block'}}>
+          {allWords.length>0 &&  <Card className='card'>
             <div className="flex justify-between appearing">
               <div className="mb-8 text-end ">
                <Button  label = {isfilter? "Hide Filter":"Choose Language"} icon="pi pi-filter"  severity="secondary" rounded text raised 
