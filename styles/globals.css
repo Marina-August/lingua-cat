@@ -1338,6 +1338,14 @@ animation: walkM 3s linear infinite 1.5s;
     justify-items: center;
     align-items: center;
   }
+
+  .form-container{
+    margin-top: 30%;
+    margin-left: -5%;
+  }
+  .orange_gradient{
+    display: none;
+  }
   /* .column-word{
     width: 1%;
   } */
