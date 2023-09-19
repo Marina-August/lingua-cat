@@ -1330,19 +1330,23 @@ animation: walkM 3s linear infinite 1.5s;
   }
   .hunger{
     z-index: 15;
-    top:70%;
+    top:60%;
     left: 10%
   }
-  /* .column-word{
-    width: 15%; */
-     /* display: flex; */
-    /* flex-direction: column; */
-    /* flex-wrap: wrap;  */
-  
-  .country{
-    width: 20%;
-    height: 20%;
+  .button-container{
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
   }
+  /* .column-word{
+    width: 1%;
+  } */
+   
+  
+  /* .country-word{
+    width: 10%;
+    height: 10%;
+  } */
   /* .column-translate{
     width: 15%;
   }
@@ -1351,9 +1355,9 @@ animation: walkM 3s linear infinite 1.5s;
   }
   .column-action{
     width: 15%;
-  } */
+  }  */
   /* .appearing-datatable{
-    width: 70%;
+    width: 300px;
   } */
 
 }

@@ -107,7 +107,7 @@ const Words =({onDeleteWord})=>{
   const wordBodyTemplate = (word)=>{
     return (
       <div className="flex justify-start gap-5">
-        <img  className= "country" width='25px' height='15px' src={`/assets/images/${word.sourceLang.code}.png`} alt="flag" />
+        <Image width={25} height={15} src={`/assets/images/${word.sourceLang.code}.png`} alt="flag" loading="eager"/>
         <span>{word.word}</span>
       </div>
     )
@@ -195,7 +195,7 @@ const Words =({onDeleteWord})=>{
               <span className='orange_gradient'>You don't have any words yet</span>
             </h1>}
           {allWords.length>0 &&  <Card className='card'>
-            <div className="flex justify-between appearing">
+            <div className=" button-container flex justify-between appearing">
               <div className="mb-8 text-end ">
                <Button  label = {isfilter? "Hide Filter":"Choose Language"} icon="pi pi-filter"  severity="secondary" rounded text raised 
                 size="small" onClick={filterHandler}/>
@@ -229,7 +229,7 @@ const Words =({onDeleteWord})=>{
         >
           <Column body={wordBodyTemplate} sortable header="Original"
           field="word"
-          className='column-word'></Column>
+          style={{ width: '22,5%' }}></Column>
           <Column body={translationBodyTemplate} sortable header="Translation" style={{ width: '22,5%' }} field="translation"></Column>
           <Column field="example"  header="Example" 
           style={{ width: '40%' }}
