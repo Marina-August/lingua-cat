@@ -748,6 +748,8 @@ body, html {
 
 
 /* Form Component */
+
+
 .form_textarea {
   @apply w-full flex rounded-lg h-[100px] mt-2 p-3 text-xl text-gray-500 outline-0 resize-none;
 }
@@ -1025,6 +1027,10 @@ animation: walk 3s linear infinite 1.75s;
 
 /* Form Style */
 .appearing{
+  animation: form-appear 1s ease-out forwards;
+}
+
+.appearing-datatable{
   animation: form-appear 1s ease-out forwards;
 }
 
@@ -1308,6 +1314,47 @@ animation: walkM 3s linear infinite 1.5s;
     width: 98%;
     margin-left: -3%;
   }
+  .container{
+    top:96%;
+    left: 41%;
+    height:110px ;
+    width: 290px;
+    z-index: 15;
+  }
+  .bubbleWithText{
+    height: 30px;
+    width: 40px ;
+  }
+  .text{
+    font-size: 0.5rem;
+  }
+  .hunger{
+    z-index: 15;
+    top:70%;
+    left: 10%
+  }
+  /* .column-word{
+    width: 15%; */
+     /* display: flex; */
+    /* flex-direction: column; */
+    /* flex-wrap: wrap;  */
+  
+  .country{
+    width: 20%;
+    height: 20%;
+  }
+  /* .column-translate{
+    width: 15%;
+  }
+  .column-example{
+    width: 15%;
+  }
+  .column-action{
+    width: 15%;
+  } */
+  /* .appearing-datatable{
+    width: 70%;
+  } */
 
 }
 
@@ -1331,7 +1378,7 @@ animation: walkM 3s linear infinite 1.5s;
     text-align: center;
   }
   .signin-mobile{
-    margin-bottom: 56%;
+    margin-bottom: 90%;
     margin-left: 33.4%;
   }
   .cat-word{
@@ -1372,10 +1419,16 @@ animation: walkM 3s linear infinite 1.5s;
   .personal-nav-mobile{
     display: none;
   }
+  .column-word{
+    width: 22.5%;
+  }
 }
 
 @media(max-width:1024px){
     .main-footer{
       height: 30px;
+    }
+    .allButFooter{
+      min-height: 100vh;
     }
 }

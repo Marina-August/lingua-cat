@@ -107,7 +107,7 @@ const Words =({onDeleteWord})=>{
   const wordBodyTemplate = (word)=>{
     return (
       <div className="flex justify-start gap-5">
-        <Image  width={25} height={15} src={`/assets/images/${word.sourceLang.code}.png`} alt="flag" loading="eager" />
+        <img  className= "country" width='25px' height='15px' src={`/assets/images/${word.sourceLang.code}.png`} alt="flag" />
         <span>{word.word}</span>
       </div>
     )
@@ -225,11 +225,11 @@ const Words =({onDeleteWord})=>{
           stripedRows 
           paginator rows={8}
           tableStyle={{ minWidth: '50rem' }}
-          className='appearing'
+          className='appearing-datatable'
         >
           <Column body={wordBodyTemplate} sortable header="Original"
           field="word"
-          style={{ width: '22,5%' }}></Column>
+          className='column-word'></Column>
           <Column body={translationBodyTemplate} sortable header="Translation" style={{ width: '22,5%' }} field="translation"></Column>
           <Column field="example"  header="Example" 
           style={{ width: '40%' }}
