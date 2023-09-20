@@ -1418,7 +1418,10 @@ animation: walkM 3s linear infinite 1.5s;
     padding-left: 4px;
     padding-right: 4px;
   }
-
+  .front, .back{
+    font: 1em/50px 'Helvetica Neue', Helvetica, sans-serif;
+  }
+ 
 }
 
 @media(max-width:530px){

@@ -29,13 +29,13 @@ const Test2 = ({words})=>{
                 setArrayNumbers([]);
               }
                setFront(words[num1].word);
-               if (words[num1].word.length > 34){
+               if (words[num1].word.length > 32){
                    setFontFrontSize(1.5);
                } else{
                  setFontFrontSize(3)
                }
                setBack(words[num1].translation);
-               if (words[num1].word.length > 34){
+               if (words[num1].word.length > 32){
                 setFontBackSize(1.5);
             } else{
               setFontBackSize(3)
