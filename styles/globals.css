@@ -1424,6 +1424,9 @@ animation: walkM 3s linear infinite 1.5s;
   .front, .back{
     font: 1em/50px 'Helvetica Neue', Helvetica, sans-serif;
   }
+  .desktop-cat{
+    display: none;
+  }
  
 }
 

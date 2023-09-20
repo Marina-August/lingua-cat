@@ -2,7 +2,7 @@
 
 import { useSelector, useDispatch } from 'react-redux';
 import { vocabularyCatActions } from '@/redux/store';
-import { useEffect, useState} from 'react';
+import { useEffect, useState, useRef} from 'react';
 
 const Cat =()=>{
     const [food1, setFood1] = useState('');
@@ -14,6 +14,32 @@ const Cat =()=>{
     const isAwake = useSelector((state)=>state.isAwake)
     const counter = useSelector((state)=>state.counter);
     const dispatch = useDispatch();
+
+    // Drag  
+
+  const [isDragging, setIsDragging] = useState(false);
+  const [position, setPosition] = useState({ x: 170, y: -10 });
+
+  const imageRef = useRef(null);
+
+  const handleTouchStart = (e) => {
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging) return;
+
+    const touch = e.touches[0];
+    const newX = touch.clientX - imageRef.current.getBoundingClientRect().left;
+    const newY = touch.clientY - imageRef.current.getBoundingClientRect().top;
+
+    setPosition({ x: newX, y: newY });
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
 
     const food = ["/assets/images/donut.png", "/assets/images/cake.png","/assets/images/cheese.png", 
     "/assets/images/dish.png", "/assets/images/drink.png", "/assets/images/ice-cream.png","/assets/images/milk.png",
@@ -71,6 +97,42 @@ const Cat =()=>{
 
     return (
         <>
+        <div className='mobile-cat sm:hidden'>
+        {isAwake && 
+            <div className='hunger'>
+                {counter<1 && <img className ='food1' src={food1}/>}
+                {counter<2 && <img className = 'food2' src={food2}/>}
+                {counter<3 && <img className = 'food3' src={food3}/>}
+                {counter<4 && <img className = 'food4' src={food4}/>}
+                {counter<5 && <img className = 'food5' src={food5}/>}
+            </div>
+            }
+          <div className="container" onClick={wakeUpHandler}      onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}>
+            <div className="cat"  ref={imageRef} style={{
+          position: 'absolute',
+          top: `${position.y}px`,
+          left: `${position.x}px`,
+          width: '30%',
+          height: '60%',
+        }} >
+                <div className="ear"></div>
+                <div className={!isAwake? "eye":"eyeOpen"}></div>
+                {counter <5 &&<div className="mouth"></div>}
+                {counter >=5 && <div className="mouthNotHunger"></div>}
+                <div className= "nose"></div>
+                <div className={!isAwake? "tailAction":"tailUpDown"}></div>
+                <div className={!isAwake? "body": "bodyAwake"}></div>
+                {!isAwake && <div className="bubble"></div>}
+                <div className="bubbleWithText">
+                   {counter <4 && <p className="text font-dog">{!isAwake? "Wake Me Up":"Feed Me"}</p>}
+                   {counter>=4 && <p className="text font-dog">Thank you!</p>}
+                    </div>
+            </div>
+        </div>
+        </div>
+        <div className='desktop-cat'>
         {isAwake && 
             <div className='hunger'>
                 {counter<1 && <img className ='food1' src={food1}/>}
@@ -95,6 +157,7 @@ const Cat =()=>{
                    {counter>=4 && <p className="text font-dog">Thank you!</p>}
                     </div>
             </div>
+        </div>
         </div>
         </>
     )
