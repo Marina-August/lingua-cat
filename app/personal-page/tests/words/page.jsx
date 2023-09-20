@@ -158,7 +158,7 @@ const TestWords = ()=>{
       <>
          <Toast ref={toast} position="center"/>
          <div className="tests-container flex flex-col">
-            <div className="flex flex-wrap justify-between border-slate-300 ">
+            <div className="test-language-button-container flex flex-wrap justify-between border-slate-300 ">
               <div className="flex gap-4 border-slate-300 ">
                  <div className="rounded-lg bg-orange-300 w-24 text-white text-center text-xl">
                    <h2 className="">Language:</h2>
@@ -173,7 +173,7 @@ const TestWords = ()=>{
                  <Image width={30} height={25} src="/assets/images/En.png" alt="EN flag" loading="eager" className="icon" onClick ={sourceEnglishHandler}/>
                  </div>
               </div>
-              <div className="flex flex-wrap gap-8 mr-20" >
+              <div className="test-buttons flex flex-wrap gap-8 mr-20" >
                  {typeTest ===2 && <Button label="Test 1"  severity="secondary" rounded raised size="small" onClick={test1Handler} className="tracking-wider w-24"/>}
                  {typeTest === 1 && <Button label="Test 1" style= {{ backgroundColor: 'var(--highlight-bg)', color: 'var(--highlight-text-color)'}} rounded raised size="small" onClick={test1Handler} className="tracking-wider w-24"/>}
                  {typeTest ===2 && <Button label="Test 2" style= {{ backgroundColor: 'var(--highlight-bg)', color: 'var(--highlight-text-color)'}} rounded raised size="small" onClick={test1Handler} className="tracking-wider w-24"/>}
@@ -182,7 +182,7 @@ const TestWords = ()=>{
             </div>      
              {isLoading ? loader:
               <div>
-                {typeTest ===1 && <div className="flex gap-20">
+                {typeTest ===1 && <div className="flex sm:gap-20">
                   {words.length >= 5 && <Test1  words ={words}/>}
                   {words.length >= 5 && <div className="count mt-52 md:text-5xl sm:text-2xl  text-gray-600 mr-4 xl:ml-0 sm:-ml-8">{quantityRightAnswers}/{countQuestions}</div>}
                 </div>}

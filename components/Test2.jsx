@@ -53,12 +53,12 @@ const Test2 = ({words})=>{
             <div className="flip-container">
                 <div className="flipper">
 		            <div className="front" style={{fontSize:fontFrontSize+"em"}} >
-                        <div className=' mt-20 px-2' >
+                        <div className=' front-test2 sm:mt-20 sm:px-2' >
                             {front} 
                         </div>
 		            </div>
 		            <div className="back" style={{fontSize:fontBackSize+"em"}}>
-                        <div className='mt-20 px-2'>
+                        <div className=' back-test2 sm:mt-20 sm:px-2'>
                           {back}
                         </div>
                     </div>

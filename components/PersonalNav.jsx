@@ -59,7 +59,7 @@ const PersonalNav = ()=>{
             />
             </Link>}
        </div>
-       <div className='personal-nav-mobile flex justify-around  fixed top-6 left-0 w-screen h-8 z-20'>
+       <div className='personal-nav-mobile flex justify-around  fixed top-0 left-0 w-screen h-12 z-20 bg-slate-200'>
             <Link href="/personal-page" className=" flex-center flex-col  text-gray-700 py-2 rounded hover:bg-slate-400 transition duration-300 ">
               <i className="pi pi-database"></i>
               <span className="text-base tracking-wide font-merry">Words</span>

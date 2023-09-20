@@ -8,12 +8,28 @@ import { vocabularyCatActions } from '@/redux/store';
 import AuthenticatedContent from '@/components/AuthenticatedContent';
 
 import { signOut,useSession } from 'next-auth/react';
+import { getSession } from 'next-auth/react';
 import PersonalNav from '@/components/PersonalNav';
 import MyFooter from '@/components/MyFooter';
+import { useEffect } from 'react';
 
 const PersonalLayout =({ children })=>{
   const {data: session} = useSession();
   const dispatch = useDispatch();
+
+    async function handler(req, res) {
+    const session = await getSession({ req });
+  
+    if (session) {
+      console.log('Cookie name', session);
+    } else {
+      console.log('No User');
+    }}
+
+    useEffect(()=>{
+      handler();
+    },[])
+
 
     return (
       <AuthenticatedContent>
@@ -51,7 +67,7 @@ const PersonalLayout =({ children })=>{
         <PersonalNav/>
         <div>
                <CatAction/>
-               <div className='ml-8'>
+               <div className=' children-container sm:ml-8'>
                    {children}
                 </div>               
         </div>

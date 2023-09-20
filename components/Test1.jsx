@@ -228,7 +228,7 @@ const Test1 = ({words})=>{
                     {rightAnswer3 === 2 && wrong}
                 </div>
             </div>
-            <div className='w-16 relative left-1/2 transform -translate-x-1/2'>
+            <div className=' button-next w-16 relative left-1/2 transform -translate-x-1/2'>
                 <Button label='Next' icon ='pi pi-arrow-right' 
                 severity="secondary" rounded  raised size="small" 
                 className='bg-slate-100'

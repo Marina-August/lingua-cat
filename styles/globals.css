@@ -1316,9 +1316,9 @@ animation: walkM 3s linear infinite 1.5s;
   }
   .container{
     top:96%;
-    left: 61%;
+    left: 40%;
     height:110px ;
-    width: 290px;
+    width: 270px;
     z-index: 15;
   }
   .bubbleWithText{
@@ -1331,7 +1331,9 @@ animation: walkM 3s linear infinite 1.5s;
   .hunger{
     z-index: 15;
     top:60%;
-    left: 10%
+    left: 10%;
+    width: 130px;
+    height: 130px;
   }
   .button-container{
     flex-direction: column;
@@ -1367,17 +1369,55 @@ animation: walkM 3s linear infinite 1.5s;
     margin-top: 20%;
   }
   .count{
+    display: none;
     font-size: 1.2rem;
+    margin-left: 0px;
   }
   .test-word{
-    width: 50%;
-    height: 40%;
+    width: 170px;
+    height: 70px;
+    background-color: #e6d2b5;
   }
   .test-option{
     width: 160px;
     height: 70px;
+    z-index: 20;
   }
-  
+  .option-disabled{
+    width: 160px;
+    height: 70px;
+  }
+  .test-language-button-container{
+    gap:5%;
+  }
+  .test1-container{
+    /* margin-top: 2%; */
+    margin-right: 7%;
+    z-index: 14;
+  }
+  .test-buttons{
+    margin-top: 3%;
+  }
+  .children-container{
+    margin-left: 7%;
+  }
+  .button-next{
+    /* display: none; */
+  }
+  .flip-container, .front, .back{
+    width: 300px;
+    height: 220px;
+  }
+  .front-test2{
+    margin-top: 20%;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  .back-test2{
+    margin-top: 20%;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
 
 }
 
