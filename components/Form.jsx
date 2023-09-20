@@ -8,13 +8,14 @@ import { useSession } from "next-auth/react";
 
 const Form = ({type, onWordHandler, editWord, onUpdateWord, sourceL, targetL})=>{
     const [word, setWord] = useState('');
-    // const [sourceLanguage, setSourceLanguage] = useState('Finnish');
+    const [sourceLanguageEdit, setSourceLanguageEdit] = useState('Finnish');
     const [translation, setTranslation] = useState('');
-    // const [targetLanguage, setTargetLanguage] = useState('English');
+    const [targetLanguageEdit, setTargetLanguageEdit] = useState('English');
     const [example, setExample] = useState('');
     const [ok, setOk] = useState(false);
 
     const {data: session} = useSession();
+    const dispatch = useDispatch();
 
     const sourceLanguage = useSelector((state)=>state.sourceLanguage);
     const targetLanguage = useSelector((state)=>state.targetLanguage);
@@ -22,9 +23,9 @@ const Form = ({type, onWordHandler, editWord, onUpdateWord, sourceL, targetL})=>
     useEffect(()=>{
       if (editWord){
         setWord(editWord.word);
-        setSourceLanguage(sourceL.name);
+        setSourceLanguageEdit(sourceL.name);
         setTranslation(editWord.translation);
-        setTargetLanguage(targetL.name);
+        setTargetLanguageEdit(targetL.name);
         setExample(editWord.example);
       }
        
@@ -33,7 +34,7 @@ const Form = ({type, onWordHandler, editWord, onUpdateWord, sourceL, targetL})=>
 
     const sourceLanguageHandler =(event)=>{
         if(event.target.value!==0){
-            setSourceLanguage(event.target.value);
+          dispatch(vocabularyCatActions.setSourceLanguage(event.target.value));
         }    
     }
 
@@ -43,7 +44,7 @@ const Form = ({type, onWordHandler, editWord, onUpdateWord, sourceL, targetL})=>
 
     const targetLanguageHandler = (event)=>{
         if(event.target.value!==0){
-            setTargetLanguage(event.target.value);
+          dispatch(vocabularyCatActions.setTargetLanguage(event.target.value));
         }
     }
 
