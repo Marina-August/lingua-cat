@@ -1388,6 +1388,7 @@ animation: walkM 3s linear infinite 1.5s;
   .option-disabled{
     width: 160px;
     height: 70px;
+    font-size: 0.9rem;
   }
   .test-language-button-container{
     gap:5%;
