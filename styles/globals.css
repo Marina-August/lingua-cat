@@ -1316,7 +1316,7 @@ animation: walkM 3s linear infinite 1.5s;
   }
   .container{
     top:96%;
-    left: 41%;
+    left: 61%;
     height:110px ;
     width: 290px;
     z-index: 15;
@@ -1355,6 +1355,29 @@ animation: walkM 3s linear infinite 1.5s;
   .profile-photo{
     display: none;
   }
+  .test-container{
+    gap: 4%;
+    margin-top: 40%;
+    margin-left: -4%;
+  }
+  .breadcrumb{
+    display: none;
+  }
+  .tests-container{
+    margin-top: 20%;
+  }
+  .count{
+    font-size: 1.2rem;
+  }
+  .test-word{
+    width: 50%;
+    height: 40%;
+  }
+  .test-option{
+    width: 160px;
+    height: 70px;
+  }
+  
 
 }
 
@@ -1439,5 +1462,11 @@ animation: walkM 3s linear infinite 1.5s;
     }
     .allButFooter{
       min-height: 100vh;
+    }
+}
+
+@media(max-width:1140px){
+    .test-paw-container{
+      display: none;
     }
 }

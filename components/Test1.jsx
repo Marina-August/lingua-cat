@@ -202,11 +202,11 @@ const Test1 = ({words})=>{
 
  
     return (
-        <div className=' appearing mt-6 w-full max-w-2xl flex flex-col gap-7 glassmorphism ml-64 '>
+        <div className=' test1-container appearing mt-6 w-full max-w-2xl flex flex-col gap-7 glassmorphism lg:ml-64 md:ml-16 sm:ml-4 '>
             <div className='test-word'>
                 <p>{questionWord}</p>
             </div>
-            <div className='grid grid-cols-2 gap-4'>
+            <div className='grid xl:grid-cols-2 sm:grid-cols-1 gap-4'>
                 <div className={ok0 ? 'test-option':'option-disabled'} onClick={checkAnswer0}>
                     {answerPosition===0? answer: option2}
                     {rightAnswer0 === 2 && wrong}

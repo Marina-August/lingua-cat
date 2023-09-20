@@ -18,7 +18,7 @@ const Tests =()=>{
 
     return(
         <div className="flex flex-col gap-64">
-            <div className="flex gap-24 justify-center">
+            <div className=" test-container flex flex-wrap md:gap-24 sm:gap-12 justify-center">
                 <Link href="/personal-page/tests/words" onClick={myWordsHandler}>
                     <div className=' appearing mt-24 w-64 max-w-2xl text-center glassmorphism'>
                         <h2 className="text-4xl font-bold font-merry text-gray-600">My Words</h2>
