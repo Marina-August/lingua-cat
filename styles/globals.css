@@ -791,7 +791,7 @@ body, html {
   @apply flex text-2xl font-merrySans pointer-events-none items-center justify-center w-60 h-24 rounded bg-slate-100 relative left-1/2 transform -translate-x-1/2 break-all p-2;
 }
 .profile{
-  @apply font-merrySans xl:text-2xl lg:text-xl md:text-sm sm:text-xs text-gray-600 font-bold hover:text-slate-800 cursor-default;
+  @apply font-merrySans xl:text-2xl sm:text-xl  text-gray-600 font-bold hover:text-slate-800 cursor-default;
 }
 
 /* Paw Style */
@@ -1346,27 +1346,15 @@ animation: walkM 3s linear infinite 1.5s;
   .orange_gradient{
     display: none;
   }
-  /* .column-word{
-    width: 1%;
-  } */
-   
-  
-  /* .country-word{
-    width: 10%;
-    height: 10%;
-  } */
-  /* .column-translate{
-    width: 15%;
+  .profile-container{
+    margin-left: 0%;
+    margin-top: 60%;
+    gap: 3%;
+    font-size: large;
   }
-  .column-example{
-    width: 15%;
+  .profile-photo{
+    display: none;
   }
-  .column-action{
-    width: 15%;
-  }  */
-  /* .appearing-datatable{
-    width: 300px;
-  } */
 
 }
 
@@ -1439,6 +1427,9 @@ animation: walkM 3s linear infinite 1.5s;
   }
   .container{
     z-index: 15;
+  }
+  .profile-photo{
+    display: flex;
   }
 }
 

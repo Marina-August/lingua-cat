@@ -121,10 +121,10 @@ const MyProfile =()=>{
 
 
     return (
-        <div className="flex justify-items-start align-center gap-20 ml-40 mt-20 appearing">
+        <div className="profile-container flex flex-wrap justify-items-start  align-center sm:gap-20 lg:ml-40 md:ml-16 sm:ml-2 lg:mt-20 sm:mt-0 appearing">
              <ConfirmDialog visible={visible} onHide={() => setVisible(false)} message="Are you sure you want to proceed?" 
                 header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept} reject={reject} />
-            <div className='flex flex-col content-center gap-2'>
+            <div className='profile-photo flex flex-col content-center gap-2'>
                    {!imageId && !imageUrl && <Image src= {session?.user.image ? session?.user.image: "/assets/images/user-image.png"} 
                    width={110} height={55}  loading="eager" className='rounded-full mt-6' alt='profile'/>}
                    {imageUrl && !imageId && <img src= {imageUrl} 
@@ -142,9 +142,9 @@ const MyProfile =()=>{
                         updateImage(result.info.url);  
                    }}/>
             </div>
-            <div className='flex flex-col gap-4'>
+            <div className='flex flex-col gap-4 mr-4'>
                 <div className='profile'>
-                     My Email:<span className='xl:text-3xl lg:text-xl md:text-sm text-orange-500 ml-4'>{session?.user.email} </span>
+                     My Email:<span className='xl:text-3xl sm:text-xl text-orange-500 ml-4'>{session?.user.email} </span>
                 </div>
                 <div className = 'flex profile'>
                     <h2> My Source Language:</h2>
@@ -164,8 +164,8 @@ const MyProfile =()=>{
                         <Image width={30} height={25} src="/assets/images/En.png" alt="FI flag" loading="eager" className="icon"/>
                     </div>
                 </div>
-                <div className='flex font-merrySans xl:text-2xl lg:text-xl md:text-sm sm:text-xs text-gray-600 font-bold hover:text-slate-800 cursor-pointer' onClick={deleteProfileHandler}>
-                   <img src="/assets/images/delete (1).png"  className='-ml-1 md:hidden'/>
+                <div className='flex font-merrySans xl:text-2xl sm:text-xl text-gray-600 font-bold hover:text-slate-800 cursor-pointer' onClick={deleteProfileHandler}>
+                   <img src="/assets/images/delete (1).png"  className='-ml-1'/>
                    <p className='ml-2'> Delete Profile</p>
                 </div>      
             </div>
