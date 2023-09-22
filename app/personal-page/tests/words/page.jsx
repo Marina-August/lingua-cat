@@ -160,16 +160,16 @@ const TestWords = ()=>{
          <div className="tests-container flex flex-col">
             <div className="test-language-button-container flex flex-wrap justify-between border-slate-300 ">
               <div className="flex gap-4 border-slate-300 ">
-                 <div className="rounded-lg bg-orange-300 w-24 text-white flex-center text-xl">
-                   Language:
+                 <div className="rounded-lg bg-orange-300 w-24 text-white flex-center text-xl mb-1">
+                   <p className="mb-0.5">Language:</p>
                  </div>
-                 <div className={`${isAllLanguages? 'bg-orange-400': ''} w-9 rounded cursor-pointer flex-center`}>
+                 <div className={`${isAllLanguages? 'bg-orange-400': ''} w-9 rounded cursor-pointer flex-center mb-1`}>
                     <Image width={30} height={25} src="/assets/images/Earth.png" alt="Earth" loading="eager" onClick={allLanguagesHandler}/>
                  </div>
-                 <div className={`${isFinnish? 'bg-orange-400': ''} w-9 rounded cursor-pointer flex-center`}>
+                 <div className={`${isFinnish? 'bg-orange-400': ''} w-9 rounded cursor-pointer flex-center mb-1`}>
                     <Image width={30} height={25} src="/assets/images/Fi.png" alt="FI flag" loading="eager" onClick={sourceFinnishHandler}/>
                  </div>
-                 <div className={`${isEnglish? 'bg-orange-400': ''} w-9 rounded cursor-pointer flex-center`}>
+                 <div className={`${isEnglish? 'bg-orange-400': ''} w-9 rounded cursor-pointer flex-center mb-1`}>
                  <Image width={30} height={25} src="/assets/images/En.png" alt="EN flag" loading="eager" onClick ={sourceEnglishHandler}/>
                  </div>
               </div>
