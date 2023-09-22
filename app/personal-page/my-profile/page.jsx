@@ -148,20 +148,20 @@ const MyProfile =()=>{
                 </div>
                 <div className = 'flex profile'>
                     <h2> My Source Language:</h2>
-                     <div onClick = {sourceFinnishHandler} className={`${sourceLanguage === 'Finnish'? 'bg-orange-400': ''} ml-4 xl:w-9 rounded cursor-pointer `}> 
-                        <Image  width ={30} height={7} sizes="(max-width: 768px) 20vw, (max-width: 1200px) 50vw, 33vw" src="/assets/images/Fi.png" alt="FI flag" loading="eager" className="icon"/>
+                     <div onClick = {sourceFinnishHandler} className={`${sourceLanguage === 'Finnish'? 'bg-orange-400': ''} ml-4 xl:w-9 rounded cursor-pointer flex-center`}> 
+                        <Image  width ={30} height={7}  src="/assets/images/Fi.png" alt="FI flag" loading="eager" />
                     </div>
-                    <div onClick = {sourceEnglishHandler} className={`${sourceLanguage === 'English'? 'bg-orange-400': ''} ml-4 w-9 rounded cursor-pointer `}> 
-                        <Image width={30} height={25} src="/assets/images/En.png" alt="FI flag" loading="eager" className="icon"/>
+                    <div onClick = {sourceEnglishHandler} className={`${sourceLanguage === 'English'? 'bg-orange-400': ''} ml-4 w-9 rounded cursor-pointer flex-center`}> 
+                        <Image width={30} height={25} src="/assets/images/En.png" alt="FI flag" loading="eager"/>
                     </div>
                 </div>
                  <div className = 'flex profile'>
                     <h2>My Target Language:</h2>
-                    <div onClick = {targetFinnishHandler} className={`${targetLanguage === 'Finnish'? 'bg-orange-400': ''} ml-7 w-9 rounded cursor-pointer `}> 
-                        <Image width={30} height={25} src="/assets/images/Fi.png" alt="FI flag" loading="eager" className="icon"/>
+                    <div onClick = {targetFinnishHandler} className={`${targetLanguage === 'Finnish'? 'bg-orange-400': ''} ml-7 w-9 rounded cursor-pointer flex-center`}> 
+                        <Image width={30} height={25} src="/assets/images/Fi.png" alt="FI flag" loading="eager"/>
                     </div>
-                    <div  onClick = {targetEnglishHandler} className={`${targetLanguage === 'English'? 'bg-orange-400': ''} ml-4 w-9 rounded cursor-pointer `}> 
-                        <Image width={30} height={25} src="/assets/images/En.png" alt="FI flag" loading="eager" className="icon"/>
+                    <div  onClick = {targetEnglishHandler} className={`${targetLanguage === 'English'? 'bg-orange-400': ''} ml-4 w-9 rounded cursor-pointer flex-center `}> 
+                        <Image width={30} height={25} src="/assets/images/En.png" alt="FI flag" loading="eager"/>
                     </div>
                 </div>
                 <div className='flex font-merrySans xl:text-2xl sm:text-xl text-gray-600 font-bold hover:text-slate-800 cursor-pointer' onClick={deleteProfileHandler}>

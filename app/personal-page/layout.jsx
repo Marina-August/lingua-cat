@@ -1,21 +1,18 @@
 'use client'
 import Link from 'next/link';
 import Image from 'next/image';
-import ReduxProvider from '@/redux/provider';
 import CatAction from '@/components/CatAction';
-import { useDispatch } from 'react-redux';
-import { vocabularyCatActions } from '@/redux/store';
 import AuthenticatedContent from '@/components/AuthenticatedContent';
 
 import { signOut,useSession } from 'next-auth/react';
 import { getSession } from 'next-auth/react';
 import PersonalNav from '@/components/PersonalNav';
 import MyFooter from '@/components/MyFooter';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const PersonalLayout =({ children })=>{
   const {data: session} = useSession();
-  const dispatch = useDispatch();
+  const[login, setLogin] = useState(true);
 
     async function handler(req, res) {
     const session = await getSession({ req });
@@ -55,6 +52,7 @@ const PersonalLayout =({ children })=>{
               </Link>
             <Link href="/" className="text-white py-2 rounded hover:bg-slate-400 focus:bg-slate-500 transition duration-300"
               onClick={() => {
+              setLogin(false);
               const baseURL = window.location.origin;
               signOut({ callbackUrl: baseURL });
           }}> 
@@ -62,7 +60,6 @@ const PersonalLayout =({ children })=>{
             </Link>
         </div>
       <div className=" allButFooter  lg:ml-60 md:ml-48 sm:ml-36 ">
-      {/* <ReduxProvider> */}
         <div className='flex flex-col gap-20'>
         <PersonalNav/>
         <div>
@@ -72,7 +69,6 @@ const PersonalLayout =({ children })=>{
                 </div>               
         </div>
         </div>
-        {/* </ReduxProvider> */}
         <MyFooter/>
       </div>
 

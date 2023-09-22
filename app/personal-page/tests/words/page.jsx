@@ -160,17 +160,17 @@ const TestWords = ()=>{
          <div className="tests-container flex flex-col">
             <div className="test-language-button-container flex flex-wrap justify-between border-slate-300 ">
               <div className="flex gap-4 border-slate-300 ">
-                 <div className="rounded-lg bg-orange-300 w-24 text-white text-center text-xl">
-                   <h2 className="">Language:</h2>
+                 <div className="rounded-lg bg-orange-300 w-24 text-white flex-center text-xl">
+                   Language:
                  </div>
-                 <div className={`${isAllLanguages? 'bg-orange-400': ''} w-9 rounded cursor-pointer `}>
-                    <Image width={30} height={25} src="/assets/images/Earth.png" alt="Earth" loading="eager" className="icon" onClick={allLanguagesHandler}/>
+                 <div className={`${isAllLanguages? 'bg-orange-400': ''} w-9 rounded cursor-pointer flex-center`}>
+                    <Image width={30} height={25} src="/assets/images/Earth.png" alt="Earth" loading="eager" onClick={allLanguagesHandler}/>
                  </div>
-                 <div className={`${isFinnish? 'bg-orange-400': ''} w-9 rounded cursor-pointer `}>
-                    <Image width={30} height={25} src="/assets/images/Fi.png" alt="FI flag" loading="eager" className="icon" onClick={sourceFinnishHandler}/>
+                 <div className={`${isFinnish? 'bg-orange-400': ''} w-9 rounded cursor-pointer flex-center`}>
+                    <Image width={30} height={25} src="/assets/images/Fi.png" alt="FI flag" loading="eager" onClick={sourceFinnishHandler}/>
                  </div>
-                 <div className={`${isEnglish? 'bg-orange-400': ''} w-9 rounded cursor-pointer`}>
-                 <Image width={30} height={25} src="/assets/images/En.png" alt="EN flag" loading="eager" className="icon" onClick ={sourceEnglishHandler}/>
+                 <div className={`${isEnglish? 'bg-orange-400': ''} w-9 rounded cursor-pointer flex-center`}>
+                 <Image width={30} height={25} src="/assets/images/En.png" alt="EN flag" loading="eager" onClick ={sourceEnglishHandler}/>
                  </div>
               </div>
               <div className="test-buttons flex flex-wrap gap-8 mr-20" >
