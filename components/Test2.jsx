@@ -10,7 +10,6 @@ const Test2 = ({words})=>{
     const [fontFrontSize, setFontFrontSize] = useState(3);
     const [fontBackSize, setFontBackSize] = useState(3);
 
-   
     const wordsHandler =()=>{
         let num1 = 0;
         if (words.length ===1){

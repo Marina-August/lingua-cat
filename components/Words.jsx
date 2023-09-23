@@ -192,7 +192,7 @@ const Words =({onDeleteWord})=>{
                 header="Confirmation" icon="pi pi-exclamation-triangle" accept={accept} reject={reject} />
           {allWords.length===0 && 
             <h1 className='head_text text-center'>
-              <span className='orange_gradient'>You don't have any words yet</span>
+              <span className='orange_gradient_words'>You don't have any words yet</span>
             </h1>}
           {allWords.length>0 &&  <Card className='card'>
             <div className=" button-container flex justify-between appearing">

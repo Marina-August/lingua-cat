@@ -721,13 +721,17 @@ body, html {
 }
 
 .head_text {
-  @apply  lg:text-7xl md:text-4xl font-extrabold leading-[1.15] text-black sm:text-2xl;
+  @apply  lg:text-7xl md:text-5xl sm:text-3xl font-extrabold leading-[1.15];
 }
 .text_succes {
   @apply  text-3xl font-extrabold leading-[1.15] text-black sm:text-3xl mt-8;
 }
 
 .orange_gradient {
+  @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent ml--4;
+}
+
+.orange_gradient_words {
   @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent ml--4;
 }
 
@@ -1426,6 +1430,14 @@ animation: walkM 3s linear infinite 1.5s;
   }
   .desktop-cat{
     display: none;
+  }
+  .head_text{
+    font-size: xx-large;
+  }
+  .orange_gradient_words{
+    margin-top: 50%;
+    display: block;
+    padding-right: 10px;
   }
  
 }
